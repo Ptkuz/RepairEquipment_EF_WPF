@@ -28,7 +28,7 @@
             <Grid Margin="0,103,0,-264">
                 <DataGrid x:Name="DataGridDetails"  AutoGenerateColumns="False" SelectedCellsChanged="DataGridDetails_SelectedCellsChanged" DataContextChanged="DataGridDetails_DataContextChanged" CurrentCellChanged="DataGridDetails_CurrentCellChanged" CellEditEnding="DataGridDetails_CellEditEnding">
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn x:Name="CheckBoxColumn" Binding="{Binding ChBox}" Header="Выбрать" >
+                        <DataGridCheckBoxColumn x:Name="CheckBoxColumn" Binding="{Binding Choise}" Header="Выбрать" >
                             <DataGridCheckBoxColumn.CellStyle>
                                 <Style>
                                     <EventSetter Event="CheckBox.Checked" Handler="OnChecked"/>
@@ -42,6 +42,18 @@
                         <DataGridTextColumn Binding="{Binding QuantityStock}" IsReadOnly="True" Header="Количество на складе" Width="140"/>
                         <DataGridTextColumn Binding="{Binding FullPrice}" IsReadOnly="True" Header="Полная стоимость" Width="140"/>
                         <DataGridTextColumn Binding="{Binding NeededQuantity}" x:Name="NeededQuanColumn" Header="Необходимо для ремонта" Width="160">
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="DataGridCell">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Choise}" Value="True">
+                                            <Setter Property="IsTabStop" Value="False"></Setter>
+                                            <Setter Property="Focusable" Value="False"></Setter>
+                                            <Setter Property="Background" Value="#FF797979"></Setter>
+                                            
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
                         </DataGridTextColumn>
 
                     </DataGrid.Columns>

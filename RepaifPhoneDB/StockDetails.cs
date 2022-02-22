@@ -29,7 +29,7 @@ namespace RepaifPhoneDB
 
         public int? NeededQuantity { get; set; }
 
-
+        public bool Choise { get; set; }
 
         
 

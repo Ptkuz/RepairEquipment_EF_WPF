@@ -136,7 +136,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 var checkBoxValue = this.DataGridDetails.Columns[0].GetCellContent(this.DataGridDetails.SelectedItem);
                 if (checkBoxValue != null)
                 {
-                    
+
 
                     CultureInfo temp_culture = Thread.CurrentThread.CurrentCulture;
                     Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
@@ -156,10 +156,14 @@ namespace ApplicationRepairPhoneEntityFramework
                     txbx_PriceAllDetails.Text = MultiPrice.ToString();
                 }
             }
-            catch (FormatException fex) 
+            catch (FormatException fex)
             {
                 MessageBox.Show("Поле (Необходимое количество) должно содержать целочисленное значение");
-            
+
+            }
+            catch (ArgumentException) 
+            {
+                return;
             }
             catch (Exception ex)
             {
