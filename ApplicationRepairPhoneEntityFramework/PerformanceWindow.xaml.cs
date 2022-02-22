@@ -1,10 +1,7 @@
-﻿using RepaifPhoneDB;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.Globalization;
-using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,28 +18,91 @@ namespace ApplicationRepairPhoneEntityFramework
         ArrayList arrayDetails = new ArrayList();
         Dictionary<Guid, int> IdQuantityDetails = new Dictionary<Guid, int>();
         decimal MultiPrice = 0;
-        public bool ChBox { get; set; } = true;
+        bool flagDescription = false;
+        bool flagPriceWork = false;
+        bool flagDate = false;
+
+
+        public Guid ID_Performance { get; set; }
+        string description_repair;
+        public string DescriptionRepair
+        {
+            get { return description_repair; }
+            set
+            {
+                description_repair = value;
+                if (flagDescription && flagPriceWork && flagDate)
+                    Btn_Insert_Detail.IsEnabled = true;
+                else
+                    Btn_Insert_Detail.IsEnabled = false;
+
+
+            }
+        }
+
+        decimal work_price;
+        public decimal WorkPrice
+        {
+            get { return work_price; }
+            set
+            {
+                work_price = value;
+                if (flagDescription && flagPriceWork && flagDate)
+                    Btn_Insert_Detail.IsEnabled = true;
+                else
+                    Btn_Insert_Detail.IsEnabled = false;
+            }
+        }
+
+        decimal details_Price;
+        public decimal DetailsPrice
+        {
+            get { return details_Price; }
+            set { details_Price = value; }
+        }
+
+        decimal discount = 0;
+        public decimal Discount
+        {
+            get { return discount; }
+            set { discount = value; }
+        }
+        decimal finalPrice;
+        public decimal FinalPrice
+        {
+            get { return finalPrice; }
+            set { finalPrice = value; }
+        }
+
+        DateTime? date_performance;
+        public DateTime? DatePerformance
+        {
+            get { return date_performance; }
+            set
+            {
+                date_performance = value;
+                if (flagDescription && flagPriceWork && flagDate)
+                    Btn_Insert_Detail.IsEnabled = true;
+                else
+                    Btn_Insert_Detail.IsEnabled = false;
+            }
+        }
+
 
         public PerformanceWindow()
         {
             InitializeComponent();
-            txbx_ID_Performance.Text = Guid.NewGuid().ToString();
+            ID_Performance = Guid.NewGuid();
+            txbx_ID_Performance.Text = ID_Performance.ToString();
 
-
-            using (ApplicationContext db = new ApplicationContext())
+            GetDetails();
+            async void GetDetails()
             {
-                var details = from detail in db.stockDetails
-                              select detail;
-
-
-                foreach (var detail in details)
-                {
-                    arrayDetails.Add(detail);
-
-                }
+                arrayDetails = await DataOperations.GetAllDetails();
                 DataGridDetails.ItemsSource = arrayDetails;
-
             }
+
+
 
 
 
@@ -50,84 +110,39 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                using (ApplicationContext db = new ApplicationContext())
-                {
-                    string description_rapair = txbx_Description.Text;
-                    decimal workPrice = decimal.Parse(txbx_Price_Work.Text);
-                    decimal detailsPrice = decimal.Parse(txbx_PriceAllDetails.Text);
-                    decimal discount = decimal.Parse(txbx_Discount.Text);
-                    decimal finalPrice = decimal.Parse(txbx_FinalPrice.Text);
-                    DateTime? datePerformance = DatePerformance.SelectedDate;
 
-                    Performance detail = new Performance
-                    { ID_Performance = Guid.Parse(txbx_ID_Performance.Text), Description_Repair = description_rapair, Work_Price = workPrice, Detail_Price = detailsPrice, Discount = discount, Final_Price = finalPrice, Date_Performance = datePerformance };
-                    db.Add(detail);
+                DescriptionRepair = txbx_Description.Text;
+                WorkPrice = Decimal.Parse(txbx_Price_Work.Text);
+                if (txbx_PriceAllDetails.Text == String.Empty)
+                    DetailsPrice = 0;
+                else
+                    DetailsPrice = Decimal.Parse(txbx_PriceAllDetails.Text);
 
-                    Relationship relationships;
+                if (txbx_Discount.Text == String.Empty)
+                    Discount = 0;
+                else
+                    Discount = Decimal.Parse(txbx_Discount.Text);
 
-                    foreach (var IdQuantityDetailsNum in IdQuantityDetails)
-                    {
+                FinalPrice = Decimal.Parse(txbx_FinalPrice.Text);
+                DatePerformance = DatePerformanceDP.SelectedDate;
 
-                        relationships = new Relationship() { ID_Performance = Guid.Parse(txbx_ID_Performance.Text), ID_Detail = IdQuantityDetailsNum.Key };
-                        db.Add(relationships);
-                    }
+                await DataOperations.InsertStockDetails(ID_Performance, DescriptionRepair, WorkPrice, DetailsPrice, Discount, FinalPrice, DatePerformance, IdQuantityDetails);
 
+                MessageBox.Show("Данные загружены");
 
-                    foreach (var IsQuantityDetailsNum in IdQuantityDetails)
-                    {
-                        var stockDetail = db.stockDetails.
-                            Where(c => c.ID_Detail == IsQuantityDetailsNum.Key)
-                            .FirstOrDefault();
-                        stockDetail.QuantityStock -= IsQuantityDetailsNum.Value;
-                        if (stockDetail.QuantityStock < 0)
-                        {
-                            throw new Exception("На складе нет столько деталей");
-
-                        }
-
-                    }
-
-
-                    db.SaveChanges();
-
-
-                    MessageBox.Show("Данные загружены");
-
-                }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
 
         }
 
-        private void DataGridDetails_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
 
-
-
-        }
-
-        private void DataGridDetails_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-
-        }
-
-        private void DataGridDetails_CurrentCellChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DataGridDetails_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
-        {
-
-
-        }
 
         private void OnChecked(object sender, RoutedEventArgs e)
         {
@@ -137,6 +152,9 @@ namespace ApplicationRepairPhoneEntityFramework
                 if (checkBoxValue != null)
                 {
 
+                    DataGridDetails.Columns[6].IsReadOnly = true;
+
+                    //DataGridDetails.SelectedIndex = 0;
 
                     CultureInfo temp_culture = Thread.CurrentThread.CurrentCulture;
                     Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
@@ -158,10 +176,10 @@ namespace ApplicationRepairPhoneEntityFramework
             }
             catch (FormatException fex)
             {
-                MessageBox.Show("Поле (Необходимое количество) должно содержать целочисленное значение");
+                //MessageBox.Show("Поле (Необходимое количество) должно содержать целочисленное значение");
 
             }
-            catch (ArgumentException) 
+            catch (ArgumentException)
             {
                 return;
             }
@@ -181,6 +199,8 @@ namespace ApplicationRepairPhoneEntityFramework
                 var checkBoxValue = this.DataGridDetails.Columns[0].GetCellContent(this.DataGridDetails.SelectedItem);
                 if (checkBoxValue != null)
                 {
+                    DataGridDetails.Columns[6].IsReadOnly = false;
+
                     CultureInfo temp_culture = Thread.CurrentThread.CurrentCulture;
                     Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
                     object item = DataGridDetails.SelectedItem;
@@ -198,7 +218,7 @@ namespace ApplicationRepairPhoneEntityFramework
             }
             catch (FormatException fex)
             {
-                MessageBox.Show("Поле (Необходимое количество) должно содержать целочисленное значение");
+                //MessageBox.Show("Поле (Необходимое количество) должно содержать целочисленное значение");
 
             }
             catch (Exception ex)
@@ -211,5 +231,122 @@ namespace ApplicationRepairPhoneEntityFramework
 
         }
 
+        private void DataGridDetails_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGridDetails.Columns[6].IsReadOnly = false;
+        }
+
+        private void txbx_Price_Work_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                if (txbx_Price_Work.Text != String.Empty)
+                {
+                    flagPriceWork = true;
+                    WorkPrice = Decimal.Parse(txbx_Price_Work.Text);
+                    FinalPrice = WorkPrice + DetailsPrice;
+                    txbx_FinalPrice.Text = FinalPrice.ToString();
+                    chbx_CheckDiscount.IsEnabled = true;
+
+                }
+                else if (txbx_Price_Work.Text == String.Empty)
+                {
+                    flagPriceWork = false;
+                    WorkPrice = 0;
+                    FinalPrice = WorkPrice + DetailsPrice;
+                    txbx_FinalPrice.Text = FinalPrice.ToString();
+                    chbx_CheckDiscount.IsEnabled = false;
+                    chbx_CheckDiscount.IsChecked = false;
+
+                    txbx_Discount.Clear();
+
+                }
+            }
+            catch (FormatException)
+            {
+                txbx_Price_Work.Clear();
+                MessageBox.Show("Вводимая строка принимает только числовые значения! ");
+            }
+
+
+        }
+
+        private void txbx_PriceAllDetails_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if (txbx_PriceAllDetails.Text != String.Empty)
+            {
+                DetailsPrice = Decimal.Parse(txbx_PriceAllDetails.Text);
+                FinalPrice = WorkPrice + DetailsPrice;
+                txbx_FinalPrice.Text = FinalPrice.ToString();
+            }
+        }
+
+        private void txbx_Discount_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (txbx_Discount.Text != String.Empty && txbx_Discount.Text != "0")
+                {
+                    Discount = Decimal.Parse(txbx_Discount.Text);
+                    FinalPrice = ((DetailsPrice + WorkPrice) - (((DetailsPrice + WorkPrice) * Discount) / 100));
+                    txbx_FinalPrice.Text = FinalPrice.ToString();
+
+                }
+                else if (txbx_Discount.Text == String.Empty || txbx_Discount.Text == "0")
+                {
+                    Discount = 0;
+                    FinalPrice = WorkPrice + DetailsPrice;
+                    txbx_FinalPrice.Text = FinalPrice.ToString();
+                }
+            }
+            catch (FormatException)
+            {
+                txbx_Discount.Clear();
+                MessageBox.Show("Вводимая строка принимает только числовые значения! ");
+            }
+        }
+
+        private void chbx_CheckDiscount_Checked(object sender, RoutedEventArgs e)
+        {
+            txbx_Discount.IsEnabled = true;
+        }
+
+        private void chbx_CheckDiscount_Unchecked(object sender, RoutedEventArgs e)
+        {
+            txbx_Discount.Clear();
+            txbx_Discount.IsEnabled = false;
+
+        }
+
+        private void txbx_Description_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if (txbx_Description.Text != String.Empty)
+            {
+                flagDescription = true;
+                DescriptionRepair = txbx_Description.Text;
+
+            }
+            else if (txbx_Description.Text == String.Empty)
+            {
+                flagDescription = false;
+                DescriptionRepair = txbx_Description.Text;
+
+            }
+        }
+
+        private void DatePerformanceDP_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (DatePerformanceDP.SelectedDate != null)
+            {
+                flagDate = true;
+                DatePerformance = DatePerformanceDP.SelectedDate;
+            }
+            else if (DatePerformanceDP.SelectedDate == null)
+            {
+                flagDate = false;
+            }
+
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace RepaifPhoneDB
         public decimal FullPrice
         {
             get { return fullPrice; }
-            set { fullPrice = quantityStock* unit_Price; }
+            set { fullPrice = value; }
         }
 
         public int? NeededQuantity { get; set; }

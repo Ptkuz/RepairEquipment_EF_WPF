@@ -16,17 +16,17 @@
                 <Label Content="Описание поломки: " Margin="0,0,644,0"/>
             </Grid>
             <Grid>
-                <TextBox x:Name="txbx_Description" TextWrapping="Wrap" Margin="10,0,10,-59"/>
+                <TextBox x:Name="txbx_Description" TextWrapping="Wrap" Margin="10,0,10,-59" SelectionChanged="txbx_Description_SelectionChanged"/>
             </Grid>
             <Grid Margin="4,68,667,-68">
                 <Label Content="Стоимость работы: " />
-                <TextBox x:Name="txbx_Price_Work" TextWrapping="Wrap" Margin="125,0,0,0" />
+                <TextBox x:Name="txbx_Price_Work" TextWrapping="Wrap" Margin="125,0,0,0" SelectionChanged="txbx_Price_Work_SelectionChanged" />
             </Grid>
             <Grid Margin="0,91,0,-91">
                 <Label Content="Список деталей: "/>
             </Grid>
             <Grid Margin="0,103,0,-264">
-                <DataGrid x:Name="DataGridDetails"  AutoGenerateColumns="False" SelectedCellsChanged="DataGridDetails_SelectedCellsChanged" DataContextChanged="DataGridDetails_DataContextChanged" CurrentCellChanged="DataGridDetails_CurrentCellChanged" CellEditEnding="DataGridDetails_CellEditEnding">
+                <DataGrid x:Name="DataGridDetails"  AutoGenerateColumns="False" SelectionChanged="DataGridDetails_SelectionChanged">
                     <DataGrid.Columns>
                         <DataGridCheckBoxColumn x:Name="CheckBoxColumn" Binding="{Binding Choise}" Header="Выбрать" >
                             <DataGridCheckBoxColumn.CellStyle>
@@ -46,10 +46,11 @@
                                 <Style TargetType="DataGridCell">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Choise}" Value="True">
+                                            <Setter Property="IsEnabled" Value="False"/>
                                             <Setter Property="IsTabStop" Value="False"></Setter>
                                             <Setter Property="Focusable" Value="False"></Setter>
-                                            <Setter Property="Background" Value="#FF797979"></Setter>
-                                            
+                                            <Setter Property="Background" Value="Red">
+                                            </Setter>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
@@ -63,28 +64,30 @@
 
             <Grid Margin="4,275,-4,-275">
                 <Label Content="Стоимость всех деталей: "/>
-                <TextBox x:Name="txbx_PriceAllDetails" TextWrapping="Wrap" IsReadOnly="True" Margin="157,0,737,0" />
+                <TextBox x:Name="txbx_PriceAllDetails" TextWrapping="Wrap" IsReadOnly="True" Margin="157,0,737,0" SelectionChanged="txbx_PriceAllDetails_SelectionChanged" />
 
             </Grid>
             <Grid Margin="5,283,-5,-283">
                 <Label Content="Скидка: " />
-                <TextBox x:Name="txbx_Discount" TextWrapping="Wrap" Margin="155,0,741,0"/>
+                <TextBox x:Name="txbx_Discount" IsEnabled="False" TextWrapping="Wrap" Margin="155,0,741,0" SelectionChanged="txbx_Discount_SelectionChanged"/>
+                <CheckBox x:Name="chbx_CheckDiscount" Content="Наличие скидки" IsEnabled="False" Margin="331,6,611,0" Checked="chbx_CheckDiscount_Checked" Unchecked="chbx_CheckDiscount_Unchecked"/>
+
 
             </Grid>
             <Grid Margin="2,289,-2,-289">
                 <Label Content="Финальная цена: "/>
-                <TextBox x:Name="txbx_FinalPrice" TextWrapping="Wrap" Margin="159,0,737,0" />
+                <TextBox x:Name="txbx_FinalPrice" TextWrapping="Wrap" IsReadOnly="True" Margin="159,0,737,0" />
 
 
             </Grid>
             <Grid Margin="1,305,-1,-305">
                 <Label Content="Дата исполнения: "/>
-                <DatePicker x:Name="DatePerformance" Margin="157,0,740,0"/>
+                <DatePicker x:Name="DatePerformanceDP" Margin="157,0,740,0" SelectedDateChanged="DatePerformanceDP_SelectedDateChanged"/>
 
 
             </Grid>
             <Grid Margin="356,344,355,-376">
-                <Button x:Name="Btn_Insert_Detail" Content="Выполнить" Click="Button_Click" RenderTransformOrigin="0.51,2.699"/>
+                <Button x:Name="Btn_Insert_Detail" IsEnabled="False" Content="Выполнить" Click="Button_Click" RenderTransformOrigin="0.51,2.699"/>
 
             </Grid>
 

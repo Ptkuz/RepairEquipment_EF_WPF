@@ -24,7 +24,7 @@ namespace RepaifPhoneDB
         public decimal Final_Price
         {
             get { return final_Price; }
-            set { final_Price = (Work_Price+ detail_Price) * discount; }
+            set { final_Price = value; }
         }
         public DateTime? Date_Performance { get; set; }
         public List<Order> Orders { get; set; } = new();
