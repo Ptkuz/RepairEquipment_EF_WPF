@@ -18,7 +18,7 @@ namespace ApplicationRepairPhoneEntityFramework
             {
                 Order_Status? status = await db.order_Statuses.FirstOrDefaultAsync(p => p.Name_Status == "Заказ зарегестрирован");
 
-                return status;
+                return status!;
 
             }
 
@@ -72,6 +72,7 @@ namespace ApplicationRepairPhoneEntityFramework
             {
                 await Task.Delay(0);
                 var clients = from client in db.Clients
+                              orderby client.DateAdded
                               select client;
                 foreach (var client in clients)
                     allClients.Add(client);
@@ -88,6 +89,7 @@ namespace ApplicationRepairPhoneEntityFramework
             {
                 await Task.Delay(0);
                 var devices = from device in db.Devices
+                              orderby device.DateAdded
                               select device;
                 foreach (var client in devices)
                     allDevices.Add(client);
@@ -142,6 +144,74 @@ namespace ApplicationRepairPhoneEntityFramework
 
         }
 
+        public async static Task<ArrayList> SearchClients(string seachingClient)
+        {
+            ArrayList searchClients = new ArrayList();
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                await Task.Delay(0);
+                var clients = db.Clients.OrderBy(p => p.DateAdded)
+                    .Where(n =>
+                    EF.Functions.Like(n.FIO!, $"%{seachingClient}%") ||
+                    EF.Functions.Like(n.Series_Number_Passport!, $"%{seachingClient}%") ||
+                    EF.Functions.Like(n.Phone_Number!, $"%{seachingClient}%"));
+
+                foreach (var client in clients)
+                    searchClients.Add(client);
+                return searchClients;
+            }
+
+
+        }
+
+        public async static Task<ArrayList> SearchDevices(string seachingDevice)
+        {
+            ArrayList searchDevices = new ArrayList();
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                await Task.Delay(0);
+                var devices = db.Devices.OrderBy(p => p.DateAdded)
+                    .Where(n =>
+                    EF.Functions.Like(n.Name!, $"%{seachingDevice}%") ||
+                    EF.Functions.Like(n.Serial_Number!, $"%{seachingDevice}%"));
+
+                foreach (var device in devices)
+                    searchDevices.Add(device);
+                return searchDevices;
+            }
+
+
+        }
+
+
+        public async static Task<ArrayList> SearchEmployees(string seachingEmployee)
+        {
+            ArrayList searchEmployees = new ArrayList();
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                await Task.Delay(0);
+                var employees = db.Employees.Join(db.positions,
+                    e => e.ID_Position,
+                    p => p.ID_Position,
+                    (e,p) => new
+                    {
+                        ID_Employee = e.ID_Employee,
+                        FIO = e.FIO,
+                        Position = p.Name_Position,
+                        Phone_Number = e.Phone_Number
+
+                    }).Where(n=>
+                    EF.Functions.Like(n.FIO!, $"%{seachingEmployee}%") ||
+                    EF.Functions.Like(n.Position!, $"%{seachingEmployee}%")
+                    );
+
+                foreach (var employee in employees)
+                    searchEmployees.Add(employee);
+                return searchEmployees;
+            }
+
+
+        }
 
 
         public async static Task InsertStockDetails

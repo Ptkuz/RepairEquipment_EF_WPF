@@ -12,8 +12,9 @@ namespace RepaifPhoneDB
         [Key]
         public Guid ID_Client { get; set; }
         public string? FIO { get; set; }
-        public string? Address { get; set; }
+        public string? Series_Number_Passport { get; set; }
         public string? Phone_Number { get; set; }
+        public DateTime? DateAdded { get; set; }
         public List<Order> Orders { get; set; } = new();
     }
 }

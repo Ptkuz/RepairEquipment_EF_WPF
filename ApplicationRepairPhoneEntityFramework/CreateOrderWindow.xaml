@@ -18,19 +18,20 @@
 
                     <Grid>
                 <Label Content="Поиск Клиента: " Width="100" Margin="0,0,1500,0"/>
-                <TextBox TextWrapping="Wrap" Width="400" Margin="0,0,1000,0"/>
+                <TextBox x:Name="txbx_searchClient" TextWrapping="Wrap" Width="400" Margin="0,0,1000,0" SelectionChanged="txbx_searchClient_SelectionChanged"/>
                 <Label Content="Поиск Телефона: " Width="110" Margin="0,0,450,0"/>
-                <TextBox TextWrapping="Wrap" Width="400" Margin="60,0,0,0"/>
+                <TextBox x:Name="txbx_searchDevice" TextWrapping="Wrap" Width="400" Margin="60,0,0,0" SelectionChanged="txbx_searchDevice_SelectionChanged"/>
                 <Label Content="Поиск Сотрудника: " Width="120" Margin="600,0,0,0"/>
-                <TextBox TextWrapping="Wrap" Width="400" Margin="1130,0,0,0"/>
+                <TextBox x:Name="txbx_searchEmployee" TextWrapping="Wrap" Width="400" Margin="1130,0,0,0" SelectionChanged="txbx_searchEmployee_SelectionChanged"/>
             </Grid>
             <Grid>
                 <DataGrid x:Name="dataGridClients" AutoGenerateColumns="False" Margin="0,30,1090,0" Width="490" Height="300">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding ID_Client}" IsReadOnly="True" Header="ID Клиента" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding ID_Client}" IsReadOnly="True" Header="ID Клиента" Width="73"/>
                         <DataGridTextColumn Binding="{Binding FIO}" IsReadOnly="True" Header="ФИО Клиента" Width="130"/>
-                        <DataGridTextColumn Binding="{Binding Address}" IsReadOnly="True" Header="Адрес" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding Series_Number_Passport}" IsReadOnly="True" Header="Серия номер пасспорта" Width="150"/>
                         <DataGridTextColumn Binding="{Binding Phone_Number}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding DateAdded}" IsReadOnly="True" Header="Дата добавления" Width="140"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <DataGrid x:Name="dataGridDevices" AutoGenerateColumns="False" Margin="0,30,50,0" Width="500" Height="300">
@@ -41,6 +42,7 @@
                         <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True" Header="Описание" Width="140"/>
                         <DataGridTextColumn Binding="{Binding Manufacturer}" IsReadOnly="True" Header="Производитель" Width="140"/>
                         <DataGridTextColumn Binding="{Binding Model}" IsReadOnly="True" Header="Модель" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding DateAdded}" IsReadOnly="True" Header="Дата добавления" Width="140"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <DataGrid x:Name="dataGridEmployees" AutoGenerateColumns="False" Margin="1000,30,0,0" Width="520" Height="300">

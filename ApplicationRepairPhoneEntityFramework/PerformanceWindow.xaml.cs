@@ -23,7 +23,6 @@ namespace ApplicationRepairPhoneEntityFramework
         bool flagDescription = false;
         bool flagPriceWork = false;
         bool flagDate = false;
-        bool flagIdOrder = false;
 
 
         public Guid ID_Performance { get; set; }
@@ -151,7 +150,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 {
                     throw new NullReferenceException();
                 }
-                ID_Order = Guid.Parse(ListBoxOrders.SelectedValue.ToString());
+                ID_Order = Guid.Parse(ListBoxOrders.SelectedValue.ToString()!);
 
 
                 await DataOperations.InsertStockDetails(ID_Performance, DescriptionRepair, WorkPrice, DetailsPrice, Discount, FinalPrice, DatePerformance, IdQuantityDetails, ID_Order);
@@ -195,10 +194,10 @@ namespace ApplicationRepairPhoneEntityFramework
                     Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
 
                     object item = DataGridDetails.SelectedItem;
-                    string ID_Detail = (DataGridDetails.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
+                    string ID_Detail = (DataGridDetails.SelectedCells[1].Column.GetCellContent(item) as TextBlock)!.Text;
                     Guid ID = Guid.Parse(ID_Detail);
-                    int Quantity = Int32.Parse((DataGridDetails.SelectedCells[6].Column.GetCellContent(item) as TextBlock).Text.Trim());
-                    decimal UnitPrice = decimal.Parse((DataGridDetails.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text);
+                    int Quantity = Int32.Parse((DataGridDetails.SelectedCells[6].Column.GetCellContent(item) as TextBlock)!.Text.Trim());
+                    decimal UnitPrice = decimal.Parse((DataGridDetails.SelectedCells[3].Column.GetCellContent(item) as TextBlock)!.Text);
 
                     Thread.CurrentThread.CurrentCulture = temp_culture;
 
@@ -209,7 +208,7 @@ namespace ApplicationRepairPhoneEntityFramework
                     txbx_PriceAllDetails.Text = MultiPrice.ToString();
                 }
             }
-            catch (FormatException fex)
+            catch (FormatException)
             {
                 //MessageBox.Show("Поле (Необходимое количество) должно содержать целочисленное значение");
 
@@ -239,10 +238,10 @@ namespace ApplicationRepairPhoneEntityFramework
                     CultureInfo temp_culture = Thread.CurrentThread.CurrentCulture;
                     Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
                     object item = DataGridDetails.SelectedItem;
-                    string ID_Detail = (DataGridDetails.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
+                    string ID_Detail = (DataGridDetails.SelectedCells[1].Column.GetCellContent(item) as TextBlock)!.Text;
                     Guid ID = Guid.Parse(ID_Detail);
-                    int Quantity = Int32.Parse((DataGridDetails.SelectedCells[6].Column.GetCellContent(item) as TextBlock).Text.Trim());
-                    decimal UnitPrice = decimal.Parse((DataGridDetails.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text);
+                    int Quantity = Int32.Parse((DataGridDetails.SelectedCells[6].Column.GetCellContent(item) as TextBlock)!.Text.Trim());
+                    decimal UnitPrice = decimal.Parse((DataGridDetails.SelectedCells[3].Column.GetCellContent(item) as TextBlock)!.Text);
                     Thread.CurrentThread.CurrentCulture = temp_culture;
 
                     MultiPrice -= Quantity * UnitPrice;
@@ -251,7 +250,7 @@ namespace ApplicationRepairPhoneEntityFramework
                     IdQuantityDetails.Remove(ID);
                 }
             }
-            catch (FormatException fex)
+            catch (FormatException)
             {
                 //MessageBox.Show("Поле (Необходимое количество) должно содержать целочисленное значение");
 

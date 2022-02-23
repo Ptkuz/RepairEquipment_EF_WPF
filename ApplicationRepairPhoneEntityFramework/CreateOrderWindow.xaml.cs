@@ -79,9 +79,9 @@ namespace ApplicationRepairPhoneEntityFramework
                 else
                 {
 
-                    ID_Client = Guid.Parse((dataGridClients.SelectedCells[0].Column.GetCellContent(itemClient) as TextBlock).Text);
-                    ID_Device = Guid.Parse((dataGridDevices.SelectedCells[0].Column.GetCellContent(itemDevice) as TextBlock).Text);
-                    ID_Employee = Guid.Parse((dataGridEmployees.SelectedCells[0].Column.GetCellContent(itemEmployee) as TextBlock).Text);
+                    ID_Client = Guid.Parse((dataGridClients.SelectedCells[0].Column.GetCellContent(itemClient) as TextBlock)!.Text);
+                    ID_Device = Guid.Parse((dataGridDevices.SelectedCells[0].Column.GetCellContent(itemDevice) as TextBlock)!.Text);
+                    ID_Employee = Guid.Parse((dataGridEmployees.SelectedCells[0].Column.GetCellContent(itemEmployee) as TextBlock)!.Text);
 
                     Order_Status status = await DataOperations.GetStatusOrder();
                     ID_Status = status.ID_Status;
@@ -102,6 +102,25 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
 
+
+        }
+
+        private async void txbx_searchClient_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            string search = txbx_searchClient.Text;
+            dataGridClients.ItemsSource = await DataOperations.SearchClients(search);
+        }
+
+        private async void txbx_searchDevice_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            string search = txbx_searchDevice.Text;
+            dataGridDevices.ItemsSource = await DataOperations.SearchDevices(search);
+        }
+
+        private async void txbx_searchEmployee_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            string search = txbx_searchEmployee.Text;
+            dataGridEmployees.ItemsSource = await DataOperations.SearchEmployees(search);
 
         }
     }

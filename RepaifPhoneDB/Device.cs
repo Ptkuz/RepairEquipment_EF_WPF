@@ -16,6 +16,7 @@ namespace RepaifPhoneDB
         public string? Description { get; set; }
         public string? Manufacturer { get; set; }
         public string? Model { get; set; }
+        public DateTime? DateAdded { get; set; }    
         public List<Order> Orders { get; set; } = new();
 
     }
