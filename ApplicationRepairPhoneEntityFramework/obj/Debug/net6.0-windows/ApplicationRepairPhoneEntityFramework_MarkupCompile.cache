@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\App.xaml
-2-634492899
+3-1107981126
 
-17-572231958
+18136112792
 2151919456888
-MainWindow.xaml;PerformanceWindow.xaml;
+CreateOrderWindow.xaml;MainWindow.xaml;PerformanceWindow.xaml;
 
 False
 

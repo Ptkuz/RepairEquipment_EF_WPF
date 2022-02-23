@@ -55,3 +55,5 @@ C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRep
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ApplicationRepairPhoneEntityFramework.genruntimeconfig.cache
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\PerformanceWindow.g.cs
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\PerformanceWindow.baml
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\CreateOrderWindow.g.cs
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\CreateOrderWindow.baml
