@@ -67,13 +67,18 @@ namespace ApplicationRepairPhoneEntityFramework
                     stockDetail.QuantityStock -= IsQuantityDetailsNum.Value;
                     if (IsQuantityDetailsNum.Value == 0)
                     {
-                        throw new Exception("Введите количесто необходимых деталей!");
+                        throw new Exception($"Вы отметили деталь ({stockDetail.Name_Detail}), но не ввели количество!");
                     
                     }
                     if (stockDetail.QuantityStock < 0)
                     {
-                        throw new Exception("На складе нет столько деталей!");
+                        throw new Exception($"На складе нет столько деталей! - ({stockDetail.Name_Detail})");
 
+                    }
+                    if (IsQuantityDetailsNum.Value < 0) 
+                    {
+                        throw new Exception($"Количество деталей ({stockDetail.Name_Detail}) не может быть отрицательным! ");
+                    
                     }
 
 

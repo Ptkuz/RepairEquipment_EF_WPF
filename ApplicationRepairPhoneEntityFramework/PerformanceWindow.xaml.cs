@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -115,29 +116,30 @@ namespace ApplicationRepairPhoneEntityFramework
             try
             {
 
-                DescriptionRepair = txbx_Description.Text;
-                WorkPrice = Decimal.Parse(txbx_Price_Work.Text);
-                if (txbx_PriceAllDetails.Text == String.Empty)
+                DescriptionRepair = txbx_Description.Text.Trim();
+                WorkPrice = Decimal.Parse(txbx_Price_Work.Text.Trim());
+                if (txbx_PriceAllDetails.Text.Trim() == String.Empty)
                     DetailsPrice = 0;
                 else
-                    DetailsPrice = Decimal.Parse(txbx_PriceAllDetails.Text);
+                    DetailsPrice = Decimal.Parse(txbx_PriceAllDetails.Text.Trim());
 
-                if (txbx_Discount.Text == String.Empty)
+                if (txbx_Discount.Text.Trim() == String.Empty)
                     Discount = 0;
                 else
-                    Discount = Decimal.Parse(txbx_Discount.Text);
+                    Discount = Decimal.Parse(txbx_Discount.Text.Trim());
 
-                FinalPrice = Decimal.Parse(txbx_FinalPrice.Text);
+                FinalPrice = Decimal.Parse(txbx_FinalPrice.Text.Trim());
                 DatePerformance = DatePerformanceDP.SelectedDate;
 
                 await DataOperations.InsertStockDetails(ID_Performance, DescriptionRepair, WorkPrice, DetailsPrice, Discount, FinalPrice, DatePerformance, IdQuantityDetails);
 
-                MessageBox.Show("Данные загружены");
+                MessageBox.Show("Данные загружены", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
@@ -185,7 +187,7 @@ namespace ApplicationRepairPhoneEntityFramework
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
 
@@ -223,7 +225,7 @@ namespace ApplicationRepairPhoneEntityFramework
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
 
@@ -248,6 +250,7 @@ namespace ApplicationRepairPhoneEntityFramework
                     FinalPrice = WorkPrice + DetailsPrice;
                     txbx_FinalPrice.Text = FinalPrice.ToString();
                     chbx_CheckDiscount.IsEnabled = true;
+                    txbx_Price_Work.MaxLength = 5;
 
                 }
                 else if (txbx_Price_Work.Text == String.Empty)
@@ -266,7 +269,7 @@ namespace ApplicationRepairPhoneEntityFramework
             catch (FormatException)
             {
                 txbx_Price_Work.Clear();
-                MessageBox.Show("Вводимая строка принимает только числовые значения! ");
+                MessageBox.Show("Вводимая строка принимает только числовые значения!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
 
@@ -291,6 +294,7 @@ namespace ApplicationRepairPhoneEntityFramework
                     Discount = Decimal.Parse(txbx_Discount.Text);
                     FinalPrice = ((DetailsPrice + WorkPrice) - (((DetailsPrice + WorkPrice) * Discount) / 100));
                     txbx_FinalPrice.Text = FinalPrice.ToString();
+                    txbx_Discount.MaxLength = 2;
 
                 }
                 else if (txbx_Discount.Text == String.Empty || txbx_Discount.Text == "0")
@@ -299,11 +303,12 @@ namespace ApplicationRepairPhoneEntityFramework
                     FinalPrice = WorkPrice + DetailsPrice;
                     txbx_FinalPrice.Text = FinalPrice.ToString();
                 }
+                
             }
             catch (FormatException)
             {
                 txbx_Discount.Clear();
-                MessageBox.Show("Вводимая строка принимает только числовые значения! ");
+                MessageBox.Show("Вводимая строка принимает только числовые значения!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -325,6 +330,7 @@ namespace ApplicationRepairPhoneEntityFramework
             {
                 flagDescription = true;
                 DescriptionRepair = txbx_Description.Text;
+                txbx_Description.MaxLength = 500;
 
             }
             else if (txbx_Description.Text == String.Empty)
