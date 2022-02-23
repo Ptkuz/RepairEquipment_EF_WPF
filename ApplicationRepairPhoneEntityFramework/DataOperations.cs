@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RepaifPhoneDB;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApplicationRepairPhoneEntityFramework
 {
@@ -23,10 +24,8 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
                 foreach (var detail in details)
-                {
                     allDetails.Add(detail);
 
-                }
                 return allDetails;
 
             }
@@ -34,16 +33,54 @@ namespace ApplicationRepairPhoneEntityFramework
 
         }
 
+        public async static Task<ArrayList> GetAllOrders() 
+        {
+            ArrayList allOrders = new ArrayList();
+            using (ApplicationContext db = new ApplicationContext()) 
+            {
+                await Task.Delay(0);
+                var orders = from order in db.Orders
+                             select order;
+
+                foreach (var order in orders)
+                    allOrders.Add(order);
+
+                return allOrders;
+            }
+        
+        
+        }
+
+        public async static Task<ArrayList> SearchOrders(string searchingID) 
+        {
+            ArrayList searchOrders = new ArrayList();
+            using (ApplicationContext db = new ApplicationContext()) 
+            {
+                await Task.Delay(0);
+                var orders = from order in db.Orders
+                             where EF.Functions.Like(order.ID_Order.ToString(), $"%{searchingID}%")
+                             select order;
+                foreach(var order in orders)
+                    searchOrders.Add(order);
+
+                return searchOrders;
+            
+            }
+        
+        
+        }
+
         public async static Task InsertStockDetails
             (Guid ID_Perf, string description_rapair, decimal workPrice, decimal detailsPrice, 
-            decimal discount, decimal finalPrice, DateTime? datePerformance, Dictionary<Guid, int> IdQuantityDetails) 
+            decimal discount, decimal finalPrice, DateTime? datePerformance, 
+            Dictionary<Guid, int> IdQuantityDetails, Guid id_Order) 
         {
 
             using (ApplicationContext db = new ApplicationContext())
             {
 
                 Performance detail = new Performance
-                { ID_Performance = ID_Perf, Description_Repair = description_rapair, Work_Price = workPrice, Detail_Price = detailsPrice, Discount = discount, Final_Price = finalPrice, Date_Performance = datePerformance };
+                { ID_Performance = ID_Perf, Description_Repair = description_rapair, Work_Price = workPrice, Detail_Price = detailsPrice, Discount = discount, Final_Price = finalPrice, Date_Performance = datePerformance, OrderKey = id_Order };
                 db.Add(detail);
 
                 Relationship relationships;

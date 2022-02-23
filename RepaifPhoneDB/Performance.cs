@@ -27,7 +27,8 @@ namespace RepaifPhoneDB
             set { final_Price = value; }
         }
         public DateTime? Date_Performance { get; set; }
-        public List<Order> Orders { get; set; } = new();
+        public Guid OrderKey { get; set; }
+        public Order? Order { get; set; }
 
         //public PerformanceStockDetails PerformanceStockDetails { get; set; } = new();
         //public List<StockDetails> StockDetails { get; set; } = new();   

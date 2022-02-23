@@ -43,6 +43,12 @@ namespace ApplicationRepairPhoneEntityFramework
                 table.ID_Detail
             });
 
+            builder
+                .Entity<Order>()
+                .HasOne(o => o.Per)
+                .WithOne(p => p.Order)
+                .HasForeignKey<Performance>(p=>p.OrderKey);
+
             Order_Status orderRegistered = new Order_Status { ID_Status = Guid.NewGuid(), Name_Status = "Заказ зарегестрирован" };
             Order_Status orderInProgress = new Order_Status { ID_Status = Guid.NewGuid(), Name_Status = "Заказ выполняется" };
             Order_Status orderCompleted = new Order_Status { ID_Status = Guid.NewGuid(), Name_Status = "Заказ выполнен" };

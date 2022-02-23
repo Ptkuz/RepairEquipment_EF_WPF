@@ -58,15 +58,13 @@ namespace ApplicationRepairPhoneEntityFramework
                              join client in db.Clients on order.ID_Client equals client.ID_Client
                              join employee in db.Employees on order.ID_Employee equals employee.ID_Employee
                              join status in db.order_Statuses on order.ID_Status equals status.ID_Status
-                             join performance in db.performances on order.ID_Performance equals performance.ID_Performance
+                             
                              select new
                              {
                                  Name_Device = device.Name,
                                  FIO_Client = client.FIO,
                                  FIO_Employee = employee.FIO,
                                  Status = status.Name_Status,
-                                 PerformanceRepair = performance.Description_Repair,
-                                 PerformanceDate = performance.Date_Performance,
                                  OrderDate = order.Date_Order
                              };
 

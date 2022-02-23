@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="PerformanceWindow" Height="684" Width="1067">
+        Title="PerformanceWindow" Height="931" Width="1067">
     <Grid>
         <StackPanel>
             <Grid>
@@ -86,8 +86,18 @@
 
 
             </Grid>
-            <Grid Margin="356,344,355,-376">
-                <Button x:Name="Btn_Insert_Detail" IsEnabled="False" Content="Выполнить" Click="Button_Click" RenderTransformOrigin="0.51,2.699"/>
+            <Grid Margin="0,317,0,-317">
+                <Label Content="ID Заказа:" Margin="0,0,902,0" />
+                <TextBox x:Name="txbx_search" TextWrapping="Wrap" Margin="97,0,660,0" SelectionChanged="txbx_search_SelectionChanged" />
+
+            </Grid>
+            <Grid Margin="0,317,3,-317">
+                <ListBox x:Name="ListBoxOrders" DisplayMemberPath="ID_Order" SelectedValuePath="ID_Order" HorizontalAlignment="Right" Width="309" Margin="0,10,656,-150" />
+
+
+            </Grid>
+            <Grid Margin="347,499,364,-531">
+                <Button x:Name="Btn_Insert_Detail"  IsEnabled="False" Content="Выполнить" Click="Button_Click" RenderTransformOrigin="0.51,2.699"/>
 
             </Grid>
 

@@ -24,8 +24,7 @@ namespace RepaifPhoneDB
         public Guid ID_Status { get; set; }
         public Order_Status? Order_Status { get; set; }
 
-        public Guid ID_Performance { get; set; }
-        public Performance? Performance { get; set; }
+        public Performance? Per { get; set; }
 
 
         public DateTime? Date_Order { get; set; }

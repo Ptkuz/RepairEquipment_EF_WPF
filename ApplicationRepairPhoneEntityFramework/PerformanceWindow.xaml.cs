@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,11 +16,13 @@ namespace ApplicationRepairPhoneEntityFramework
     {
 
         ArrayList arrayDetails = new ArrayList();
+        ArrayList arrayOrders = new ArrayList();
         Dictionary<Guid, int> IdQuantityDetails = new Dictionary<Guid, int>();
         decimal MultiPrice = 0;
         bool flagDescription = false;
         bool flagPriceWork = false;
         bool flagDate = false;
+        bool flagIdOrder = false;
 
 
         public Guid ID_Performance { get; set; }
@@ -88,6 +89,18 @@ namespace ApplicationRepairPhoneEntityFramework
                     Btn_Insert_Detail.IsEnabled = false;
             }
         }
+        Guid id_Order;
+        public Guid ID_Order
+        {
+            get { return id_Order; }
+            set
+            {
+                id_Order = value;
+                
+            }
+
+
+        }
 
 
         public PerformanceWindow()
@@ -96,12 +109,15 @@ namespace ApplicationRepairPhoneEntityFramework
             ID_Performance = Guid.NewGuid();
             txbx_ID_Performance.Text = ID_Performance.ToString();
 
-            GetDetails();
-            async void GetDetails()
+            GetData();
+            async void GetData()
             {
                 arrayDetails = await DataOperations.GetAllDetails();
+                arrayOrders = await DataOperations.GetAllOrders();
                 DataGridDetails.ItemsSource = arrayDetails;
+                ListBoxOrders.ItemsSource = arrayOrders;
             }
+
 
 
 
@@ -130,13 +146,29 @@ namespace ApplicationRepairPhoneEntityFramework
 
                 FinalPrice = Decimal.Parse(txbx_FinalPrice.Text.Trim());
                 DatePerformance = DatePerformanceDP.SelectedDate;
+                if (ListBoxOrders.SelectedValue == null) 
+                {
+                    throw new NullReferenceException();
+                }
+                ID_Order = Guid.Parse(ListBoxOrders.SelectedValue.ToString());
 
-                await DataOperations.InsertStockDetails(ID_Performance, DescriptionRepair, WorkPrice, DetailsPrice, Discount, FinalPrice, DatePerformance, IdQuantityDetails);
+
+                await DataOperations.InsertStockDetails(ID_Performance, DescriptionRepair, WorkPrice, DetailsPrice, Discount, FinalPrice, DatePerformance, IdQuantityDetails, ID_Order);
 
                 MessageBox.Show("Данные загружены", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
 
 
             }
+            catch (NullReferenceException) 
+            {
+                MessageBox.Show("Вы не выбрали заказ для добавления исполнения", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Microsoft.EntityFrameworkCore.DbUpdateException)
+            {
+                MessageBox.Show("В данный заказ уже добавлено исполнение", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -303,7 +335,7 @@ namespace ApplicationRepairPhoneEntityFramework
                     FinalPrice = WorkPrice + DetailsPrice;
                     txbx_FinalPrice.Text = FinalPrice.ToString();
                 }
-                
+
             }
             catch (FormatException)
             {
@@ -354,5 +386,17 @@ namespace ApplicationRepairPhoneEntityFramework
             }
 
         }
+
+        private async void txbx_search_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            string search = txbx_search.Text.Trim();
+            ListBoxOrders.ItemsSource = await DataOperations.SearchOrders(search);
+        }
+
+
+
+
+
+        
     }
 }
