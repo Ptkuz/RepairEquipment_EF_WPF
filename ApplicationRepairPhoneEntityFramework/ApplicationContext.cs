@@ -49,9 +49,9 @@ namespace ApplicationRepairPhoneEntityFramework
                 .WithOne(p => p.Order)
                 .HasForeignKey<Performance>(p=>p.OrderKey);
 
-            Order_Status orderRegistered = new Order_Status { ID_Status = Guid.NewGuid(), Name_Status = "Заказ зарегестрирован" };
-            Order_Status orderInProgress = new Order_Status { ID_Status = Guid.NewGuid(), Name_Status = "Заказ выполняется" };
-            Order_Status orderCompleted = new Order_Status { ID_Status = Guid.NewGuid(), Name_Status = "Заказ выполнен" };
+            Order_Status orderRegistered = new Order_Status { ID_Status = 1, Name_Status = "Заказ зарегестрирован" };
+            Order_Status orderInProgress = new Order_Status { ID_Status = 2, Name_Status = "Заказ выполняется" };
+            Order_Status orderCompleted = new Order_Status { ID_Status = 3, Name_Status = "Заказ выполнен" };
 
             Position storekeeper = new Position {ID_Position =  Guid.NewGuid(), Name_Position = "Стажер"};
             Position master = new Position {ID_Position = Guid.NewGuid(), Name_Position = "Мастер" };

@@ -10,7 +10,7 @@ namespace RepaifPhoneDB
     public class Order_Status
     {
         [Key]
-        public Guid ID_Status { get; set; }
+        public int ID_Status { get; set; }
         public string? Name_Status { get; set; }
 
         public List<Order> Orders { get; set; } = new();

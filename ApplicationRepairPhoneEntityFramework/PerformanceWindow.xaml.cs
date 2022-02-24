@@ -113,9 +113,9 @@ namespace ApplicationRepairPhoneEntityFramework
             async void GetData()
             {
                 arrayDetails = await DataOperations.GetAllDetails();
-                arrayOrders = await DataOperations.GetAllOrders();
+                arrayOrders = await DataOperations.GetAllOrdersPerformanceWindow();
                 DataGridDetails.ItemsSource = arrayDetails;
-                ListBoxOrders.ItemsSource = arrayOrders;
+                DataGridOrders.ItemsSource = arrayOrders;
             }
 
 
@@ -145,15 +145,22 @@ namespace ApplicationRepairPhoneEntityFramework
                     Discount = Decimal.Parse(txbx_Discount.Text.Trim());
 
                 FinalPrice = Decimal.Parse(txbx_FinalPrice.Text.Trim());
-                DatePerformance = DatePerformanceDP.SelectedDate;
-                if (ListBoxOrders.SelectedValue == null) 
+
+                DateTime date = DatePerformanceDP.SelectedDate.Value;
+                date = date.AddSeconds(DateTime.Now.TimeOfDay.TotalSeconds);
+                DatePerformance = date;
+                object item = DataGridOrders.SelectedItem;
+
+                string ID_Detail = (DataGridOrders.SelectedCells[1].Column.GetCellContent(item) as TextBlock)!.Text;
+
+                if (item == null) 
                 {
                     throw new NullReferenceException();
                 }
-                ID_Order = Guid.Parse(ListBoxOrders.SelectedValue.ToString()!);
+                ID_Order = Guid.Parse(ID_Detail);
 
 
-                await DataOperations.InsertStockDetails(ID_Performance, DescriptionRepair, WorkPrice, DetailsPrice, Discount, FinalPrice, DatePerformance, IdQuantityDetails, ID_Order);
+                await DataOperations.InsertPerformance(ID_Performance, DescriptionRepair, WorkPrice, DetailsPrice, Discount, FinalPrice, DatePerformance, IdQuantityDetails, ID_Order);
 
                 MessageBox.Show("Данные загружены", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -376,21 +383,17 @@ namespace ApplicationRepairPhoneEntityFramework
         private void DatePerformanceDP_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if (DatePerformanceDP.SelectedDate != null)
-            {
                 flagDate = true;
-                DatePerformance = DatePerformanceDP.SelectedDate;
-            }
+
             else if (DatePerformanceDP.SelectedDate == null)
-            {
                 flagDate = false;
-            }
 
         }
 
         private async void txbx_search_SelectionChanged(object sender, RoutedEventArgs e)
         {
             string search = txbx_search.Text.Trim();
-            ListBoxOrders.ItemsSource = await DataOperations.SearchOrders(search);
+            DataGridOrders.ItemsSource = await DataOperations.SearchOrders(search);
         }
 
 

@@ -28,7 +28,7 @@ namespace ApplicationRepairPhoneEntityFramework
         public Guid ID_Client { get; set; }
         public Guid ID_Device { get; set; }
         public Guid ID_Employee { get; set; }
-        public Guid ID_Status { get; set; }
+        public int ID_Status { get; set; }
         public DateTime? DateOrder { get; set; }
 
 
