@@ -27,7 +27,7 @@ namespace ApplicationRepairPhoneEntityFramework
 
         public Guid ID_Client { get; set; }
         public Guid ID_Device { get; set; }
-        public Guid ID_Employee { get; set; }
+        public string ID_Employee { get; set; }
         public int ID_Status { get; set; }
         public DateTime? DateOrder { get; set; }
 
@@ -81,7 +81,7 @@ namespace ApplicationRepairPhoneEntityFramework
 
                     ID_Client = Guid.Parse((dataGridClients.SelectedCells[0].Column.GetCellContent(itemClient) as TextBlock)!.Text);
                     ID_Device = Guid.Parse((dataGridDevices.SelectedCells[0].Column.GetCellContent(itemDevice) as TextBlock)!.Text);
-                    ID_Employee = Guid.Parse((dataGridEmployees.SelectedCells[0].Column.GetCellContent(itemEmployee) as TextBlock)!.Text);
+                    ID_Employee = (dataGridEmployees.SelectedCells[0].Column.GetCellContent(itemEmployee) as TextBlock)!.Text;
 
                     Order_Status status = await DataOperations.GetStatusOrder();
                     ID_Status = status.ID_Status;

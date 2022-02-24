@@ -11,6 +11,31 @@ namespace ApplicationRepairPhoneEntityFramework
     public static class DataOperations
     {
 
+        public async static  Task<string> Autorization(string login, string password) 
+        {
+            using (ApplicationContext db = new ApplicationContext()) 
+            {
+                await Task.Delay(0);
+                var user = db.Employees.Join(db.positions,
+                    e => e.ID_Position,
+                    p => p.ID_Position,
+                    (e,p) => new
+
+                    {
+                        Login = e.ID_Employee,
+                        Password = e.Password,
+                        Position = p.Name_Position
+
+
+                    }).Where(n => n.Login == login && n.Password == password).FirstOrDefault();
+                string position = user.Position;
+
+                return position;
+            }
+        
+        
+        }
+
 
         public static async Task<Order_Status> GetStatusOrder()
         {
@@ -139,6 +164,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 await Task.Delay(0);
                 var employees = from e in db.Employees
                                 join p in db.positions on e.ID_Position equals p.ID_Position
+                                where p.Name_Position == "Мастер" || p.Name_Position == "Старший мастер" || p.Name_Position == "Стажер"
                                 select new
                                 {
                                     ID_Employee = e.ID_Employee,
@@ -261,10 +287,13 @@ namespace ApplicationRepairPhoneEntityFramework
 
                     }).Where(n=>
                     EF.Functions.Like(n.FIO!, $"%{seachingEmployee}%") ||
-                    EF.Functions.Like(n.Position!, $"%{seachingEmployee}%")
+                    EF.Functions.Like(n.Position!, $"%{seachingEmployee}%"  
+                    )
                     );
 
-                foreach (var employee in employees)
+                var SearchEmployees = employees.Where(n=>n.Position=="Мастер" || n.Position=="Старший мастер" || n.Position == "Стажер");
+
+                foreach (var employee in SearchEmployees)
                     searchEmployees.Add(employee);
                 return searchEmployees;
             }
@@ -355,7 +384,7 @@ namespace ApplicationRepairPhoneEntityFramework
 
         }
 
-        public async static Task InsertOrder(Guid id_Order, Guid idClient, Guid id_Device, Guid id_Employee, int id_Status, DateTime? dateOrder)
+        public async static Task InsertOrder(Guid id_Order, Guid idClient, Guid id_Device, string id_Employee, int id_Status, DateTime? dateOrder)
         {
 
             using (ApplicationContext db = new ApplicationContext())
@@ -369,12 +398,12 @@ namespace ApplicationRepairPhoneEntityFramework
 
         }
 
-        public async static Task InsertEmployee(Guid id_Employee, string fio, Guid id_position, string series_number_passport, string address, string phone_Number, DateTime? employment_Date) 
+        public async static Task InsertEmployee(string id_Employee, string password_employee, string fio, int id_position, string series_number_passport, string address, string phone_Number, DateTime? employment_Date) 
         {
 
             using (ApplicationContext db = new ApplicationContext()) 
             {
-                Employee employee = new Employee() { ID_Employee = id_Employee, FIO = fio, ID_Position = id_position, Series_Number_Password = series_number_passport, Address = address, Phone_Number = phone_Number, EmploymentDate = employment_Date };
+                Employee employee = new Employee() { ID_Employee = id_Employee, Password = password_employee, FIO = fio, ID_Position = id_position, Series_Number_Password = series_number_passport, Address = address, Phone_Number = phone_Number, EmploymentDate = employment_Date };
                 db.Add(employee);
                 await db.SaveChangesAsync();
             }

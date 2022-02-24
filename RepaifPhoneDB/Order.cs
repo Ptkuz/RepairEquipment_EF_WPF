@@ -18,7 +18,7 @@ namespace RepaifPhoneDB
         public Guid ID_Client { get; set; }
         public Client? Client { get; set; }
 
-        public Guid ID_Employee { get; set; }
+        public string? ID_Employee { get; set; }
         public Employee? Employee { get; set; }
 
         public int ID_Status { get; set; }

@@ -10,7 +10,7 @@ namespace RepaifPhoneDB
     public class Position
     {
         [Key]
-        public Guid ID_Position { get; set; }
+        public int ID_Position { get; set; }
         public string? Name_Position { get; set; }
         public List<Employee>? Employees { get; set; } = new();
 

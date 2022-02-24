@@ -61,3 +61,5 @@ C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRep
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\AddEmployeeWindow.baml
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\AddDetailsWindow.g.cs
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\AddDetailsWindow.baml
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\AuthorizationWindow.g.cs
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\AuthorizationWindow.baml

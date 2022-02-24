@@ -102,15 +102,25 @@ namespace ApplicationRepairPhoneEntityFramework
         }
 
 
-        public Guid ID_Employee { get; set; }
+        public string ID_Employee { get; set; }
         string fio;
         public string Fio
         {
             get { return fio; }
             set { fio = value; }
         }
-        Guid position;
-        public Guid Position
+
+
+        public string password_Employee;
+        public string Password_Employee 
+        {
+            get { return password_Employee; }
+            set { password_Employee = value; }
+        
+        }
+
+        int position;
+        public int Position
         {
             get { return position; }
             set { position = value; }
@@ -140,8 +150,6 @@ namespace ApplicationRepairPhoneEntityFramework
         public AddEmployee()
         {
             InitializeComponent();
-            ID_Employee = Guid.NewGuid();
-            txbx_ID_Employee.Text = ID_Employee.ToString();
 
 
             GetPositions();
@@ -157,14 +165,16 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private async void btn_Add_Employee_Click(object sender, RoutedEventArgs e)
         {
-            ID_Employee = Guid.Parse(txbx_ID_Employee.Text.Trim());
+            ID_Employee = txbx_Login_Employee.Text.Trim();
+            Password_Employee = txbx_Passwor_Employee.Text.Trim();
             Fio = txbx_FIO_Employee.Text.Trim();
-            Position = Guid.Parse(cmbx_Position_Employee.SelectedValue.ToString()!);
+            
+            Position = Int32.Parse(cmbx_Position_Employee.SelectedValue.ToString()!);
             SeriesNumber = txbx_Series_Number.Text.Trim();
             Address = txbx_Address.Text.Trim();
             NumberPhone = txbx_Phone_Number.Text.Trim();
             EmploymentDate = DateTime.Now;
-            await DataOperations.InsertEmployee(ID_Employee, Fio, Position, SeriesNumber, Address, NumberPhone, EmploymentDate);
+            await DataOperations.InsertEmployee(ID_Employee, Password_Employee, Fio, Position, SeriesNumber, Address, NumberPhone, EmploymentDate);
             MessageBox.Show("Новый сотрудник добавлен", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 

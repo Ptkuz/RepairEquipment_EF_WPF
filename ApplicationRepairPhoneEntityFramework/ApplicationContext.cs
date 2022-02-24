@@ -49,17 +49,31 @@ namespace ApplicationRepairPhoneEntityFramework
                 .WithOne(p => p.Order)
                 .HasForeignKey<Performance>(p=>p.OrderKey);
 
-            Order_Status orderRegistered = new Order_Status { ID_Status = 1, Name_Status = "Заказ зарегестрирован" };
-            Order_Status orderInProgress = new Order_Status { ID_Status = 2, Name_Status = "Заказ выполняется" };
-            Order_Status orderCompleted = new Order_Status { ID_Status = 3, Name_Status = "Заказ выполнен" };
-
-            Position storekeeper = new Position {ID_Position =  Guid.NewGuid(), Name_Position = "Стажер"};
-            Position master = new Position {ID_Position = Guid.NewGuid(), Name_Position = "Мастер" };
-            Position HeadMaster = new Position {ID_Position = Guid.NewGuid(), Name_Position = "Старший мастер" };
+            
 
 
-            builder.Entity<Order_Status>().HasData(orderRegistered, orderInProgress, orderCompleted);
-            builder.Entity<Position>().HasData(storekeeper, master, HeadMaster);
+            builder.Entity<Order_Status>().HasData(
+            new Order_Status[]
+            {
+                new Order_Status { ID_Status = 1, Name_Status = "Заказ зарегестрирован" },
+                new Order_Status { ID_Status = 2, Name_Status = "Заказ выполняется"},
+                new Order_Status {ID_Status = 3, Name_Status = "Заказ выполнен" },
+                new Order_Status { ID_Status = 4, Name_Status = "Заказ закрыт"}
+            });
+
+            builder.Entity<Position>().HasData(
+            new Position[]
+            {
+                new Position {  ID_Position = 1, Name_Position = "Стажер" },
+                new Position { ID_Position = 2, Name_Position = "Мастер"},
+                new Position {ID_Position = 3, Name_Position = "Старший мастер"},
+                new Position { ID_Position = 4, Name_Position = "Менеджер" },
+                new Position { ID_Position = 5, Name_Position = "Директор" }
+            });
+
+            builder.Entity<Employee>().HasData(new Employee { ID_Employee = "Gurrex", Password = "GurrexPassword", FIO = "Тимоходцев Павел Евгеньевич", ID_Position = 5, Series_Number_Password = "3219 008001", Address = "Москва", Phone_Number = "89512289628", EmploymentDate = DateTime.Now });
+
+
         }
 
 

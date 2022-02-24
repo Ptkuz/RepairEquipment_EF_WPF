@@ -1,0 +1,25 @@
+﻿<Window x:Class="ApplicationRepairPhoneEntityFramework.AuthorizationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
+        mc:Ignorable="d"
+        Title="AuthorizationWindow" Height="182" Width="373">
+    <Grid>
+        <StackPanel>
+            <Grid Margin="0,20,0,0">
+                <Label Content="Логин:" Width="100" Margin="0,0,230,0"/>
+                <TextBox x:Name="txbx_login" TextWrapping="Wrap" Width="200" Margin="150,0,0,0"/>
+            </Grid>
+            <Grid Margin="0,10,0,0" >
+                <Label Content="Пароль:" Width="100" Margin="0,0,230,0"/>
+                <TextBox x:Name="txbx_pawword" TextWrapping="Wrap" Width="200" Margin="150,0,0,0"/>
+            </Grid>
+            <Grid Margin="0,10,0,0" >
+                <Button x:Name="btn_login" Content="Войти" Margin="150,0,0,0" Click="btn_login_Click"/>
+            </Grid>
+
+        </StackPanel>
+    </Grid>
+</Window>

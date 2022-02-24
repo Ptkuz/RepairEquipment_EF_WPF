@@ -5,9 +5,10 @@ namespace RepaifPhoneDB
     public class Employee
     {
         [Key]
-        public Guid ID_Employee { get; set; }
+        public string? ID_Employee { get; set; }
+        public string? Password { get; set; }
         public string? FIO { get; set; }
-        public Guid ID_Position { get; set; }
+        public int ID_Position { get; set; }
         public Position? Position { get; set; }
         public string? Series_Number_Password { get; set; }
         public string? Address { get; set; }

@@ -13,6 +13,9 @@
     <Compile Update="AddEmployeeWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="AuthorizationWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="CreateOrderWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -25,6 +28,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="AddEmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AuthorizationWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="CreateOrderWindow.xaml">
