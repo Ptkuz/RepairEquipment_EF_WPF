@@ -81,8 +81,10 @@ namespace ApplicationRepairPhoneEntityFramework
                 Quantity = Int32.Parse(txbx_Quantity.Text);
                 FullPrice = Decimal.Parse(txbx_FullPrice.Text);
 
-                await DataOperations.InsertDetails(ID_Detail, Name_Detail, Unit_Price, Quantity, FullPrice);
-                MessageBox.Show("Детали добавлены на склад", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (await DataOperations.InsertDetails(ID_Detail, Name_Detail, Unit_Price, Quantity, FullPrice))
+                    this.DialogResult = true;
+                else
+                    this.DialogResult = false;
             }
             catch (Exception ex) 
             {
@@ -93,7 +95,7 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_Unit_Price_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (Regex.IsMatch(txbx_Unit_Price.Text, @"[0-9]$"))
+            if (Regex.IsMatch(txbx_Unit_Price.Text, @"^\d+(\,\d{1,2})?$") && txbx_Unit_Price.Text != String.Empty)
             {
                 Decimal.TryParse(txbx_Unit_Price.Text, out decimal price);
                 Int32.TryParse(txbx_Quantity.Text, out int quantity);
@@ -110,6 +112,8 @@ namespace ApplicationRepairPhoneEntityFramework
                 lb_UnitPrice.Content = "Принимает только числа";
                 lb_UnitPrice.Background = Brushes.Red;
                 FlagPrice = false;
+                FullPrice = 0;
+                txbx_FullPrice.Text = FullPrice.ToString();
 
             }
         }
@@ -118,7 +122,7 @@ namespace ApplicationRepairPhoneEntityFramework
         {
             if (txbx_Unit_Price.Text != String.Empty || txbx_Quantity.Text != null)
             {
-                if (Regex.IsMatch(txbx_Quantity.Text, @"[0-9]$"))
+                if (Regex.IsMatch(txbx_Quantity.Text, @"[0-9]$") && txbx_Unit_Price.Text != String.Empty)
                 {
                     Decimal.TryParse(txbx_Unit_Price.Text, out decimal price);
                     Int32.TryParse(txbx_Quantity.Text, out int quantity);
@@ -136,6 +140,8 @@ namespace ApplicationRepairPhoneEntityFramework
                     lb_Quantity.Content = "Принимает только целые числа";
                     lb_Quantity.Background = Brushes.Red;
                     FlagQuantity= false;
+                    FullPrice = 0;
+                    txbx_FullPrice.Text = FullPrice.ToString();
                 }
             }
         }

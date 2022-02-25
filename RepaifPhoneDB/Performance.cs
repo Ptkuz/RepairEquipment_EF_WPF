@@ -26,7 +26,13 @@ namespace RepaifPhoneDB
             get { return final_Price; }
             set { final_Price = value; }
         }
-        public DateTime? Date_Performance { get; set; }
+
+        DateTime? datePerfor;
+        public DateTime? Date_Performance
+        {
+            get { return datePerfor; }
+            set { datePerfor = value; }
+        }
         public Guid OrderKey { get; set; }
         public Order? Order { get; set; }
 

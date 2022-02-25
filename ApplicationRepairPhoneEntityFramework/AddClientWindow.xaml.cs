@@ -76,8 +76,10 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
 
-                await DataOperations.InsertClient(ID_Client, FIO, SeriesNumber, PhoneNumber, DateAdded);
-                MessageBox.Show("Добавлен новый клиент", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (await DataOperations.InsertClient(ID_Client, FIO, SeriesNumber, PhoneNumber, DateAdded)) 
+                    this.DialogResult = true;
+                else
+                    this.DialogResult = false;
             }
             catch (Exception ex) 
             {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace RepaifPhoneDB
 {
@@ -11,12 +6,48 @@ namespace RepaifPhoneDB
     {
         [Key]
         public Guid ID_Device { get; set; }
-        public string? Name { get; set; }
-        public string? Serial_Number { get; set; }
-        public string? Description { get; set; }
-        public string? Manufacturer { get; set; }
-        public string? Model { get; set; }
-        public DateTime? DateAdded { get; set; }    
+
+        string? name;
+        public string? Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        string? serial_number;
+        public string? Serial_Number
+        {
+            get { return serial_number; }
+            set { serial_number = value; }
+        }
+
+        string? descriprion;
+        public string? Description
+        {
+            get { return descriprion; }
+            set { descriprion = value; }
+        }
+
+        string? manufacturer;
+        public string? Manufacturer
+        {
+            get { return manufacturer; }
+            set { manufacturer = value; }
+        }
+
+        string? model;
+        public string? Model
+        {
+            get { return model; }
+            set { model = value; }
+        }
+
+        DateTime? dateAdded;
+        public DateTime? DateAdded
+        {
+            get { return dateAdded; }
+            set { dateAdded = value; }
+        }
         public List<Order> Orders { get; set; } = new();
 
     }

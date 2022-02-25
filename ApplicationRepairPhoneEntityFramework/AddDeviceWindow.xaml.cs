@@ -113,8 +113,10 @@ namespace ApplicationRepairPhoneEntityFramework
                 Model = txbx_Model.Text;
                 DateAdded = DateTime.Now;
 
-                await DataOperations.InsertDevice(ID_Device, Name_Device, SerialNumber, Dsscription, Manufactorer, Model, DateAdded);
-                MessageBox.Show("Оборудование для ремонта добавлено", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (await DataOperations.InsertDevice(ID_Device, Name_Device, SerialNumber, Dsscription, Manufactorer, Model, DateAdded))
+                    this.DialogResult = true;
+                else
+                    this.DialogResult = false;
             }
             catch (Exception ex)
             {

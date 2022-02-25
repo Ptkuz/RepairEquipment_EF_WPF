@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\App.xaml
-8-1583620065
+111524275613
 
-23-635063914
+28-1032995435
 2151919456888
-AddClientWindow.xaml;AddDetailsWindow.xaml;AddDeviceWindow.xaml;AddEmployeeWindow.xaml;AuthorizationWindow.xaml;CreateOrderWindow.xaml;MainWindow.xaml;PerformanceWindow.xaml;
+AddClientWindow.xaml;AddDetailsWindow.xaml;AddDeviceWindow.xaml;AddEmployeeWindow.xaml;AuthorizationWindow.xaml;CreateOrderWindow.xaml;MainWindow.xaml;PerformanceWindow.xaml;ViewClientsWindow.xaml;ViewDetailsWindow.xaml;ViewDevicesWindow.xaml;
 
 False
 

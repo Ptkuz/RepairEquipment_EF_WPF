@@ -1,0 +1,59 @@
+﻿<Window x:Class="ApplicationRepairPhoneEntityFramework.DirectorViewClientsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
+        mc:Ignorable="d"
+        Title="DirectorViewClientsWindow" Height="581" Width="1539">
+    <Grid>
+        <StackPanel>
+            <Grid Margin="0,10,0,0">
+                <Label Content="Поиск клиента:" Width="95" Margin="10,0,680,0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_search_client" TextWrapping="Wrap"  Width="400" Margin="120,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_search_client_SelectionChanged"/>
+
+            </Grid>
+            <Grid Margin="0,10,0,0">
+                <DataGrid x:Name="dataGridClients" AutoGenerateColumns="False" Width="800" Height="450" HorizontalAlignment="Left" SelectionChanged="dataGridClients_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding ID_Client}" IsReadOnly="True" Header="ID Клиента" Width="73"/>
+                        <DataGridTextColumn Binding="{Binding FIO}" IsReadOnly="True" Header="ФИО Клиента" Width="130"/>
+                        <DataGridTextColumn Binding="{Binding Series_Number_Passport}" IsReadOnly="True" Header="Серия номер пасспорта" Width="150"/>
+                        <DataGridTextColumn Binding="{Binding Phone_Number}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding DateAdded}" IsReadOnly="True" Header="Дата добавления" Width="140"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            
+        </StackPanel>
+        <StackPanel>
+            <StackPanel>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="ID Клиента:" Width="95" Margin="830,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_Id_Client" IsReadOnly="True" Width="500" Margin="1000,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_Id_Client_SelectionChanged"/>
+                    </Grid>
+
+                <Grid Margin="0,10,0,0">
+                    <Label Content="ФИО Клиента:" Width="110" Margin="830,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_fio" Width="500" Margin="1000,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_fio_SelectionChanged"/>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Серия и номер паспорта:" Width="150" Margin="830,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_series_number" Width="500" Margin="1000,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_series_number_SelectionChanged"/>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Номер телефона:" Width="110" Margin="830,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_phone_number" Width="500" Margin="1000,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_phone_number_SelectionChanged"/>
+                </Grid>
+                <Grid Margin="0,40,0,0">
+                    <Button x:Name="btn_Add_Client" Content="Добавить нового клиента" Width="200" Margin="300,0,0,0" Click="btn_Add_Client_Click"/>
+                    <Button x:Name="btn_Update_Client" IsEnabled="False" Content="Обновить выбранного клиента" Width="200" Margin="750,0,0,0" Click="btn_Update_Client_Click"/>
+                    <Button x:Name="btn_Delete_Client" IsEnabled="False" Content="Удалить выбранного клиента" Width="200" Margin="1200,0,0,0" Click="btn_Delete_Client_Click"/>
+                    
+
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

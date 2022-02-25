@@ -25,7 +25,16 @@
     <Compile Update="CreateOrderWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="ViewClientsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="PerformanceWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ViewDetailsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ViewDevicesWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -48,10 +57,19 @@
     <Page Update="CreateOrderWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="ViewClientsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="PerformanceWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ViewDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ViewDevicesWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

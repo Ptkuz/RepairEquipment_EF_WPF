@@ -1,0 +1,69 @@
+﻿<Window x:Class="ApplicationRepairPhoneEntityFramework.ViewDevicesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
+        mc:Ignorable="d"
+        Title="ViewDevicesWindow" Height="581" Width="1539">
+    <Grid>
+        <StackPanel>
+            <Grid Margin="0,10,0,0">
+                <Label Content="Поиск оборудования:" Width="130" Margin="10,0,680,0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_search_device" TextWrapping="Wrap"  Width="400" Margin="180,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_search_device_SelectionChanged"/>
+
+            </Grid>
+            <Grid Margin="0,10,0,0">
+                <DataGrid x:Name="dataGridDevices" AutoGenerateColumns="False" Width="800" Height="450" HorizontalAlignment="Left" SelectedCellsChanged="dataGridDevices_SelectedCellsChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding ID_Device}" IsReadOnly="True" Header="ID Оборудования" Width="110"/>
+                        <DataGridTextColumn Binding="{Binding Name}" IsReadOnly="True" Header="Название полное" Width="130"/>
+                        <DataGridTextColumn Binding="{Binding Serial_Number}" IsReadOnly="True" Header="Серийный номер" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True" Header="Описание" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding Manufacturer}" IsReadOnly="True" Header="Производитель" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding Model}" IsReadOnly="True" Header="Модель" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding DateAdded}" IsReadOnly="True" Header="Дата добавления" Width="140"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+        </StackPanel>
+        <StackPanel>
+            <StackPanel>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="ID Оборудования:" Width="120" Margin="830,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_Id_Device" IsReadOnly="True" Width="500" Margin="1000,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_Id_Device_SelectionChanged"/>
+                </Grid>
+
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Название полное:" Width="110" Margin="830,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_Name" Width="500" Margin="1000,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_Name_SelectionChanged"/>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Серийный номер:" Width="150" Margin="830,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_serielNumber" Width="500" Margin="1000,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_serielNumber_SelectionChanged"/>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Описание:" Width="110" Margin="830,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_description" Width="500" Margin="1000,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_description_SelectionChanged"/>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Производитель:" Width="110" Margin="830,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_manufacturer" Width="500" Margin="1000,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_manufacturer_SelectionChanged" />
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Модель:" Width="110" Margin="830,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_model" Width="500" Margin="1000,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_model_SelectionChanged"/>
+                </Grid>
+                <Grid Margin="0,40,0,0">
+                    <Button x:Name="btn_Add_Device" Content="Добавить новое оборудование" Width="200" Margin="300,0,0,0" Click="btn_Add_Device_Click"/>
+                    <Button x:Name="btn_Update_Device" IsEnabled="False" Content="Обновить выбранное оборудование" Width="210" Margin="750,0,0,0" Click="btn_Update_Device_Click"/>
+                    <Button x:Name="btn_Delete_Device" IsEnabled="False" Content="Удалить выбранное оборудование" Width="200" Margin="1200,0,0,0" Click="btn_Delete_Device_Click"/>
+
+
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

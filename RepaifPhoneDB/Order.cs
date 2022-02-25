@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace RepaifPhoneDB
 {
@@ -18,7 +13,13 @@ namespace RepaifPhoneDB
         public Guid ID_Client { get; set; }
         public Client? Client { get; set; }
 
-        public string? ID_Employee { get; set; }
+        string? id_employee;
+
+        public string? ID_Employee
+        {
+            get { return id_employee; }
+            set { id_employee = value; }
+        }
         public Employee? Employee { get; set; }
 
         public int ID_Status { get; set; }
@@ -27,6 +28,12 @@ namespace RepaifPhoneDB
         public Performance? Per { get; set; }
 
 
-        public DateTime? Date_Order { get; set; }
+        DateTime? date_Order;
+
+        public DateTime? Date_Order
+        {
+            get { return date_Order; }
+            set { date_Order = value; }
+        }
     }
 }

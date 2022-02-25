@@ -28,13 +28,16 @@ namespace ApplicationRepairPhoneEntityFramework.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("DateAdded")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("FIO")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone_Number")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Series_Number_Passport")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID_Client");
@@ -47,6 +50,9 @@ namespace ApplicationRepairPhoneEntityFramework.Migrations
                     b.Property<Guid>("ID_Device")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DateAdded")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -70,9 +76,8 @@ namespace ApplicationRepairPhoneEntityFramework.Migrations
 
             modelBuilder.Entity("RepaifPhoneDB.Employee", b =>
                 {
-                    b.Property<Guid>("ID_Employee")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("ID_Employee")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -80,20 +85,20 @@ namespace ApplicationRepairPhoneEntityFramework.Migrations
                     b.Property<DateTime?>("EmploymentDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Experience")
-                        .HasColumnType("int");
-
                     b.Property<string>("FIO")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("ID_Position")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("ID_Position")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone_Number")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("PositionID_Position")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("PositionID_Position")
+                        .HasColumnType("int");
 
                     b.Property<string>("Series_Number_Password")
                         .HasColumnType("nvarchar(max)");
@@ -103,6 +108,19 @@ namespace ApplicationRepairPhoneEntityFramework.Migrations
                     b.HasIndex("PositionID_Position");
 
                     b.ToTable("Employees");
+
+                    b.HasData(
+                        new
+                        {
+                            ID_Employee = "Gurrex",
+                            Address = "Москва",
+                            EmploymentDate = new DateTime(2022, 2, 25, 16, 19, 22, 787, DateTimeKind.Local).AddTicks(716),
+                            FIO = "Тимоходцев Павел Евгеньевич",
+                            ID_Position = 5,
+                            Password = "GurrexPassword",
+                            Phone_Number = "89512289628",
+                            Series_Number_Password = "3219 008001"
+                        });
                 });
 
             modelBuilder.Entity("RepaifPhoneDB.Order", b =>
@@ -114,14 +132,14 @@ namespace ApplicationRepairPhoneEntityFramework.Migrations
                     b.Property<Guid?>("ClientID_Client")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("Date_Order")
+                    b.Property<DateTime?>("Date_Order")
                         .HasColumnType("datetime2");
 
                     b.Property<Guid?>("DeviceID_Device")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("EmployeeID_Employee")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("EmployeeID_Employee")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<Guid>("ID_Client")
                         .HasColumnType("uniqueidentifier");
@@ -129,20 +147,14 @@ namespace ApplicationRepairPhoneEntityFramework.Migrations
                     b.Property<Guid>("ID_Device")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ID_Employee")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("ID_Employee")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("ID_Performance")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("ID_Status")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("ID_Status")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("Order_StatusID_Status")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("PerformanceID_Performance")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("Order_StatusID_Status")
+                        .HasColumnType("int");
 
                     b.HasKey("ID_Order");
 
@@ -154,16 +166,16 @@ namespace ApplicationRepairPhoneEntityFramework.Migrations
 
                     b.HasIndex("Order_StatusID_Status");
 
-                    b.HasIndex("PerformanceID_Performance");
-
                     b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("RepaifPhoneDB.Order_Status", b =>
                 {
-                    b.Property<Guid>("ID_Status")
+                    b.Property<int>("ID_Status")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID_Status"), 1L, 1);
 
                     b.Property<string>("Name_Status")
                         .HasColumnType("nvarchar(max)");
@@ -175,18 +187,23 @@ namespace ApplicationRepairPhoneEntityFramework.Migrations
                     b.HasData(
                         new
                         {
-                            ID_Status = new Guid("3feb6e7e-c114-49c4-b8c6-d3b4108ea586"),
+                            ID_Status = 1,
                             Name_Status = "Заказ зарегестрирован"
                         },
                         new
                         {
-                            ID_Status = new Guid("93775238-3861-41a9-9352-7fdfecc133b0"),
+                            ID_Status = 2,
                             Name_Status = "Заказ выполняется"
                         },
                         new
                         {
-                            ID_Status = new Guid("99ce6c12-98b4-4897-a928-bcc7403f042b"),
+                            ID_Status = 3,
                             Name_Status = "Заказ выполнен"
+                        },
+                        new
+                        {
+                            ID_Status = 4,
+                            Name_Status = "Заказ закрыт"
                         });
                 });
 
@@ -211,19 +228,27 @@ namespace ApplicationRepairPhoneEntityFramework.Migrations
                     b.Property<decimal>("Final_Price")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<Guid>("OrderKey")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<decimal>("Work_Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ID_Performance");
+
+                    b.HasIndex("OrderKey")
+                        .IsUnique();
 
                     b.ToTable("performances");
                 });
 
             modelBuilder.Entity("RepaifPhoneDB.Position", b =>
                 {
-                    b.Property<Guid>("ID_Position")
+                    b.Property<int>("ID_Position")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID_Position"), 1L, 1);
 
                     b.Property<string>("Name_Position")
                         .HasColumnType("nvarchar(max)");
@@ -235,18 +260,28 @@ namespace ApplicationRepairPhoneEntityFramework.Migrations
                     b.HasData(
                         new
                         {
-                            ID_Position = new Guid("5dd9ed53-e9e4-4fa0-9156-88b42a0c15e8"),
+                            ID_Position = 1,
                             Name_Position = "Стажер"
                         },
                         new
                         {
-                            ID_Position = new Guid("e713a1ef-27de-4e16-bdbd-288ddee95180"),
+                            ID_Position = 2,
                             Name_Position = "Мастер"
                         },
                         new
                         {
-                            ID_Position = new Guid("d79698ce-6710-4bec-ba36-71bd15403470"),
+                            ID_Position = 3,
                             Name_Position = "Старший мастер"
+                        },
+                        new
+                        {
+                            ID_Position = 4,
+                            Name_Position = "Менеджер"
+                        },
+                        new
+                        {
+                            ID_Position = 5,
+                            Name_Position = "Директор"
                         });
                 });
 
@@ -279,10 +314,14 @@ namespace ApplicationRepairPhoneEntityFramework.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("Choise")
+                        .HasColumnType("bit");
+
                     b.Property<decimal>("FullPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Name_Detail")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("NeededQuantity")
@@ -326,10 +365,6 @@ namespace ApplicationRepairPhoneEntityFramework.Migrations
                         .WithMany("Orders")
                         .HasForeignKey("Order_StatusID_Status");
 
-                    b.HasOne("RepaifPhoneDB.Performance", "Performance")
-                        .WithMany("Orders")
-                        .HasForeignKey("PerformanceID_Performance");
-
                     b.Navigation("Client");
 
                     b.Navigation("Device");
@@ -337,8 +372,17 @@ namespace ApplicationRepairPhoneEntityFramework.Migrations
                     b.Navigation("Employee");
 
                     b.Navigation("Order_Status");
+                });
 
-                    b.Navigation("Performance");
+            modelBuilder.Entity("RepaifPhoneDB.Performance", b =>
+                {
+                    b.HasOne("RepaifPhoneDB.Order", "Order")
+                        .WithOne("Per")
+                        .HasForeignKey("RepaifPhoneDB.Performance", "OrderKey")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("RepaifPhoneDB.Relationship", b =>
@@ -371,12 +415,12 @@ namespace ApplicationRepairPhoneEntityFramework.Migrations
                     b.Navigation("Orders");
                 });
 
-            modelBuilder.Entity("RepaifPhoneDB.Order_Status", b =>
+            modelBuilder.Entity("RepaifPhoneDB.Order", b =>
                 {
-                    b.Navigation("Orders");
+                    b.Navigation("Per");
                 });
 
-            modelBuilder.Entity("RepaifPhoneDB.Performance", b =>
+            modelBuilder.Entity("RepaifPhoneDB.Order_Status", b =>
                 {
                     b.Navigation("Orders");
                 });

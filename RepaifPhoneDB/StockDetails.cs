@@ -6,7 +6,12 @@ namespace RepaifPhoneDB
     {
         [Key]
         public Guid ID_Detail { get; set; }
-        public string? Name_Detail { get; set; }
+        string? name_detail;
+        public string Name_Detail
+        {
+            get { return name_detail; }
+            set { name_detail = value; }
+        }
         decimal unit_Price;
         public decimal Unit_Price
         {
@@ -31,7 +36,7 @@ namespace RepaifPhoneDB
 
         public bool Choise { get; set; }
 
-        
+
 
         //public List<Performance> Performances { get; set; } = new();
 
