@@ -422,6 +422,26 @@ namespace ApplicationRepairPhoneEntityFramework
         
         }
 
+        public async static Task InsertDevice(Guid id_Device, string nameDevice, string serialNumber, string description, string manufacturer, string model, DateTime? dateAdded) 
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                Device device = new Device() { ID_Device = id_Device, Name = nameDevice, Serial_Number = serialNumber, Description = description, Manufacturer = manufacturer, Model = model, DateAdded = dateAdded };
+                db.Add(device);
+                await db.SaveChangesAsync();
+            }
+        }
+
+        public async static Task InsertClient(Guid id_Client, string fio, string serialNumber, string phoneNumber, DateTime? dateAdded) 
+        {
+            using (ApplicationContext db = new ApplicationContext()) 
+            { 
+                Client client = new Client() { ID_Client = id_Client, FIO = fio, Series_Number_Passport = serialNumber, Phone_Number = phoneNumber, DateAdded = dateAdded };
+                db.Add(client);
+                await db.SaveChangesAsync();
+            }
+        }
+
 
 
 

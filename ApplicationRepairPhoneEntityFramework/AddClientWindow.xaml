@@ -1,0 +1,36 @@
+﻿<Window x:Class="ApplicationRepairPhoneEntityFramework.AddClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
+        mc:Ignorable="d"
+        Title="AddClientWindow" Height="450" Width="800">
+    <Grid Margin="0,10,0,0">
+        <StackPanel>
+            <Grid>
+                <Label Content="ID Клиента:" Width="180" Margin="0,0,620,0" Height="26" VerticalAlignment="Bottom"/>
+                <TextBox x:Name="txbx_ID_Client" IsReadOnly="True" TextWrapping="Wrap"  Width="400" Margin="0,0,70,0"/>
+                <Label Content="" Width="230" Margin="570,0,0,0"/>
+            </Grid>
+            <Grid Margin="0,10,0,0">
+                <Label Content="ФИО Клиента:" Width="180" Margin="0,0,620,0"/>
+                <TextBox x:Name="txbx_Name_Client" TextWrapping="Wrap"  Width="400" Margin="0,0,70,0" SelectionChanged="txbx_Name_Client_SelectionChanged" />
+                <Label x:Name="lb_Name" Content="" Width="230" Margin="570,0,0,0"/>
+            </Grid>
+            <Grid Margin="0,10,0,0">
+                <Label Content="Серия и номер паспорта:" Width="180" Margin="0,0,620,0"/>
+                <TextBox x:Name="txbx_SeriesNumber" TextWrapping="Wrap" Width="400" Margin="0,0,70,0" SelectionChanged="txbx_SeriesNumber_SelectionChanged" />
+                <Label x:Name="lb_SeriesNumber" Content="" Width="230" Margin="570,0,0,0"/>
+            </Grid>
+            <Grid Margin="0,10,0,0">
+                <Label Content="Номер телефона:" Width="180" Margin="0,0,620,0"/>
+                <TextBox x:Name="txbx_PhoneNumber" TextWrapping="Wrap" Width="400" Margin="0,0,70,0" SelectionChanged="txbx_PhoneNumber_SelectionChanged" />
+                <Label x:Name="lb_PhoneNumber" Content="" Width="230" Margin="570,0,0,0"/>
+            </Grid>
+            <Grid Margin="0,10,0,0">
+                <Button x:Name="btn_Add_Client" IsEnabled="False" Content="Добавить клиента" Width="400" Margin="0,0,70,0" Click="btn_Add_Client_Click"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

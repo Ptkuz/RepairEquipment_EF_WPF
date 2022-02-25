@@ -1,0 +1,46 @@
+﻿<Window x:Class="ApplicationRepairPhoneEntityFramework.AddDeviceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
+        mc:Ignorable="d"
+        Title="AddDeviceWindow" Height="450" Width="800">
+    <Grid Margin="0,10,0,0">
+        <StackPanel>
+            <Grid>
+                <Label Content="ID Оборудования:" Width="180" Margin="0,0,620,0" Height="26" VerticalAlignment="Bottom"/>
+                <TextBox x:Name="txbx_ID_Device" IsReadOnly="True" TextWrapping="Wrap"  Width="400" Margin="0,0,70,0"/>
+                <Label Content="" Width="230" Margin="570,0,0,0"/>
+            </Grid>
+            <Grid Margin="0,10,0,0">
+                <Label Content="Название оборудования:" Width="180" Margin="0,0,620,0"/>
+                <TextBox x:Name="txbx_Name_Device" TextWrapping="Wrap"  Width="400" Margin="0,0,70,0" SelectionChanged="txbx_Name_Device_SelectionChanged"/>
+                <Label x:Name="lb_Name" Content="" Width="230" Margin="570,0,0,0"/>
+            </Grid>
+            <Grid Margin="0,10,0,0">
+                <Label Content="Серийный номер:" Width="180" Margin="0,0,620,0"/>
+                <TextBox x:Name="txbx_Serial_Number" TextWrapping="Wrap" Width="400" Margin="0,0,70,0" SelectionChanged="txbx_Serial_Number_SelectionChanged"/>
+                <Label x:Name="lb_SerialNumber" Content="" Width="230" Margin="570,0,0,0"/>
+            </Grid>
+            <Grid Margin="0,10,0,0">
+                <Label Content="Описание:" Width="180" Margin="0,0,620,0"/>
+                <TextBox x:Name="txbx_Description" TextWrapping="Wrap" Width="400" Margin="0,0,70,0" SelectionChanged="txbx_Description_SelectionChanged"/>
+                <Label x:Name="lb_Description" Content="" Width="230" Margin="570,0,0,0"/>
+            </Grid>
+            <Grid Margin="0,10,0,0">
+                <Label Content="Производитель:" Width="180" Margin="0,0,620,0"/>
+                <TextBox x:Name="txbx_anufacturer" TextWrapping="Wrap" Width="400" Margin="0,0,70,0" SelectionChanged="txbx_anufacturer_SelectionChanged"/>
+                <Label x:Name="lb_Manufacturer" Content="" Width="230" Margin="570,0,0,0"/>
+            </Grid>
+            <Grid Margin="0,10,0,0">
+                <Label Content="Модель:" Width="180" Margin="0,0,620,0"/>
+                <TextBox x:Name="txbx_Model" TextWrapping="Wrap" Width="400" Margin="0,0,70,0" SelectionChanged="txbx_Model_SelectionChanged"/>
+                <Label x:Name="lb_Model" Content="" Width="230" Margin="570,0,0,0"/>
+            </Grid>
+            <Grid Margin="0,10,0,0">
+                <Button x:Name="btn_Add_Device" IsEnabled="False" Content="Добавить оборудования для ремонта" Width="400" Margin="0,0,70,0" Click="btn_Add_Device_Click"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
