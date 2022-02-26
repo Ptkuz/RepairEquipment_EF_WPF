@@ -87,8 +87,15 @@ namespace ApplicationRepairPhoneEntityFramework
                     ID_Status = status.ID_Status;
                     DateOrder = DateTime.Now;
 
-                    await DataOperations.InsertOrder(ID_Order, ID_Client, ID_Device, ID_Employee, ID_Status, DateOrder);
-                    MessageBox.Show("Новый заказ добавлен", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+                    if (await DataOperations.InsertOrder(ID_Order, ID_Client, ID_Device, ID_Employee, ID_Status, DateOrder))
+                    {
+
+                        this.DialogResult = true;
+                    }
+                    else
+                        this.DialogResult = false;
+                    
+
                 }
             }
             catch (Exception ex) 
@@ -122,6 +129,32 @@ namespace ApplicationRepairPhoneEntityFramework
             string search = txbx_searchEmployee.Text;
             dataGridEmployees.ItemsSource = await DataOperations.SearchEmployees(search);
 
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddClientWindow addClientWindow = new AddClientWindow();
+            bool? result = addClientWindow.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                dataGridClients.ItemsSource = await DataOperations.GetAllClients();
+                MessageBox.Show("Новый клиент успешно добавлен", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+                MessageBox.Show("Клиент не добавлен", "Приложение СЕРВИСНЫЙ ЦЕНТР: Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AddDeviceWindow addDeviceWindow = new AddDeviceWindow();
+            bool? result = addDeviceWindow.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                dataGridDevices.ItemsSource = await DataOperations.GetAllDevices();
+                MessageBox.Show("Новое оборудование успешно добавлено", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+                MessageBox.Show("Оборудование не добавлено", "Приложение СЕРВИСНЫЙ ЦЕНТР: Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 }

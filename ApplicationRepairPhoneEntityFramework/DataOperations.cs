@@ -10,16 +10,15 @@ namespace ApplicationRepairPhoneEntityFramework
 {
     public static class DataOperations
     {
-
-        public async static  Task<string> Autorization(string login, string password) 
+        public async static Task<string> Autorization(string login, string password)
         {
-            using (ApplicationContext db = new ApplicationContext()) 
+            using (ApplicationContext db = new ApplicationContext())
             {
                 await Task.Delay(0);
                 var user = db.Employees.Join(db.positions,
                     e => e.ID_Position,
                     p => p.ID_Position,
-                    (e,p) => new
+                    (e, p) => new
 
                     {
                         Login = e.ID_Employee,
@@ -32,9 +31,124 @@ namespace ApplicationRepairPhoneEntityFramework
 
                 return position;
             }
-        
-        
+
+
         }
+
+        public async static Task<ArrayList> GetAllOrdersViewAllOrdersWindow()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                ArrayList orderConcrete = new ArrayList();
+                await Task.Delay(0);
+                var orders = from order in db.Orders
+                             join employee in db.Employees on order.ID_Employee equals employee.ID_Employee
+                             join client in db.Clients on order.ID_Client equals client.ID_Client
+                             join device in db.Devices on order.ID_Device equals device.ID_Device
+                             join status in db.order_Statuses on order.ID_Status equals status.ID_Status
+                             orderby order.Date_Order
+                             select new
+                             {
+                                 DateOrder = order.Date_Order,
+                                 ID_Order = order.ID_Order,
+                                 ClientName = client.FIO,
+                                 ClientSeriesNumber = client.Series_Number_Passport,
+                                 ClientPhoneNumber = client.Phone_Number,
+                                 DeviceName = device.Name,
+                                 SeriesNumber = device.Serial_Number,
+                                 Description = device.Description,
+                                 Manufactorer = device.Manufacturer,
+                                 Model = device.Model,
+                                 ID_Employee = employee.ID_Employee,
+                                 EmployeeName = employee.FIO,
+                                 EmployeePhoneNumber = employee.Phone_Number,
+                                 Status = status.Name_Status
+
+                             };
+
+
+                foreach (var order in orders)
+                    orderConcrete.Add(order);
+
+                return orderConcrete;
+
+            }
+        }
+
+        public async static Task<ArrayList> GetStatusOrdersViewMasterWindow(int id_status, string id_employee)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                ArrayList orderConcrete = new ArrayList();
+                await Task.Delay(0);
+                var orders = from order in db.Orders
+                             join employee in db.Employees on order.ID_Employee equals employee.ID_Employee
+                             join client in db.Clients on order.ID_Client equals client.ID_Client
+                             join device in db.Devices on order.ID_Device equals device.ID_Device
+                             join status in db.order_Statuses on order.ID_Status equals status.ID_Status
+                             where order.ID_Status == id_status && order.ID_Employee == id_employee
+                             orderby order.Date_Order
+                             select new
+                             {
+                                 DateOrder = order.Date_Order,
+                                 ID_Order = order.ID_Order,
+                                 ClientName = client.FIO,
+                                 ClientPhoneNumber = client.Phone_Number,
+                                 DeviceName = device.Name,
+                                 SeriesNumber = device.Serial_Number,
+                                 Description = device.Description,
+                                 Manufactorer = device.Manufacturer,
+                                 Model = device.Model,
+                                 Status = status.Name_Status
+
+                             };
+
+
+                foreach (var order in orders)
+                    orderConcrete.Add(order);
+
+                return orderConcrete;
+
+            }
+        }
+
+        public async static Task<ArrayList> GetStatusOrdersViewMasterWindow(int id_status)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                ArrayList orderConcrete = new ArrayList();
+                await Task.Delay(0);
+                var orders = from order in db.Orders
+                             join employee in db.Employees on order.ID_Employee equals employee.ID_Employee
+                             join client in db.Clients on order.ID_Client equals client.ID_Client
+                             join device in db.Devices on order.ID_Device equals device.ID_Device
+                             join status in db.order_Statuses on order.ID_Status equals status.ID_Status
+                             where order.ID_Status == id_status 
+                             orderby order.Date_Order
+                             select new
+                             {
+                                 DateOrder = order.Date_Order,
+                                 ID_Order = order.ID_Order,
+                                 ClientName = client.FIO,
+                                 ClientPhoneNumber = client.Phone_Number,
+                                 DeviceName = device.Name,
+                                 SeriesNumber = device.Serial_Number,
+                                 Description = device.Description,
+                                 Manufactorer = device.Manufacturer,
+                                 Model = device.Model,
+                                 Status = status.Name_Status
+
+                             };
+
+
+                foreach (var order in orders)
+                    orderConcrete.Add(order);
+
+                return orderConcrete;
+
+            }
+        }
+
 
 
         public static async Task<Order_Status> GetStatusOrder()
@@ -50,22 +164,39 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
         }
+        public async static Task<ArrayList> GetAllStatus()
+        {
+            ArrayList allStatus = new ArrayList();
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                await Task.Delay(0);
+                var statuses = from status in db.order_Statuses
+                               select status;
 
-        public async static Task<ArrayList> GetAllPositions() 
+                foreach (var status in statuses)
+                    allStatus.Add(status);
+
+                return allStatus;
+            }
+
+        }
+
+
+        public async static Task<ArrayList> GetAllPositions()
         {
             ArrayList allPositions = new ArrayList();
-            using (ApplicationContext db = new ApplicationContext()) 
+            using (ApplicationContext db = new ApplicationContext())
             {
                 await Task.Delay(0);
                 var positions = from position in db.positions
                                 select position;
 
-                foreach(var position in positions)
+                foreach (var position in positions)
                     allPositions.Add(position);
 
                 return allPositions;
             }
-        
+
         }
 
 
@@ -75,7 +206,8 @@ namespace ApplicationRepairPhoneEntityFramework
             using (ApplicationContext db = new ApplicationContext())
             {
                 await Task.Delay(0);
-                var details = from detail in db.stockDetails where detail.QuantityStock >0
+                var details = from detail in db.stockDetails
+                              where detail.QuantityStock > 0
                               orderby detail.Name_Detail
                               select detail;
 
@@ -119,19 +251,20 @@ namespace ApplicationRepairPhoneEntityFramework
             {
                 await Task.Delay(0);
                 var orders = from order in db.Orders
-                              where order.ID_Status == 1
-                             join employee in db.Employees on order.ID_Employee equals employee.ID_Employee 
+                             where order.ID_Status == 3
+                             join employee in db.Employees on order.ID_Employee equals employee.ID_Employee
                              join client in db.Clients on order.ID_Client equals client.ID_Client
                              join device in db.Devices on order.ID_Device equals device.ID_Device
                              orderby order.Date_Order
                              select new
-                             { 
+                             {
                                  DateOrder = order.Date_Order,
                                  ID_Order = order.ID_Order,
                                  ClientName = client.FIO,
                                  DeviceName = device.Name,
                                  SeriesNumber = device.Serial_Number,
                                  EmployeeName = employee.FIO,
+
                              };
 
 
@@ -143,6 +276,40 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
         }
+
+        //public async static Task<ArrayList> GetAllOrdersViewAllOrdersWindow()
+        //{
+        //    ArrayList allOrders = new ArrayList();
+        //    using (ApplicationContext db = new ApplicationContext())
+        //    {
+        //        await Task.Delay(0);
+        //        var orders = from order in db.Orders
+        //                     join employee in db.Employees on order.ID_Employee equals employee.ID_Employee
+        //                     join client in db.Clients on order.ID_Client equals client.ID_Client
+        //                     join device in db.Devices on order.ID_Device equals device.ID_Device
+        //                     join status in db.order_Statuses on order.ID_Status equals status.ID_Status
+        //                     orderby order.Date_Order
+        //                     select new
+        //                     {
+        //                         DateOrder = order.Date_Order,
+        //                         ID_Order = order.ID_Order,
+        //                         ClientName = client.FIO,
+        //                         DeviceName = device.Name,
+        //                         SeriesNumber = device.Serial_Number,
+        //                         EmployeeName = employee.FIO,
+        //                         Status = status.Name_Status
+
+        //                     };
+
+
+        //        foreach (var order in orders)
+        //            allOrders.Add(order);
+
+        //        return allOrders;
+        //    }
+
+
+        //}
 
         public async static Task<ArrayList> GetAllClients()
         {
@@ -205,25 +372,69 @@ namespace ApplicationRepairPhoneEntityFramework
 
         }
 
-        
+        public async static Task<ArrayList> GetAllEmployeesView()
+        {
+            ArrayList allEmployees = new ArrayList();
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                await Task.Delay(0);
+                var employees = from e in db.Employees
+                                join p in db.positions on e.ID_Position equals p.ID_Position
+                                select new
+                                {
+                                    ID_Employee = e.ID_Employee,
+                                    Password = e.Password,
+                                    FIO = e.FIO,
+                                    ID_Position = p.ID_Position,
+                                    Position = p.Name_Position,
+                                    SeriesNumber = e.Series_Number_Password,
+                                    Address = e.Address,
+                                    Phone_Number = e.Phone_Number,
+                                    DateEmployment = e.EmploymentDate
+                                };
+
+                foreach (var employee in employees)
+                    allEmployees.Add(employee);
+
+                return allEmployees;
+            }
+
+
+        }
+
+        public async static Task<ArrayList> GetAllPerformanceViewAllOrdersWindow()
+        {
+            ArrayList allPerformance = new ArrayList();
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                await Task.Delay(0);
+                var performances = from p in db.performances
+                                   orderby p.Date_Performance
+                                   select p;
+
+                foreach (var performance in performances)
+                    allPerformance.Add(performance);
+
+
+            }
+
+            return allPerformance;
+        }
+
+
         public async static Task<ArrayList> SearchOrders(string seachingOrder)
         {
             ArrayList searchOrders = new ArrayList();
-            using (ApplicationContext db = new ApplicationContext()) 
+            using (ApplicationContext db = new ApplicationContext())
             {
                 await Task.Delay(0);
-                var orders = from order in db.Orders 
-                             
-                             where order.ID_Status == 1
-                             join employee in db.Employees on order.ID_Employee equals employee.ID_Employee 
+                var orders = from order in db.Orders
+
+                             where order.ID_Status == 3
+                             join employee in db.Employees on order.ID_Employee equals employee.ID_Employee
                              join client in db.Clients on order.ID_Client equals client.ID_Client
                              join device in db.Devices on order.ID_Device equals device.ID_Device
                              orderby order.Date_Order
-                             //where EF.Functions.Like(order.ID_Order.ToString(), $"%{seachingOrder}%")
-                             //where EF.Functions.Like(employee.FIO!.ToString(), $"%{seachingOrder}%")
-                             //where EF.Functions.Like(client.FIO!.ToString(), $"%{seachingOrder}%")
-                             //where EF.Functions.Like(device.Name!.ToString(), $"%{seachingOrder}%")
-                             //where EF.Functions.Like(device.Serial_Number!.ToString(), $"%{seachingOrder}%")
                              select new
                              {
                                  DateOrder = order.Date_Order,
@@ -234,7 +445,7 @@ namespace ApplicationRepairPhoneEntityFramework
                                  EmployeeName = employee.FIO
                              };
 
-                var search = orders.Where(n=>
+                var search = orders.Where(n =>
                     EF.Functions.Like(n.ID_Order!, $"%{seachingOrder}%") ||
                     EF.Functions.Like(n.ClientName!, $"%{seachingOrder}%") ||
                     EF.Functions.Like(n.DeviceName!, $"%{seachingOrder}%") ||
@@ -242,10 +453,185 @@ namespace ApplicationRepairPhoneEntityFramework
                     EF.Functions.Like(n.EmployeeName, $"%{seachingOrder}%")
                 );
 
-                foreach(var order in search)
+                foreach (var order in search)
                     searchOrders.Add(order);
 
                 return searchOrders;
+
+
+            }
+        }
+
+        public async static Task<ArrayList> SearchOrdersViewAllOrdersWindow(string seachingOrder)
+        {
+            ArrayList searchOrders = new ArrayList();
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                await Task.Delay(0);
+                var orders = from order in db.Orders
+                             join employee in db.Employees on order.ID_Employee equals employee.ID_Employee
+                             join client in db.Clients on order.ID_Client equals client.ID_Client
+                             join device in db.Devices on order.ID_Device equals device.ID_Device
+                             join status in db.order_Statuses on order.ID_Status equals status.ID_Status
+                             orderby order.Date_Order
+                             select new
+                             {
+                                 DateOrder = order.Date_Order,
+                                 ID_Order = order.ID_Order.ToString(),
+                                 ClientName = client.FIO,
+                                 ClientSeriesNumber = client.Series_Number_Passport,
+                                 ClientPhoneNumber = client.Phone_Number,
+                                 DeviceName = device.Name,
+                                 SeriesNumber = device.Serial_Number,
+                                 Description = device.Description,
+                                 Manufactorer = device.Manufacturer,
+                                 Model = device.Model,
+                                 ID_Employee = employee.ID_Employee,
+                                 EmployeeName = employee.FIO,
+                                 EmployeePhoneNumber = employee.Phone_Number,
+                                 Status = status.Name_Status
+
+                             };
+
+                var search = orders.Where(n =>
+                    EF.Functions.Like(n.ID_Order!, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.Status!, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.ClientName!, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.ClientSeriesNumber!, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.ClientPhoneNumber!, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.DeviceName!, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.SeriesNumber!, $"%{seachingOrder}%") ||
+                     EF.Functions.Like(n.EmployeeName, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.ID_Employee, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.EmployeePhoneNumber, $"%{seachingOrder}%")
+                );
+
+                foreach (var order in search)
+                    searchOrders.Add(order);
+
+                return searchOrders;
+
+
+            }
+        }
+
+        public async static Task<ArrayList> SearchOrdersMasterWindow(int id_status, string id_employee, string seachingOrder)
+        {
+            ArrayList searchOrders = new ArrayList();
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                await Task.Delay(0);
+                var orders = from order in db.Orders
+                             join employee in db.Employees on order.ID_Employee equals employee.ID_Employee
+                             join client in db.Clients on order.ID_Client equals client.ID_Client
+                             join device in db.Devices on order.ID_Device equals device.ID_Device
+                             join status in db.order_Statuses on order.ID_Status equals status.ID_Status
+                             where order.ID_Status == id_status && order.ID_Employee == id_employee
+                             orderby order.Date_Order
+
+                             select new
+                             {
+                                 DateOrder = order.Date_Order,
+                                 ID_Order = order.ID_Order.ToString(),
+                                 ClientName = client.FIO,
+                                 ClientPhoneNumber = client.Phone_Number,
+                                 DeviceName = device.Name,
+                                 SeriesNumber = device.Serial_Number,
+                                 Description = device.Description,
+                                 Manufactorer = device.Manufacturer,
+                                 Model = device.Model,
+                                 Status = status.Name_Status
+
+                             };
+
+                var search = orders.Where(n =>
+                    EF.Functions.Like(n.ID_Order!, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.Status!, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.ClientName!, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.ClientPhoneNumber!, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.DeviceName!, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.SeriesNumber!, $"%{seachingOrder}%")
+                );
+
+                foreach (var order in search)
+                    searchOrders.Add(order);
+
+                return searchOrders;
+
+
+            }
+
+        }
+
+        public async static Task<ArrayList> SearchOrdersMasterWindow(int id_status, string seachingOrder)
+        {
+            ArrayList searchOrders = new ArrayList();
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                await Task.Delay(0);
+                var orders = from order in db.Orders
+                             join employee in db.Employees on order.ID_Employee equals employee.ID_Employee
+                             join client in db.Clients on order.ID_Client equals client.ID_Client
+                             join device in db.Devices on order.ID_Device equals device.ID_Device
+                             join status in db.order_Statuses on order.ID_Status equals status.ID_Status
+                             where order.ID_Status == id_status
+                             orderby order.Date_Order
+
+                             select new
+                             {
+                                 DateOrder = order.Date_Order,
+                                 ID_Order = order.ID_Order.ToString(),
+                                 ClientName = client.FIO,
+                                 ClientPhoneNumber = client.Phone_Number,
+                                 DeviceName = device.Name,
+                                 SeriesNumber = device.Serial_Number,
+                                 Description = device.Description,
+                                 Manufactorer = device.Manufacturer,
+                                 Model = device.Model,
+                                 Status = status.Name_Status
+
+                             };
+
+                var search = orders.Where(n =>
+                    EF.Functions.Like(n.ID_Order!, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.Status!, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.ClientName!, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.ClientPhoneNumber!, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.DeviceName!, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.SeriesNumber!, $"%{seachingOrder}%")
+                );
+
+                foreach (var order in search)
+                    searchOrders.Add(order);
+
+                return searchOrders;
+
+
+            }
+
+        }
+
+        public async static Task<ArrayList> SearchPerformanceViewAllOrdersWindow(string seachingOrder)
+        {
+            ArrayList searchPerf = new ArrayList();
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                await Task.Delay(0);
+
+
+                var search = db.performances.OrderBy(n => n.Date_Performance).Where(n =>
+                                     EF.Functions.Like(n.ID_Performance.ToString(), $"%{seachingOrder}%") ||
+                                     EF.Functions.Like(n.OrderKey.ToString(), $"%{seachingOrder}%")
+
+                    );
+
+
+
+
+                foreach (var performance in search)
+                    searchPerf.Add(performance);
+
+                return searchPerf;
 
 
             }
@@ -291,17 +677,17 @@ namespace ApplicationRepairPhoneEntityFramework
 
         }
 
-        public async static Task<ArrayList> SearchDetails(string searchingDetale) 
-        { 
+        public async static Task<ArrayList> SearchDetails(string searchingDetale)
+        {
             ArrayList searchDetails = new ArrayList();
-            using (ApplicationContext db = new ApplicationContext()) 
+            using (ApplicationContext db = new ApplicationContext())
             {
                 await Task.Delay(0);
                 var details = db.stockDetails.OrderBy(p => p.Name_Detail)
                     .Where(n =>
                     EF.Functions.Like(n.Name_Detail!, $"%{searchingDetale}%"));
 
-                foreach(var detail in details)
+                foreach (var detail in details)
                     searchDetails.Add(detail);
                 return searchDetails;
             }
@@ -317,20 +703,21 @@ namespace ApplicationRepairPhoneEntityFramework
                 var employees = db.Employees.Join(db.positions,
                     e => e.ID_Position,
                     p => p.ID_Position,
-                    (e,p) => new
+                    (e, p) => new
                     {
                         ID_Employee = e.ID_Employee,
                         FIO = e.FIO,
                         Position = p.Name_Position,
                         Phone_Number = e.Phone_Number
 
-                    }).Where(n=>
-                    EF.Functions.Like(n.FIO!, $"%{seachingEmployee}%") ||
-                    EF.Functions.Like(n.Position!, $"%{seachingEmployee}%"  
-                    )
+                    }).Where(n =>
+                     EF.Functions.Like(n.FIO!, $"%{seachingEmployee}%") ||
+                    EF.Functions.Like(n.Position!, $"%{seachingEmployee}%") ||
+                    EF.Functions.Like(n.ID_Employee!, $"%{seachingEmployee}%")
+
                     );
 
-                var SearchEmployees = employees.Where(n=>n.Position=="Мастер" || n.Position=="Старший мастер" || n.Position == "Стажер");
+                var SearchEmployees = employees.Where(n => n.Position == "Мастер" || n.Position == "Старший мастер" || n.Position == "Стажер");
 
                 foreach (var employee in SearchEmployees)
                     searchEmployees.Add(employee);
@@ -340,10 +727,48 @@ namespace ApplicationRepairPhoneEntityFramework
 
         }
 
-        
+
+        public async static Task<ArrayList> SearchEmployeesView(string seachingEmployee)
+        {
+            ArrayList searchEmployees = new ArrayList();
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                await Task.Delay(0);
+                var employees = db.Employees.Join(db.positions,
+                    e => e.ID_Position,
+                    p => p.ID_Position,
+                    (e, p) => new
+                    {
+                        ID_Employee = e.ID_Employee,
+                        Password = e.Password,
+                        FIO = e.FIO,
+                        ID_Position = p.ID_Position,
+                        Position = p.Name_Position,
+                        SeriesNumber = e.Series_Number_Password,
+                        Address = e.Address,
+                        Phone_Number = e.Phone_Number,
+                        DateEmployment = e.EmploymentDate
+
+                    }).Where(n =>
+                    EF.Functions.Like(n.FIO!, $"%{seachingEmployee}%") ||
+                    EF.Functions.Like(n.Position!, $"%{seachingEmployee}%") ||
+                    EF.Functions.Like(n.ID_Employee!, $"%{seachingEmployee}%")
+
+                    );
 
 
-        public async static Task InsertPerformance
+
+                foreach (var employee in employees)
+                    searchEmployees.Add(employee);
+                return searchEmployees;
+            }
+
+
+        }
+
+
+
+        public async static Task<bool> InsertPerformance
             (Guid ID_Perf, string description_rapair, decimal workPrice, decimal detailsPrice,
             decimal discount, decimal finalPrice, DateTime? datePerformance,
             Dictionary<Guid, int> IdQuantityDetails, Guid id_Order)
@@ -375,9 +800,9 @@ namespace ApplicationRepairPhoneEntityFramework
                         Where(c => c.ID_Detail == IsQuantityDetailsNum.Key)
                         .FirstOrDefault();
                     stockDetail.QuantityStock -= IsQuantityDetailsNum.Value;
-                    stockDetail.FullPrice = stockDetail.FullPrice - (IsQuantityDetailsNum.Value* stockDetail.Unit_Price);
-                    
-                    
+                    stockDetail.FullPrice = stockDetail.FullPrice - (IsQuantityDetailsNum.Value * stockDetail.Unit_Price);
+
+
                     if (IsQuantityDetailsNum.Value == 0)
                     {
                         throw new Exception($"Вы отметили деталь ({stockDetail.Name_Detail}), но не ввели количество!");
@@ -401,29 +826,30 @@ namespace ApplicationRepairPhoneEntityFramework
                 var order = db.Orders.
                     Where(c => c.ID_Order == id_Order)
                     .FirstOrDefault();
-                order.ID_Status = 3;
+                order.ID_Status = 4;
 
                 // Ограничение по дате
                 var dateOrder = db.Orders.Where(c => c.ID_Order == id_Order && c.Date_Order > datePerformance).FirstOrDefault();
 
-                if (dateOrder != null) 
+                if (dateOrder != null)
                 {
                     throw new Exception($"Исполнение не может быть раньше даты регистрации заказа. Заказ: ({dateOrder.Date_Order}) Исполнение: ({datePerformance})");
                 }
 
 
-                
-                
+
+
 
 
                 await db.SaveChangesAsync();
             }
+            return true;
 
 
 
         }
 
-        public async static Task InsertOrder(Guid id_Order, Guid idClient, Guid id_Device, string id_Employee, int id_Status, DateTime? dateOrder)
+        public async static Task<bool> InsertOrder(Guid id_Order, Guid idClient, Guid id_Device, string id_Employee, int id_Status, DateTime? dateOrder)
         {
 
             using (ApplicationContext db = new ApplicationContext())
@@ -434,64 +860,67 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
             }
+            return true;
 
         }
 
-        public async static Task InsertEmployee(string id_Employee, string password_employee, string fio, int id_position, string series_number_passport, string address, string phone_Number, DateTime? employment_Date) 
+        public async static Task<bool> InsertEmployee(string id_Employee, string password_employee, string fio, int id_position, string series_number_passport, string address, string phone_Number, DateTime? employment_Date)
         {
 
-            using (ApplicationContext db = new ApplicationContext()) 
+            using (ApplicationContext db = new ApplicationContext())
             {
                 Employee employee = new Employee() { ID_Employee = id_Employee, Password = password_employee, FIO = fio, ID_Position = id_position, Series_Number_Password = series_number_passport, Address = address, Phone_Number = phone_Number, EmploymentDate = employment_Date };
                 db.Add(employee);
                 await db.SaveChangesAsync();
             }
-        
+            return true;
+
+
         }
 
-        public async static Task<bool> InsertDetails(Guid id_Detail, string name_detail, decimal unit_Price, int quantity, decimal full_Price) 
+        public async static Task<bool> InsertDetails(Guid id_Detail, string name_detail, decimal unit_Price, int quantity, decimal full_Price)
         {
-            using (ApplicationContext db = new ApplicationContext()) 
-            { 
+            using (ApplicationContext db = new ApplicationContext())
+            {
                 StockDetails stockDetails = new StockDetails() { ID_Detail = id_Detail, Name_Detail = name_detail, Unit_Price = unit_Price, QuantityStock = quantity, FullPrice = full_Price };
                 db.Add(stockDetails);
                 await db.SaveChangesAsync();
             }
             return true;
-        
-        
+
+
         }
 
-        public async static Task<bool> InsertDevice(Guid id_Device, string nameDevice, string serialNumber, string description, string manufacturer, string model, DateTime? dateAdded) 
+        public async static Task<bool> InsertDevice(Guid id_Device, string nameDevice, string serialNumber, string description, string manufacturer, string model, DateTime? dateAdded)
         {
             using (ApplicationContext db = new ApplicationContext())
             {
                 Device device = new Device() { ID_Device = id_Device, Name = nameDevice, Serial_Number = serialNumber, Description = description, Manufacturer = manufacturer, Model = model, DateAdded = dateAdded };
                 db.Add(device);
                 await db.SaveChangesAsync();
-                
+
             }
             return true;
         }
 
-        public async static Task<bool> InsertClient(Guid id_Client, string fio, string serialNumber, string phoneNumber, DateTime? dateAdded) 
+        public async static Task<bool> InsertClient(Guid id_Client, string fio, string serialNumber, string phoneNumber, DateTime? dateAdded)
         {
-            using (ApplicationContext db = new ApplicationContext()) 
-            { 
+            using (ApplicationContext db = new ApplicationContext())
+            {
                 Client client = new Client() { ID_Client = id_Client, FIO = fio, Series_Number_Passport = serialNumber, Phone_Number = phoneNumber, DateAdded = dateAdded };
                 db.Add(client);
                 await db.SaveChangesAsync();
-               
+
             }
             return true;
         }
 
-        public async static Task UpdateClient(Guid id_Client, string fio, string seriesNumber, string phoneNumber) 
+        public async static Task UpdateClient(Guid id_Client, string fio, string seriesNumber, string phoneNumber)
         {
-            using (ApplicationContext db = new ApplicationContext()) 
-            { 
+            using (ApplicationContext db = new ApplicationContext())
+            {
                 var updatedClient = await db.Clients.
-                    Where(c=>c.ID_Client == id_Client)
+                    Where(c => c.ID_Client == id_Client)
                     .FirstOrDefaultAsync();
                 updatedClient.FIO = fio;
                 updatedClient.Series_Number_Passport = seriesNumber;
@@ -499,12 +928,12 @@ namespace ApplicationRepairPhoneEntityFramework
 
                 await db.SaveChangesAsync();
             }
-        
+
         }
 
-        public async static Task UpdateDevice(Guid id_Device, string name, string serielNumber, string description, string manufacturer, string model) 
+        public async static Task UpdateDevice(Guid id_Device, string name, string serielNumber, string description, string manufacturer, string model)
         {
-            using (ApplicationContext db = new ApplicationContext()) 
+            using (ApplicationContext db = new ApplicationContext())
             {
                 var updatedDevice = await db.Devices
                     .Where(c => c.ID_Device == id_Device)
@@ -519,9 +948,9 @@ namespace ApplicationRepairPhoneEntityFramework
             }
         }
 
-        public async static Task UpdateDetail(Guid id_detail, string nameDetail, decimal unitPrice, int quamtoty, decimal fullPrice) 
+        public async static Task UpdateDetail(Guid id_detail, string nameDetail, decimal unitPrice, int quamtoty, decimal fullPrice)
         {
-            using (ApplicationContext db = new ApplicationContext()) 
+            using (ApplicationContext db = new ApplicationContext())
             {
                 var updatedDetail = await db.stockDetails
                     .Where(c => c.ID_Detail == id_detail)
@@ -533,24 +962,60 @@ namespace ApplicationRepairPhoneEntityFramework
 
                 await db.SaveChangesAsync();
             }
-        
+
         }
 
-        public async static Task RemoveClient(Guid id_client) 
+        public async static Task UpdateEmployee(string id_employee, string password, string fio, string seriesNumber, string address, string phoneNumber, int position)
         {
-            using (ApplicationContext db = new ApplicationContext()) 
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var updatedEmployee = await db.Employees
+                    .Where(c => c.ID_Employee == id_employee)
+                    .FirstOrDefaultAsync();
+                updatedEmployee.Password = password;
+                updatedEmployee.FIO = fio;
+                updatedEmployee.Series_Number_Password = seriesNumber;
+                updatedEmployee.Address = address;
+                updatedEmployee.Phone_Number = phoneNumber;
+                updatedEmployee.ID_Position = position;
+
+                await db.SaveChangesAsync();
+            }
+
+
+        }
+
+        public async static Task UpdateStatus(Guid id_order, int id_status)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var updateOrder = await db.Orders
+                    .Where(c => c.ID_Order == id_order)
+                    .FirstOrDefaultAsync();
+                updateOrder.ID_Status = id_status;
+
+                await db.SaveChangesAsync();
+
+            }
+
+        }
+
+
+        public async static Task RemoveClient(Guid id_client)
+        {
+            using (ApplicationContext db = new ApplicationContext())
             {
                 var removeClient = await db.Clients.
                     Where(c => c.ID_Client == id_client)
                     .FirstOrDefaultAsync();
                 db.Remove(removeClient);
-               await db.SaveChangesAsync();
+                await db.SaveChangesAsync();
             }
         }
 
-        public async static Task RemoveDevice(Guid id_device) 
+        public async static Task RemoveDevice(Guid id_device)
         {
-            using (ApplicationContext db = new ApplicationContext()) 
+            using (ApplicationContext db = new ApplicationContext())
             {
                 var removeDevice = await db.Devices
                     .Where(c => c.ID_Device == id_device)
@@ -560,19 +1025,31 @@ namespace ApplicationRepairPhoneEntityFramework
             }
         }
 
-        public async static Task RemoveDetail(Guid id_detail) 
+        public async static Task RemoveDetail(Guid id_detail)
         {
-            using (ApplicationContext db = new ApplicationContext()) 
+            using (ApplicationContext db = new ApplicationContext())
             {
                 var removeDetail = await db.stockDetails
                     .Where(c => c.ID_Detail == id_detail)
                     .FirstOrDefaultAsync();
                 db.Remove(removeDetail);
                 await db.SaveChangesAsync();
-            
+
             }
         }
 
+        public async static Task RemoveEmployee(string id_Employee)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var removeEmployee = await db.Employees
+                    .Where(c => c.ID_Employee == id_Employee)
+                    .FirstOrDefaultAsync();
+                db.Remove(removeEmployee);
+                await db.SaveChangesAsync();
+
+            }
+        }
 
 
 

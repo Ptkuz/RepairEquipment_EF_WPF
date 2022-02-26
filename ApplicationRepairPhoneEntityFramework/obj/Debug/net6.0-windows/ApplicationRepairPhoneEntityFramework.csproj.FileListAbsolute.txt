@@ -73,3 +73,17 @@ C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRep
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ViewDevicesWindow.baml
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ViewDetailsWindow.g.cs
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ViewDetailsWindow.baml
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ViewEmployeeWindow.g.cs
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ViewEmployeeWindow.baml
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ViewAllOrdersWindow.g.cs
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ViewAllOrdersWindow.baml
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ViewMasterOrderWindow.g.cs
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ViewMasterOrderWindow.baml
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ViewAllOrdersManagerWindow.g.cs
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ViewAllOrdersManagerWindow.baml
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\DirectorMenuWindow.g.cs
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\DirectorMenuWindow.baml
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ManagerMenuWindow.g.cs
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\MasterMenuWindow.g.cs
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ManagerMenuWindow.baml
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\MasterMenuWindow.baml

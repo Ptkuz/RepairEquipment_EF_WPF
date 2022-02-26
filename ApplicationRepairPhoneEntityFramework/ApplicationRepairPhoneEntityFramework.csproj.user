@@ -25,6 +25,21 @@
     <Compile Update="CreateOrderWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="DirectorMenuWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ManagerMenuWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MasterMenuWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ViewAllOrdersManagerWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ViewAllOrdersWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="ViewClientsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -35,6 +50,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="ViewDevicesWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ViewEmployeeWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ViewMasterOrderWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -57,6 +78,21 @@
     <Page Update="CreateOrderWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="DirectorMenuWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ManagerMenuWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MasterMenuWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ViewAllOrdersManagerWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ViewAllOrdersWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="ViewClientsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -70,6 +106,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ViewDevicesWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ViewEmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ViewMasterOrderWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -174,8 +174,10 @@ namespace ApplicationRepairPhoneEntityFramework
             Address = txbx_Address.Text.Trim();
             NumberPhone = txbx_Phone_Number.Text.Trim();
             EmploymentDate = DateTime.Now;
-            await DataOperations.InsertEmployee(ID_Employee, Password_Employee, Fio, Position, SeriesNumber, Address, NumberPhone, EmploymentDate);
-            MessageBox.Show("Новый сотрудник добавлен", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (await DataOperations.InsertEmployee(ID_Employee, Password_Employee, Fio, Position, SeriesNumber, Address, NumberPhone, EmploymentDate))
+                this.DialogResult = true;
+            else
+                this.DialogResult = false;
         }
 
         private void txbx_FIO_Employee_SelectionChanged(object sender, RoutedEventArgs e)

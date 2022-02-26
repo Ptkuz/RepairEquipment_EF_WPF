@@ -12,6 +12,9 @@
             <Grid Margin="0,00,0,20">
                 <Label Content="ID Заказа: " Width="100" Margin="0,0,1500,0"/>
                 <TextBox x:Name="txbx_ID_Order" TextWrapping="Wrap" IsReadOnly="True" Width="400" Margin="0,0,1000,0"/>
+                <Button Content="Добавить новое оборудование"  Width="200" Margin="500,0,0,0" Click="Button_Click_1"/>
+                <Button Content="Добавить нового клиента"  Width="200" Click="Button_Click"/>
+
 
 
             </Grid>
@@ -19,8 +22,8 @@
                     <Grid>
                 <Label Content="Поиск Клиента: " Width="100" Margin="0,0,1500,0"/>
                 <TextBox x:Name="txbx_searchClient" TextWrapping="Wrap" Width="400" Margin="0,0,1000,0" SelectionChanged="txbx_searchClient_SelectionChanged"/>
-                <Label Content="Поиск Телефона: " Width="110" Margin="0,0,450,0"/>
-                <TextBox x:Name="txbx_searchDevice" TextWrapping="Wrap" Width="400" Margin="60,0,0,0" SelectionChanged="txbx_searchDevice_SelectionChanged"/>
+                <Label Content="Поиск Оборудования: " Width="140" Margin="0,0,450,0"/>
+                <TextBox x:Name="txbx_searchDevice" TextWrapping="Wrap" Width="350" Margin="70,0,0,0" SelectionChanged="txbx_searchDevice_SelectionChanged"/>
                 <Label Content="Поиск Сотрудника: " Width="120" Margin="600,0,0,0"/>
                 <TextBox x:Name="txbx_searchEmployee" TextWrapping="Wrap" Width="400" Margin="1130,0,0,0" SelectionChanged="txbx_searchEmployee_SelectionChanged"/>
             </Grid>

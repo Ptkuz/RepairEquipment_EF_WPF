@@ -59,7 +59,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 new Order_Status { ID_Status = 2, Name_Status = "Заказ выполняется"},
                 new Order_Status {ID_Status = 3, Name_Status = "Заказ выполнен" },
                 new Order_Status { ID_Status = 4, Name_Status = "Заказ закрыт"},
-                //new Order_Status { ID_Status = 5, Name_Status = "Заказ отменен"}
+                new Order_Status { ID_Status = 5, Name_Status = "Заказ отменен"}
             });
 
             builder.Entity<Position>().HasData(
@@ -70,7 +70,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 new Position {ID_Position = 3, Name_Position = "Старший мастер"},
                 new Position { ID_Position = 4, Name_Position = "Менеджер" },
                 new Position { ID_Position = 5, Name_Position = "Директор" },
-                //new Position { ID_Position = 6, Name_Position = "Уволен" }
+               new Position { ID_Position = 6, Name_Position = "Уволен" }
             });
 
             builder.Entity<Employee>().HasData(new Employee { ID_Employee = "Gurrex", Password = "GurrexPassword", FIO = "Тимоходцев Павел Евгеньевич", ID_Position = 5, Series_Number_Password = "3219 008001", Address = "Москва", Phone_Number = "89512289628", EmploymentDate = DateTime.Now });

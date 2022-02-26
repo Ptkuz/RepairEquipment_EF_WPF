@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ApplicationRepairPhoneEntityFramework
 {
+
+
     /// <summary>
     /// Логика взаимодействия для AuthorizationWindow.xaml
     /// </summary>
@@ -43,19 +34,24 @@ namespace ApplicationRepairPhoneEntityFramework
                 switch (position)
                 {
                     case "Директор":
-                        MessageBox.Show("Директор");
+                        DirectorMenuWindow directorMenuWindow = new DirectorMenuWindow(Login);
+                        directorMenuWindow.Show();
                         break;
                     case "Стажер":
-                        MessageBox.Show("Стажер");
+                        MasterMenuWindow masterMenuWindow1 = new MasterMenuWindow(Login);
+                        masterMenuWindow1.Show();
                         break;
                     case "Мастер":
-                        MessageBox.Show("Мастер");
+                        MasterMenuWindow masterMenuWindow2 = new MasterMenuWindow(Login);
+                        masterMenuWindow2.Show();
                         break;
                     case "Старший мастер":
-                        MessageBox.Show("Старший мастер");
+                        MasterMenuWindow masterMenuWindow3 = new MasterMenuWindow(Login);
+                        masterMenuWindow3.Show();
                         break;
                     case "Менеджер":
-                        MessageBox.Show("Менеджер");
+                        ManagerMenuWindow managerMenuWindow = new ManagerMenuWindow();
+                        managerMenuWindow.Show();
                         break;
 
 
@@ -63,10 +59,10 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show("Неверный логин или пароль!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
-            
+
             }
 
 

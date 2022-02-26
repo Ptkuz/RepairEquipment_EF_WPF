@@ -1,0 +1,35 @@
+﻿<Window x:Class="ApplicationRepairPhoneEntityFramework.DirectorMenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
+        mc:Ignorable="d"
+        Title="DirectorMenuWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <Grid>
+                <Button x:Name="btn_clients" Content="Клиенты" Height="60" Click="btn_clients_Click"/>
+                </Grid>
+            <Grid>
+                <Button x:Name="btn_devices" Content="Оборудование" Height="60" Click="btn_devices_Click"/>
+            </Grid>
+            <Grid>
+                <Button x:Name="btn_employees" Content="Сотрудники" Height="60" Click="btn_employees_Click"/>
+            </Grid>
+            <Grid>
+                <Button x:Name="btn_details" Content="Детали на складе" Height="60" Click="btn_details_Click"/>
+            </Grid>
+            <Grid>
+                <Button  x:Name="btn_orders" Content="Заказы" Height="60" Click="btn_orders_Click"/>
+            </Grid>
+            <Grid>
+                <Button  x:Name="btn_AddOrders" Content="Добавить заказ" Height="60" Click="btn_AddOrders_Click"/>
+            </Grid>
+            <Grid>
+                <Button  x:Name="btn_AddPerforms" Content="Добавить исполнение" Height="60" Click="btn_AddPerforms_Click"/>
+            </Grid>
+        </StackPanel>
+
+    </Grid>
+</Window>

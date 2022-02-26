@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -24,57 +23,59 @@ namespace ApplicationRepairPhoneEntityFramework
         bool flagPriceWork = false;
         bool flagDate = false;
 
+        public bool FlagDescription
+        {
+            get { return flagDescription; }
+            set
+            {
+                flagDescription = value;
+                if (flagDescription && flagPriceWork && flagDate)
+                    Btn_Insert_Detail.IsEnabled = true;
+                else
+                    Btn_Insert_Detail.IsEnabled = false;
+            }
+        }
+        public bool FlagPriceWork
+        {
+            get { return flagPriceWork; }
+            set
+            {
+                flagPriceWork = value;
+                if (flagDescription && flagPriceWork && flagDate)
+                    Btn_Insert_Detail.IsEnabled = true;
+                else
+                    Btn_Insert_Detail.IsEnabled = false;
+            }
+        }
+        public bool FlagDate
+        {
+            get { return flagDate; }
+            set
+            {
+                flagDate = value;
+                if (flagDescription && flagPriceWork && flagDate)
+                    Btn_Insert_Detail.IsEnabled = true;
+                else
+                    Btn_Insert_Detail.IsEnabled = false;
+            }
+        }
+
+
 
         public Guid ID_Performance { get; set; }
-        string description_repair;
-        public string DescriptionRepair
-        {
-            get { return description_repair; }
-            set
-            {
-                description_repair = value;
-                if (flagDescription && flagPriceWork && flagDate)
-                    Btn_Insert_Detail.IsEnabled = true;
-                else
-                    Btn_Insert_Detail.IsEnabled = false;
+        public string DescriptionRepair { get; set; }
+       
 
+        public decimal WorkPrice { get; set; }
+       
 
-            }
-        }
+        public decimal DetailsPrice { get; set; }
+       
 
-        decimal work_price;
-        public decimal WorkPrice
-        {
-            get { return work_price; }
-            set
-            {
-                work_price = value;
-                if (flagDescription && flagPriceWork && flagDate)
-                    Btn_Insert_Detail.IsEnabled = true;
-                else
-                    Btn_Insert_Detail.IsEnabled = false;
-            }
-        }
-
-        decimal details_Price;
-        public decimal DetailsPrice
-        {
-            get { return details_Price; }
-            set { details_Price = value; }
-        }
-
-        decimal discount = 0;
-        public decimal Discount
-        {
-            get { return discount; }
-            set { discount = value; }
-        }
-        decimal finalPrice;
-        public decimal FinalPrice
-        {
-            get { return finalPrice; }
-            set { finalPrice = value; }
-        }
+        public decimal Discount { get; set; }
+       
+        public decimal FinalPrice { get; set; }
+        
 
         DateTime? date_performance;
         public DateTime? DatePerformance
@@ -96,7 +97,7 @@ namespace ApplicationRepairPhoneEntityFramework
             set
             {
                 id_Order = value;
-                
+
             }
 
 
@@ -153,20 +154,22 @@ namespace ApplicationRepairPhoneEntityFramework
 
                 string ID_Detail = (DataGridOrders.SelectedCells[1].Column.GetCellContent(item) as TextBlock)!.Text;
 
-                if (item == null) 
+                if (item == null)
                 {
                     throw new NullReferenceException();
                 }
                 ID_Order = Guid.Parse(ID_Detail);
 
 
-                await DataOperations.InsertPerformance(ID_Performance, DescriptionRepair, WorkPrice, DetailsPrice, Discount, FinalPrice, DatePerformance, IdQuantityDetails, ID_Order);
+                if (await DataOperations.InsertPerformance(ID_Performance, DescriptionRepair, WorkPrice, DetailsPrice, Discount, FinalPrice, DatePerformance, IdQuantityDetails, ID_Order))
+                    this.DialogResult = true;
+                else
+                    this.DialogResult = false;
 
-                MessageBox.Show("Данные загружены", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
 
 
             }
-            catch (NullReferenceException) 
+            catch (NullReferenceException)
             {
                 MessageBox.Show("Вы не выбрали заказ для добавления исполнения", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -284,9 +287,9 @@ namespace ApplicationRepairPhoneEntityFramework
 
                 if (txbx_Price_Work.Text != String.Empty)
                 {
-                    flagPriceWork = true;
+                    FlagPriceWork = true;
                     WorkPrice = Decimal.Parse(txbx_Price_Work.Text);
-                    FinalPrice = WorkPrice + DetailsPrice;
+                    FinalPrice = ((DetailsPrice + WorkPrice) - (((DetailsPrice + WorkPrice) * Discount) / 100));
                     txbx_FinalPrice.Text = FinalPrice.ToString();
                     chbx_CheckDiscount.IsEnabled = true;
                     txbx_Price_Work.MaxLength = 5;
@@ -294,7 +297,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 }
                 else if (txbx_Price_Work.Text == String.Empty)
                 {
-                    flagPriceWork = false;
+                    FlagPriceWork = false;
                     WorkPrice = 0;
                     FinalPrice = WorkPrice + DetailsPrice;
                     txbx_FinalPrice.Text = FinalPrice.ToString();
@@ -319,7 +322,7 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_PriceAllDetails.Text != String.Empty)
             {
                 DetailsPrice = Decimal.Parse(txbx_PriceAllDetails.Text);
-                FinalPrice = WorkPrice + DetailsPrice;
+                FinalPrice = ((DetailsPrice + WorkPrice) - (((DetailsPrice + WorkPrice) * Discount) / 100));
                 txbx_FinalPrice.Text = FinalPrice.ToString();
             }
         }
@@ -367,14 +370,14 @@ namespace ApplicationRepairPhoneEntityFramework
         {
             if (txbx_Description.Text != String.Empty)
             {
-                flagDescription = true;
+                FlagDescription = true;
                 DescriptionRepair = txbx_Description.Text;
                 txbx_Description.MaxLength = 500;
 
             }
             else if (txbx_Description.Text == String.Empty)
             {
-                flagDescription = false;
+                FlagDescription = false;
                 DescriptionRepair = txbx_Description.Text;
 
             }
@@ -383,10 +386,10 @@ namespace ApplicationRepairPhoneEntityFramework
         private void DatePerformanceDP_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if (DatePerformanceDP.SelectedDate != null)
-                flagDate = true;
+                FlagDate = true;
 
             else if (DatePerformanceDP.SelectedDate == null)
-                flagDate = false;
+                FlagDate = false;
 
         }
 
@@ -400,6 +403,6 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
 
-        
+
     }
 }

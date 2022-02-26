@@ -1,0 +1,90 @@
+﻿<Window x:Class="ApplicationRepairPhoneEntityFramework.ViewMasterOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
+        mc:Ignorable="d"
+        Title="ViewMasterOrderWindow" Height="1227" Width="1974">
+    <Grid>
+        <StackPanel>
+            <Grid Margin="0,20,0,0">
+                <Label Content="Поиск зарегестрированного заказа:" Width="230" Margin="10,0,680,0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_search_orders" TextWrapping="Wrap"  Width="650" Margin="260,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_search_orders_SelectionChanged"/>
+                <Button x:Name="btn_change_status" Content="Заказ на выполнении" IsEnabled="False" Width="200" Margin="90,0,0,0" Click="btn_change_status_Click_1"/>
+
+
+            </Grid>
+
+            <Grid Margin="0,20,0,0">
+                <DataGrid x:Name="DataGridOrders" Height="300"  AutoGenerateColumns="False" SelectionChanged="DataGridOrders_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding DateOrder}" IsReadOnly="True" Header="Дата заказа" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding ID_Order}" IsReadOnly="True" Header="ID заказа" Width="130"/>
+                        <DataGridTextColumn Binding="{Binding Status}" Header="Статус заказа" Width="160"/>
+                        <DataGridTextColumn Binding="{Binding ClientName}" IsReadOnly="True" Header="ФИО клиента" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding ClientPhoneNumber}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding DeviceName}" IsReadOnly="True" Header="Назавние оборудования" Width="150"/>
+                        <DataGridTextColumn Binding="{Binding SeriesNumber}" IsReadOnly="True" Header="Серийный номер" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True" Header="Описание" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding Manufactorer}" IsReadOnly="True" Header="Производитель" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding Model}" IsReadOnly="True" Header="Модель" Width="140"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+
+            <Grid Margin="0,20,0,0">
+                <Label Content="Поиск выполняемого заказа:" Width="180" Margin="10,0,680,0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_search_workingOrder" TextWrapping="Wrap"  Width="650" Margin="210,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_search_workingOrder_SelectionChanged"/>
+                <Button x:Name="btn_change_status_2" Content="Заказ выполнен" IsEnabled="False" Width="200" Margin="0,0,0,0" Click="btn_change_status_2_Click"/>
+            </Grid>
+
+            <Grid Margin="0,20,0,0">
+                <DataGrid x:Name="DataGridWorkingOrder" Height="300"  AutoGenerateColumns="False" SelectionChanged="DataGridWorkingOrder_SelectionChanged">
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Binding="{Binding DateOrder}" IsReadOnly="True" Header="Дата заказа" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding ID_Order}" IsReadOnly="True" Header="ID заказа" Width="130"/>
+                        <DataGridTextColumn Binding="{Binding Status}" Header="Статус заказа" Width="160"/>
+                        <DataGridTextColumn Binding="{Binding ClientName}" IsReadOnly="True" Header="ФИО клиента" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding ClientPhoneNumber}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding DeviceName}" IsReadOnly="True" Header="Назавние оборудования" Width="150"/>
+                        <DataGridTextColumn Binding="{Binding SeriesNumber}" IsReadOnly="True" Header="Серийный номер" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True" Header="Описание" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding Manufactorer}" IsReadOnly="True" Header="Производитель" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding Model}" IsReadOnly="True" Header="Модель" Width="140"/>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+
+            <Grid Margin="0,20,0,0">
+                <Label Content="Поиск выполненнго заказа:" Width="180" Margin="10,0,680,0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_search_completeOrder" TextWrapping="Wrap"  Width="650" Margin="210,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_search_completeOrder_SelectionChanged"/>
+            </Grid>
+
+            <Grid Margin="0,20,0,0">
+                <DataGrid x:Name="DataGridCompleteOrder" Height="300"  AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Binding="{Binding DateOrder}" IsReadOnly="True" Header="Дата заказа" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding ID_Order}" IsReadOnly="True" Header="ID заказа" Width="130"/>
+                        <DataGridTextColumn Binding="{Binding Status}" Header="Статус заказа" Width="160"/>
+                        <DataGridTextColumn Binding="{Binding ClientName}" IsReadOnly="True" Header="ФИО клиента" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding ClientPhoneNumber}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding DeviceName}" IsReadOnly="True" Header="Назавние оборудования" Width="150"/>
+                        <DataGridTextColumn Binding="{Binding SeriesNumber}" IsReadOnly="True" Header="Серийный номер" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True" Header="Описание" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding Manufactorer}" IsReadOnly="True" Header="Производитель" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding Model}" IsReadOnly="True" Header="Модель" Width="140"/>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+
+        </StackPanel>
+    </Grid>
+</Window>
