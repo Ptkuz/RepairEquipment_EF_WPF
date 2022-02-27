@@ -19,9 +19,18 @@ namespace ApplicationRepairPhoneEntityFramework
     /// </summary>
     public partial class ManagerMenuWindow : Window
     {
-        public ManagerMenuWindow()
+
+        string login;
+        string fio;
+        string position;
+        public ManagerMenuWindow(string login, string fio, string position)
         {
             InitializeComponent();
+            this.login = login;
+            this.fio = fio;
+            this.position = position;
+            lb_fio.Content = fio;
+            lb_position.Content = position;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

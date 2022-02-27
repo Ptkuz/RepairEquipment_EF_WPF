@@ -24,6 +24,8 @@ namespace ApplicationRepairPhoneEntityFramework
         ArrayList WorkingOrder = new ArrayList();
         ArrayList CompletedOrder = new ArrayList();
         public Guid ID_Order { get; set; }
+        public string Email { get; set; }
+        public string Fio { get; set; }
         public ViewAllOrdersManagerWindow()
         {
             InitializeComponent();
@@ -48,8 +50,11 @@ namespace ApplicationRepairPhoneEntityFramework
         private async void btn_change_status_Click(object sender, RoutedEventArgs e)
         {
             await DataOperations.UpdateStatus(ID_Order, 5);
+            object item = DataGridOrders.SelectedItem;
+            Email = (DataGridOrders.SelectedCells[5].Column.GetCellContent(item) as TextBlock)!.Text.Trim();
+            Fio = (DataGridOrders.SelectedCells[3].Column.GetCellContent(item) as TextBlock)!.Text.Trim();
             DataGridOrders.ItemsSource = await DataOperations.GetStatusOrdersViewMasterWindow(1);
-            DataGridWorkingOrder.ItemsSource = await DataOperations.GetStatusOrdersViewMasterWindow(2);
+            await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(Fio, ID_Order.ToString(), "Заказ отменен"));
             MessageBox.Show("Заказ отменен", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 

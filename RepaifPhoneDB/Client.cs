@@ -26,6 +26,7 @@ namespace RepaifPhoneDB
             get { return phone_number; }
             set { phone_number = value; }
         }
+        public string? Email { get; set; }
 
         DateTime? dateAdded;
         public DateTime? DateAdded

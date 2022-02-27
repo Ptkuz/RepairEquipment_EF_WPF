@@ -5,19 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="AuthorizationWindow" Height="182" Width="373">
+        Title="AuthorizationWindow" WindowStartupLocation="CenterScreen" Height="318" ResizeMode="NoResize" Width="338">
     <Grid>
         <StackPanel>
             <Grid Margin="0,20,0,0">
+                <Label Content="Сервер:" Width="100" Margin="0,0,230,0"/>
+                <TextBox x:Name="txbx_server" TextWrapping="Wrap" Width="260" Margin="40,0,0,0" SelectionChanged="txbx_server_SelectionChanged"/>
+            </Grid>
+            <Grid Margin="0,20,0,0">
                 <Label Content="Логин:" Width="100" Margin="0,0,230,0"/>
-                <TextBox x:Name="txbx_login" TextWrapping="Wrap" Width="200" Margin="150,0,0,0"/>
+                <TextBox x:Name="txbx_login" TextWrapping="Wrap" Width="260" Margin="40,0,0,0" SelectionChanged="txbx_login_SelectionChanged"/>
             </Grid>
             <Grid Margin="0,10,0,0" >
                 <Label Content="Пароль:" Width="100" Margin="0,0,230,0"/>
-                <TextBox x:Name="txbx_pawword" TextWrapping="Wrap" Width="200" Margin="150,0,0,0"/>
+                <PasswordBox x:Name="txbx_pawword" PasswordChar="*" Width="260" Margin="40,0,0,0" PasswordChanged="txbx_pawword_PasswordChanged" />
             </Grid>
             <Grid Margin="0,10,0,0" >
-                <Button x:Name="btn_login" Content="Войти" Margin="150,0,0,0" Click="btn_login_Click"/>
+                <Button x:Name="btn_login" IsEnabled="False" Height="30" Content="Войти" Margin="40,0,0,0" Width="260" Click="btn_login_Click"/>
+            </Grid>
+            <Grid Margin="0,10,0,0" >
+                <CheckBox x:Name="cxbx_Member" IsEnabled="False" Height="30" Content="Запомнить логин и пароль" Margin="40,0,0,0" Width="260" Checked="cxbx_Member_Checked" Unloaded="cxbx_Member_Unloaded" />
+            </Grid>
+            <Grid>
+                <ProgressBar x:Name="connectionProgressBar" Height="20" Width="340" Visibility="Hidden"/>
+
+            </Grid>
+            <Grid>
+                <Label x:Name="connectionLabel" Height="20" Width="340"/>
+
             </Grid>
 
         </StackPanel>

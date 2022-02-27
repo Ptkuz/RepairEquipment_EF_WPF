@@ -20,10 +20,16 @@ namespace ApplicationRepairPhoneEntityFramework
     public partial class MasterMenuWindow : Window
     {
         string login;
-        public MasterMenuWindow(string login)
+        string fio;
+        string position;
+        public MasterMenuWindow(string login_, string fio_, string position_)
         {
             InitializeComponent();
-            this.login = login;
+            login = login_;
+            fio = fio_;
+            position = position_;
+            lb_fio.Content = fio;
+            lb_position.Content = position;
         }
 
         

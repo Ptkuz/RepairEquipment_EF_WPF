@@ -19,6 +19,9 @@ namespace ApplicationRepairPhoneEntityFramework
         public string Status { get; set; }
         public int StatusValue { get; set; }
         public Guid ID_OrderValue { get; set; }
+        public string Email { get; private set; }
+        public string Fio { get; private set; }
+
         public ViewAllOrdersWindow()
         {
             InitializeComponent();
@@ -151,8 +154,13 @@ namespace ApplicationRepairPhoneEntityFramework
                 ID_OrderValue = Guid.Parse(ID_Order);
                 StatusValue = Int32.Parse(cmbx_status.SelectedValue.ToString());
                 await DataOperations.UpdateStatus(ID_OrderValue, StatusValue);
+                object item = DataGridOrders.SelectedItem;
+                Email = (DataGridOrders.SelectedCells[6].Column.GetCellContent(item) as TextBlock)!.Text.Trim();
+                Fio = (DataGridOrders.SelectedCells[3].Column.GetCellContent(item) as TextBlock)!.Text.Trim();
                 DataGridOrders.ItemsSource = await DataOperations.GetAllOrdersViewAllOrdersWindow();
+               
                 MessageBox.Show("Статус заказа изменен", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+                await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(Fio, ID_Order.ToString(), cmbx_status.Text));
             }
             catch (Exception ex) 
             {

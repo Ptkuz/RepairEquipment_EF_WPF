@@ -10,7 +10,7 @@ namespace ApplicationRepairPhoneEntityFramework
 {
     public static class DataOperations
     {
-        public async static Task<string> Autorization(string login, string password)
+        public async static Task<string[]> Autorization(string login, string password)
         {
             using (ApplicationContext db = new ApplicationContext())
             {
@@ -23,13 +23,14 @@ namespace ApplicationRepairPhoneEntityFramework
                     {
                         Login = e.ID_Employee,
                         Password = e.Password,
-                        Position = p.Name_Position
+                        Position = p.Name_Position,
+                        FIO = e.FIO
 
 
                     }).Where(n => n.Login == login && n.Password == password).FirstOrDefault();
-                string position = user.Position;
+                string[] dataEmployee = new string[2] { user.Position, user.FIO };
 
-                return position;
+                return dataEmployee;
             }
 
 
@@ -54,6 +55,7 @@ namespace ApplicationRepairPhoneEntityFramework
                                  ClientName = client.FIO,
                                  ClientSeriesNumber = client.Series_Number_Passport,
                                  ClientPhoneNumber = client.Phone_Number,
+                                 ClientEmail = client.Email,
                                  DeviceName = device.Name,
                                  SeriesNumber = device.Serial_Number,
                                  Description = device.Description,
@@ -93,6 +95,7 @@ namespace ApplicationRepairPhoneEntityFramework
                                  DateOrder = order.Date_Order,
                                  ID_Order = order.ID_Order,
                                  ClientName = client.FIO,
+                                 ClientEmail = client.Email,
                                  ClientPhoneNumber = client.Phone_Number,
                                  DeviceName = device.Name,
                                  SeriesNumber = device.Serial_Number,
@@ -131,12 +134,16 @@ namespace ApplicationRepairPhoneEntityFramework
                                  ID_Order = order.ID_Order,
                                  ClientName = client.FIO,
                                  ClientPhoneNumber = client.Phone_Number,
+                                 ClientEmail = client.Email,
                                  DeviceName = device.Name,
                                  SeriesNumber = device.Serial_Number,
                                  Description = device.Description,
                                  Manufactorer = device.Manufacturer,
                                  Model = device.Model,
-                                 Status = status.Name_Status
+                                 Status = status.Name_Status,
+                                 FioEmployee = employee.FIO,
+                                 PhoneEmployee = employee.Phone_Number,
+                                 Position = employee.Position
 
                              };
 
@@ -189,6 +196,24 @@ namespace ApplicationRepairPhoneEntityFramework
             {
                 await Task.Delay(0);
                 var positions = from position in db.positions
+                                select position;
+
+                foreach (var position in positions)
+                    allPositions.Add(position);
+
+                return allPositions;
+            }
+
+        }
+
+        public async static Task<ArrayList> GetActivePositions()
+        {
+            ArrayList allPositions = new ArrayList();
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                await Task.Delay(0);
+                var positions = from position in db.positions
+                                where position.ID_Position == 1 || position.ID_Position == 2 || position.ID_Position == 3 || position.ID_Position == 4  || position.ID_Position == 5
                                 select position;
 
                 foreach (var position in positions)
@@ -261,6 +286,7 @@ namespace ApplicationRepairPhoneEntityFramework
                                  DateOrder = order.Date_Order,
                                  ID_Order = order.ID_Order,
                                  ClientName = client.FIO,
+                                 Email = client.Email,
                                  DeviceName = device.Name,
                                  SeriesNumber = device.Serial_Number,
                                  EmployeeName = employee.FIO,
@@ -440,6 +466,7 @@ namespace ApplicationRepairPhoneEntityFramework
                                  DateOrder = order.Date_Order,
                                  ID_Order = order.ID_Order.ToString(),
                                  ClientName = client.FIO,
+                                 Email = client.Email,
                                  DeviceName = device.Name,
                                  SeriesNumber = device.Serial_Number,
                                  EmployeeName = employee.FIO
@@ -448,6 +475,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 var search = orders.Where(n =>
                     EF.Functions.Like(n.ID_Order!, $"%{seachingOrder}%") ||
                     EF.Functions.Like(n.ClientName!, $"%{seachingOrder}%") ||
+                     EF.Functions.Like(n.Email!, $"%{seachingOrder}%") ||
                     EF.Functions.Like(n.DeviceName!, $"%{seachingOrder}%") ||
                     EF.Functions.Like(n.SeriesNumber!, $"%{seachingOrder}%") ||
                     EF.Functions.Like(n.EmployeeName, $"%{seachingOrder}%")
@@ -481,6 +509,7 @@ namespace ApplicationRepairPhoneEntityFramework
                                  ClientName = client.FIO,
                                  ClientSeriesNumber = client.Series_Number_Passport,
                                  ClientPhoneNumber = client.Phone_Number,
+                                 ClientEmail = client.Email,
                                  DeviceName = device.Name,
                                  SeriesNumber = device.Serial_Number,
                                  Description = device.Description,
@@ -535,6 +564,7 @@ namespace ApplicationRepairPhoneEntityFramework
                                  ID_Order = order.ID_Order.ToString(),
                                  ClientName = client.FIO,
                                  ClientPhoneNumber = client.Phone_Number,
+                                 ClientEmail = client.Email,
                                  DeviceName = device.Name,
                                  SeriesNumber = device.Serial_Number,
                                  Description = device.Description,
@@ -549,6 +579,7 @@ namespace ApplicationRepairPhoneEntityFramework
                     EF.Functions.Like(n.Status!, $"%{seachingOrder}%") ||
                     EF.Functions.Like(n.ClientName!, $"%{seachingOrder}%") ||
                     EF.Functions.Like(n.ClientPhoneNumber!, $"%{seachingOrder}%") ||
+                    EF.Functions.Like(n.ClientEmail!, $"%{seachingOrder}%") ||
                     EF.Functions.Like(n.DeviceName!, $"%{seachingOrder}%") ||
                     EF.Functions.Like(n.SeriesNumber!, $"%{seachingOrder}%")
                 );
@@ -583,12 +614,15 @@ namespace ApplicationRepairPhoneEntityFramework
                                  ID_Order = order.ID_Order.ToString(),
                                  ClientName = client.FIO,
                                  ClientPhoneNumber = client.Phone_Number,
+                                 ClientEmail = client.Email,
                                  DeviceName = device.Name,
                                  SeriesNumber = device.Serial_Number,
                                  Description = device.Description,
                                  Manufactorer = device.Manufacturer,
                                  Model = device.Model,
-                                 Status = status.Name_Status
+                                 Status = status.Name_Status,
+                                 FioEmployee = employee.FIO,
+                                 PhoneEmployee = employee.Phone_Number,
 
                              };
 
@@ -598,7 +632,8 @@ namespace ApplicationRepairPhoneEntityFramework
                     EF.Functions.Like(n.ClientName!, $"%{seachingOrder}%") ||
                     EF.Functions.Like(n.ClientPhoneNumber!, $"%{seachingOrder}%") ||
                     EF.Functions.Like(n.DeviceName!, $"%{seachingOrder}%") ||
-                    EF.Functions.Like(n.SeriesNumber!, $"%{seachingOrder}%")
+                    EF.Functions.Like(n.SeriesNumber!, $"%{seachingOrder}%") ||
+                     EF.Functions.Like(n.FioEmployee!, $"%{seachingOrder}%") 
                 );
 
                 foreach (var order in search)
@@ -648,7 +683,8 @@ namespace ApplicationRepairPhoneEntityFramework
                     .Where(n =>
                     EF.Functions.Like(n.FIO!, $"%{seachingClient}%") ||
                     EF.Functions.Like(n.Series_Number_Passport!, $"%{seachingClient}%") ||
-                    EF.Functions.Like(n.Phone_Number!, $"%{seachingClient}%"));
+                    EF.Functions.Like(n.Phone_Number!, $"%{seachingClient}%") ||
+                    EF.Functions.Like(n.Email!, $"%{seachingClient}%"));
 
                 foreach (var client in clients)
                     searchClients.Add(client);
@@ -903,11 +939,11 @@ namespace ApplicationRepairPhoneEntityFramework
             return true;
         }
 
-        public async static Task<bool> InsertClient(Guid id_Client, string fio, string serialNumber, string phoneNumber, DateTime? dateAdded)
+        public async static Task<bool> InsertClient(Guid id_Client, string fio, string serialNumber, string phoneNumber, string email, DateTime? dateAdded)
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                Client client = new Client() { ID_Client = id_Client, FIO = fio, Series_Number_Passport = serialNumber, Phone_Number = phoneNumber, DateAdded = dateAdded };
+                Client client = new Client() { ID_Client = id_Client, FIO = fio, Series_Number_Passport = serialNumber, Phone_Number = phoneNumber, Email = email, DateAdded = dateAdded };
                 db.Add(client);
                 await db.SaveChangesAsync();
 
@@ -915,7 +951,7 @@ namespace ApplicationRepairPhoneEntityFramework
             return true;
         }
 
-        public async static Task UpdateClient(Guid id_Client, string fio, string seriesNumber, string phoneNumber)
+        public async static Task UpdateClient(Guid id_Client, string fio, string seriesNumber, string phoneNumber, string email)
         {
             using (ApplicationContext db = new ApplicationContext())
             {
@@ -925,6 +961,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 updatedClient.FIO = fio;
                 updatedClient.Series_Number_Passport = seriesNumber;
                 updatedClient.Phone_Number = phoneNumber;
+                updatedClient.Email = email;
 
                 await db.SaveChangesAsync();
             }

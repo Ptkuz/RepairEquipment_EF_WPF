@@ -29,6 +29,8 @@ namespace ApplicationRepairPhoneEntityFramework
         public Guid ID_Device { get; set; }
         public string ID_Employee { get; set; }
         public int ID_Status { get; set; }
+        public string Email { get; set; }
+        public string FioClient { get; set; }
         public DateTime? DateOrder { get; set; }
 
 
@@ -82,6 +84,8 @@ namespace ApplicationRepairPhoneEntityFramework
                     ID_Client = Guid.Parse((dataGridClients.SelectedCells[0].Column.GetCellContent(itemClient) as TextBlock)!.Text);
                     ID_Device = Guid.Parse((dataGridDevices.SelectedCells[0].Column.GetCellContent(itemDevice) as TextBlock)!.Text);
                     ID_Employee = (dataGridEmployees.SelectedCells[0].Column.GetCellContent(itemEmployee) as TextBlock)!.Text;
+                    Email = (dataGridClients.SelectedCells[4].Column.GetCellContent(itemClient) as TextBlock)!.Text;
+                    FioClient = (dataGridClients.SelectedCells[1].Column.GetCellContent(itemClient) as TextBlock)!.Text;
 
                     Order_Status status = await DataOperations.GetStatusOrder();
                     ID_Status = status.ID_Status;
@@ -89,7 +93,7 @@ namespace ApplicationRepairPhoneEntityFramework
 
                     if (await DataOperations.InsertOrder(ID_Order, ID_Client, ID_Device, ID_Employee, ID_Status, DateOrder))
                     {
-
+                        await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(FioClient, txbx_ID_Order.Text, "Заказ загерестрирован"));
                         this.DialogResult = true;
                     }
                     else

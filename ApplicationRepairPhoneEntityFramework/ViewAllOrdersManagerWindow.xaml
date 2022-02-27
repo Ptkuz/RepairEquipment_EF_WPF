@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="ViewAllOrdersManagerWindow" Height="1227" Width="1974">
+        Title="ViewAllOrdersManagerWindow" WindowStartupLocation="CenterScreen" Height="1227" Width="1974">
     <Grid>
         <StackPanel>
             <Grid Margin="0,20,0,0">
@@ -24,11 +24,14 @@
                         <DataGridTextColumn Binding="{Binding Status}" Header="Статус заказа" Width="160"/>
                         <DataGridTextColumn Binding="{Binding ClientName}" IsReadOnly="True" Header="ФИО клиента" Width="140"/>
                         <DataGridTextColumn Binding="{Binding ClientPhoneNumber}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding ClientEmail}" IsReadOnly="True" Header="Email" Width="140"/>
                         <DataGridTextColumn Binding="{Binding DeviceName}" IsReadOnly="True" Header="Назавние оборудования" Width="150"/>
                         <DataGridTextColumn Binding="{Binding SeriesNumber}" IsReadOnly="True" Header="Серийный номер" Width="140"/>
                         <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True" Header="Описание" Width="140"/>
                         <DataGridTextColumn Binding="{Binding Manufactorer}" IsReadOnly="True" Header="Производитель" Width="140"/>
                         <DataGridTextColumn Binding="{Binding Model}" IsReadOnly="True" Header="Модель" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding FioEmployee}" IsReadOnly="True" Header="ФИО Сотрудника" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding PhoneEmployee}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
                     </DataGrid.Columns>
                 </DataGrid>
 
@@ -48,11 +51,14 @@
                         <DataGridTextColumn Binding="{Binding Status}" Header="Статус заказа" Width="160"/>
                         <DataGridTextColumn Binding="{Binding ClientName}" IsReadOnly="True" Header="ФИО клиента" Width="140"/>
                         <DataGridTextColumn Binding="{Binding ClientPhoneNumber}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding ClientEmail}" IsReadOnly="True" Header="Email" Width="140"/>
                         <DataGridTextColumn Binding="{Binding DeviceName}" IsReadOnly="True" Header="Назавние оборудования" Width="150"/>
                         <DataGridTextColumn Binding="{Binding SeriesNumber}" IsReadOnly="True" Header="Серийный номер" Width="140"/>
                         <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True" Header="Описание" Width="140"/>
                         <DataGridTextColumn Binding="{Binding Manufactorer}" IsReadOnly="True" Header="Производитель" Width="140"/>
                         <DataGridTextColumn Binding="{Binding Model}" IsReadOnly="True" Header="Модель" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding FioEmployee}" IsReadOnly="True" Header="ФИО Сотрудника" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding PhoneEmployee}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
 
                     </DataGrid.Columns>
                 </DataGrid>
@@ -73,11 +79,14 @@
                         <DataGridTextColumn Binding="{Binding Status}" Header="Статус заказа" Width="160"/>
                         <DataGridTextColumn Binding="{Binding ClientName}" IsReadOnly="True" Header="ФИО клиента" Width="140"/>
                         <DataGridTextColumn Binding="{Binding ClientPhoneNumber}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding ClientEmail}" IsReadOnly="True" Header="Email" Width="140"/>
                         <DataGridTextColumn Binding="{Binding DeviceName}" IsReadOnly="True" Header="Назавние оборудования" Width="150"/>
                         <DataGridTextColumn Binding="{Binding SeriesNumber}" IsReadOnly="True" Header="Серийный номер" Width="140"/>
                         <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True" Header="Описание" Width="140"/>
                         <DataGridTextColumn Binding="{Binding Manufactorer}" IsReadOnly="True" Header="Производитель" Width="140"/>
                         <DataGridTextColumn Binding="{Binding Model}" IsReadOnly="True" Header="Модель" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding FioEmployee}" IsReadOnly="True" Header="ФИО Сотрудника" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding PhoneEmployee}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
 
                     </DataGrid.Columns>
                 </DataGrid>

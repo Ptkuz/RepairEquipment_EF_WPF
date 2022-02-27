@@ -14,6 +14,7 @@ namespace ApplicationRepairPhoneEntityFramework
         bool flagFIO;
         bool flagSeriseNumber;
         bool flagPhoneNumber;
+        bool flagEmail = true;
 
         public bool FlagFIO
         {
@@ -21,7 +22,7 @@ namespace ApplicationRepairPhoneEntityFramework
             set
             {
                 flagFIO = value;
-                if (flagFIO && flagSeriseNumber && flagPhoneNumber)
+                if (flagFIO && flagSeriseNumber && flagPhoneNumber && flagEmail)
                     btn_Add_Client.IsEnabled = true;
                 else
                     btn_Add_Client.IsEnabled = false;
@@ -33,7 +34,7 @@ namespace ApplicationRepairPhoneEntityFramework
             set
             {
                 flagSeriseNumber = value;
-                if (flagFIO && flagSeriseNumber && flagPhoneNumber)
+                if (flagFIO && flagSeriseNumber && flagPhoneNumber && flagEmail)
                     btn_Add_Client.IsEnabled = true;
                 else
                     btn_Add_Client.IsEnabled = false;
@@ -45,17 +46,32 @@ namespace ApplicationRepairPhoneEntityFramework
             set
             {
                 flagPhoneNumber = value;
-                if (flagFIO && flagSeriseNumber && flagPhoneNumber)
+                if (flagFIO && flagSeriseNumber && flagPhoneNumber && flagEmail)
+                    btn_Add_Client.IsEnabled = true;
+                else
+                    btn_Add_Client.IsEnabled = false;
+            }
+        }
+        public bool FlagEmail 
+        {
+
+            get { return flagEmail; }
+            set
+            {
+                flagEmail = value;
+                if (flagFIO && flagSeriseNumber && flagPhoneNumber && flagEmail)
                     btn_Add_Client.IsEnabled = true;
                 else
                     btn_Add_Client.IsEnabled = false;
             }
         }
 
+
         public Guid ID_Client { get; set; }
         public string FIO { get; set; }
         public string SeriesNumber { get; set; }
         public string PhoneNumber { get; set; }
+        public string Email { get; set; }
         public DateTime? DateAdded { get; set; }
 
         public AddClientWindow()
@@ -72,11 +88,12 @@ namespace ApplicationRepairPhoneEntityFramework
                 FIO = txbx_Name_Client.Text;
                 SeriesNumber = txbx_SeriesNumber.Text;
                 PhoneNumber = txbx_PhoneNumber.Text;
+                Email = txbx_Email.Text;
                 DateAdded = DateTime.Now;
 
 
 
-                if (await DataOperations.InsertClient(ID_Client, FIO, SeriesNumber, PhoneNumber, DateAdded)) 
+                if (await DataOperations.InsertClient(ID_Client, FIO, SeriesNumber, PhoneNumber, Email, DateAdded)) 
                     this.DialogResult = true;
                 else
                     this.DialogResult = false;
@@ -137,6 +154,23 @@ namespace ApplicationRepairPhoneEntityFramework
                 FlagPhoneNumber = true;
                 lb_PhoneNumber.Content = "Данные корректны";
                 lb_PhoneNumber.Background = Brushes.Green;
+
+            }
+        }
+
+        private void txbx_Email_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if (txbx_Email.Text != String.Empty && !Regex.IsMatch(txbx_Email.Text.Trim(), @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,})+)$"))
+            {
+                FlagEmail = false;
+                lb_Email.Content = "Некорректный Email";
+                lb_Email.Background = Brushes.Red;
+            }
+            else
+            {
+                FlagEmail = true;
+                lb_Email.Content = "Данные корректны";
+                lb_Email.Background = Brushes.Green;
 
             }
         }

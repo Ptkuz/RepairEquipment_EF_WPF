@@ -64,18 +64,20 @@ namespace ApplicationRepairPhoneEntityFramework
 
         public Guid ID_Performance { get; set; }
         public string DescriptionRepair { get; set; }
-       
+
 
         public decimal WorkPrice { get; set; }
-       
+
 
         public decimal DetailsPrice { get; set; }
-       
+
 
         public decimal Discount { get; set; }
-       
+
         public decimal FinalPrice { get; set; }
-        
+        public string Email { get; set; }
+        public string Fio { get; set; }
+
 
         DateTime? date_performance;
         public DateTime? DatePerformance
@@ -153,16 +155,21 @@ namespace ApplicationRepairPhoneEntityFramework
                 object item = DataGridOrders.SelectedItem;
 
                 string ID_Detail = (DataGridOrders.SelectedCells[1].Column.GetCellContent(item) as TextBlock)!.Text;
+                Email = (DataGridOrders.SelectedCells[3].Column.GetCellContent(item) as TextBlock)!.Text.Trim();
+                Fio = (DataGridOrders.SelectedCells[2].Column.GetCellContent(item) as TextBlock)!.Text.Trim();
 
                 if (item == null)
                 {
                     throw new NullReferenceException();
                 }
                 ID_Order = Guid.Parse(ID_Detail);
-
+               
 
                 if (await DataOperations.InsertPerformance(ID_Performance, DescriptionRepair, WorkPrice, DetailsPrice, Discount, FinalPrice, DatePerformance, IdQuantityDetails, ID_Order))
+                {
+                    await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(Fio, ID_Detail, "Заказ закрыт"));
                     this.DialogResult = true;
+                }
                 else
                     this.DialogResult = false;
 

@@ -96,9 +96,6 @@
     <Page Update="ViewClientsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MainWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="PerformanceWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

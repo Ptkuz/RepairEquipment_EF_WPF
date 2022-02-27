@@ -21,6 +21,7 @@
                         <DataGridTextColumn Binding="{Binding Series_Number_Passport}" IsReadOnly="True" Header="Серия номер пасспорта" Width="150"/>
                         <DataGridTextColumn Binding="{Binding Phone_Number}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
                         <DataGridTextColumn Binding="{Binding DateAdded}" IsReadOnly="True" Header="Дата добавления" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding Email}" IsReadOnly="True" Header="Email" Width="140"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
@@ -44,6 +45,10 @@
                 <Grid Margin="0,10,0,0">
                     <Label Content="Номер телефона:" Width="110" Margin="830,0,0,0" HorizontalAlignment="Left"/>
                     <TextBox x:Name="txbx_phone_number" Width="500" Margin="1000,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_phone_number_SelectionChanged"/>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Email:" Width="110" Margin="830,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_email" Width="500" Margin="1000,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_email_SelectionChanged"/>
                 </Grid>
                 <Grid Margin="0,40,0,0">
                     <Button x:Name="btn_Add_Client" Content="Добавить нового клиента" Width="200" Margin="300,0,0,0" Click="btn_Add_Client_Click"/>

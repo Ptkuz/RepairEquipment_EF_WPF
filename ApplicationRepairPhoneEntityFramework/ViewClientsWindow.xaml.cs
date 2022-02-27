@@ -17,12 +17,13 @@ namespace ApplicationRepairPhoneEntityFramework
         bool flagFio = false;
         bool flagSeriesNumber = false;
         bool flagPhoneNumber = false;
+        bool flagEmail = true;
 
         public bool FlagFIO
         {
             get { return flagFio; }
             set { flagFio = value;  
-                if(flagFio && flagSeriesNumber && flagPhoneNumber)
+                if(flagFio && flagSeriesNumber && flagPhoneNumber && flagEmail)
                     btn_Update_Client.IsEnabled = true;
                 else
                     btn_Update_Client.IsEnabled=false;
@@ -34,7 +35,7 @@ namespace ApplicationRepairPhoneEntityFramework
         {
             get { return flagSeriesNumber; }
             set { flagSeriesNumber = value;
-                if (flagFio && flagSeriesNumber && flagPhoneNumber)
+                if (flagFio && flagSeriesNumber && flagPhoneNumber && flagEmail)
                     btn_Update_Client.IsEnabled = true;
                 else
                     btn_Update_Client.IsEnabled = false;
@@ -45,7 +46,19 @@ namespace ApplicationRepairPhoneEntityFramework
         {
             get { return flagPhoneNumber; }
             set { flagPhoneNumber = value;
-                if (flagFio && flagSeriesNumber && flagPhoneNumber)
+                if (flagFio && flagSeriesNumber && flagPhoneNumber && flagEmail)
+                    btn_Update_Client.IsEnabled = true;
+                else
+                    btn_Update_Client.IsEnabled = false;
+            }
+        }
+        public bool FlagEmail
+        {
+            get { return flagEmail; }
+            set
+            {
+                flagEmail = value;
+                if (flagFio && flagSeriesNumber && flagPhoneNumber && flagEmail)
                     btn_Update_Client.IsEnabled = true;
                 else
                     btn_Update_Client.IsEnabled = false;
@@ -59,6 +72,7 @@ namespace ApplicationRepairPhoneEntityFramework
         public string FIO { get; set; }
         public string SerialNumber { get; set; }
         public string PhoneNumber { get; set; }
+        public string Email { get; set; }
         public DirectorViewClientsWindow()
         {
             InitializeComponent();
@@ -106,11 +120,13 @@ namespace ApplicationRepairPhoneEntityFramework
                 string fio = (dataGridClients.SelectedCells[1].Column.GetCellContent(item) as TextBlock)!.Text;
                 string serialNumber = (dataGridClients.SelectedCells[2].Column.GetCellContent(item) as TextBlock)!.Text;
                 string numberPhone = (dataGridClients.SelectedCells[3].Column.GetCellContent(item) as TextBlock)!.Text;
+                string email = (dataGridClients.SelectedCells[5].Column.GetCellContent(item) as TextBlock)!.Text;
 
                 txbx_Id_Client.Text = ID_Client;
                 txbx_fio.Text = fio;
                 txbx_series_number.Text = serialNumber;
                 txbx_phone_number.Text = numberPhone;
+                txbx_email.Text = email;
             }
             else
             {
@@ -118,6 +134,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 txbx_fio.Text = String.Empty;
                 txbx_series_number.Text = String.Empty;
                 txbx_phone_number.Text = String.Empty;
+                txbx_email.Text = String.Empty;
 
             }
         }
@@ -130,7 +147,8 @@ namespace ApplicationRepairPhoneEntityFramework
                 FIO = txbx_fio.Text.Trim();
                 SerialNumber = txbx_series_number.Text.Trim();
                 PhoneNumber = txbx_phone_number.Text.Trim();
-                await DataOperations.UpdateClient(ID_Client, FIO, SerialNumber, PhoneNumber);
+                Email = txbx_email.Text.Trim();
+                await DataOperations.UpdateClient(ID_Client, FIO, SerialNumber, PhoneNumber, Email);
                 dataGridClients.ItemsSource = await DataOperations.GetAllClients();
                 MessageBox.Show($"Клиент {ID_Client} обновлен", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -213,6 +231,21 @@ namespace ApplicationRepairPhoneEntityFramework
             {
                 FlagPhoneNumber = true;
                 txbx_phone_number.BorderBrush = Brushes.Green;
+
+            }
+        }
+
+        private void txbx_email_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if (txbx_email.Text != String.Empty && !Regex.IsMatch(txbx_email.Text.Trim(), @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,})+)$"))
+            {
+                FlagEmail = false;
+                txbx_email.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                FlagEmail = true;
+                txbx_email.BorderBrush = Brushes.Green;
 
             }
         }

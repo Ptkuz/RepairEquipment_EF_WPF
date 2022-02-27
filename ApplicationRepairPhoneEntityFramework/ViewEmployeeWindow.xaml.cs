@@ -105,6 +105,7 @@ namespace ApplicationRepairPhoneEntityFramework
         public string Password { get; set; }
         public string FIO { get; set; }
         public int Position { get; set; }
+        public string PositionName { get; set; }
         public string SeriesNumber { get; set; }
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
@@ -131,7 +132,7 @@ namespace ApplicationRepairPhoneEntityFramework
             if (result.HasValue && result.Value) 
             { 
                 dataGridEmployees.ItemsSource = await DataOperations.GetAllEmployeesView();
-                MessageBox.Show("Новый сотрудник добавлен", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Новый сотрудник добавлен. На электронную почту сотрудника отправлено письмо", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
                 MessageBox.Show("Новый сотрудник не добавлен", "Приложение СЕРВИСНЫЙ ЦЕНТР: Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -189,9 +190,11 @@ namespace ApplicationRepairPhoneEntityFramework
                 Address = txbx_address.Text;
                 PhoneNumber = txbx_phoneNumber.Text;
                 Position = Int32.Parse(cmbx_position.SelectedValue.ToString());
+                PositionName = cmbx_position.Text;
                 await DataOperations.UpdateEmployee(ID_Employee, Password, FIO, SeriesNumber, Address, PhoneNumber, Position);
                 dataGridEmployees.ItemsSource = await DataOperations.GetAllEmployeesView();
-                MessageBox.Show($"Сотрудник {ID_Employee} обновлен", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+                await SendEmail.SendEmailAsync(ID_Employee, "Пиьсмо от Сервсисного центра", SendEmail.UpdateEmployeeMail(FIO, PositionName, ID_Employee, Password, SeriesNumber, Address, PhoneNumber));
+                MessageBox.Show($"Сотрудник {ID_Employee} обновлен. Обновленная информация отправлена на электронную почту сотрудника.", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex) 
             {
@@ -205,9 +208,10 @@ namespace ApplicationRepairPhoneEntityFramework
             try
             {
                 ID_Employee = txbx_Id_Employee.Text;
+                FIO = txbx_FIO.Text;
                 await DataOperations.RemoveEmployee(ID_Employee);
                 dataGridEmployees.ItemsSource = await DataOperations.GetAllEmployeesView();
-                MessageBox.Show($"Сотрудник {ID_Employee} удален", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show($"Сотрудник {FIO} удален!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             catch (Exception ex) 
             {
@@ -226,7 +230,7 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_Password_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_Password.Text == String.Empty)
+            if (txbx_Password.Text == String.Empty || !Regex.IsMatch(txbx_Password.Text.Trim(), @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$"))
             {
                 FlagPassword = false;
                 txbx_Password.BorderBrush = Brushes.Red;
@@ -235,6 +239,7 @@ namespace ApplicationRepairPhoneEntityFramework
             {
                 FlagPassword = true;
                 txbx_Password.BorderBrush = Brushes.Green;
+
             }
 
         }

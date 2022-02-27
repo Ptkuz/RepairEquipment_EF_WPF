@@ -38,11 +38,9 @@ C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRep
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\bin\Debug\net6.0-windows\RepaifPhoneDB.dll
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\bin\Debug\net6.0-windows\RepaifPhoneDB.pdb
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ApplicationRepairPhoneEntityFramework.csproj.AssemblyReference.cache
-C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\App.g.cs
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ApplicationRepairPhoneEntityFramework_MarkupCompile.cache
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ApplicationRepairPhoneEntityFramework_MarkupCompile.lref
-C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\MainWindow.baml
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ApplicationRepairPhoneEntityFramework.g.resources
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ApplicationRepairPhoneEntityFramework.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ApplicationRepairPhoneEntityFramework.AssemblyInfoInputs.cache

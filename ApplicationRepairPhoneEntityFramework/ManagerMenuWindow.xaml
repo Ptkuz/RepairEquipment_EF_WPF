@@ -9,6 +9,12 @@
     <Grid>
         <StackPanel>
             <Grid>
+                <Label Content="Здравствуйте, " Width="90" Margin="0,0,700,0"/>
+                <Label x:Name="lb_fio"  Width="500" Margin="0,0,100,0"/>
+                <Label x:Name="lb_position"  Width="120" HorizontalAlignment="Right"/>
+
+            </Grid>
+            <Grid>
                 <Button Content="Дабавление заказа" Height="70" Click="Button_Click"/>
 
 

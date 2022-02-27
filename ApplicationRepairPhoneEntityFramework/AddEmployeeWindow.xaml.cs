@@ -17,6 +17,8 @@ namespace ApplicationRepairPhoneEntityFramework
         bool flagSeriesNumber = false;
         bool flagAddress = false;
         bool flagPhoneNumber = false;
+        bool flagLogin = false;
+        bool flagPassword = false;
 
 
 
@@ -25,16 +27,17 @@ namespace ApplicationRepairPhoneEntityFramework
         public bool FlagFIO
         {
             get { return flagFIO; }
-            set { 
+            set
+            {
                 flagFIO = value;
-                if (flagFIO && flagPosition && flagSeriesNumber && flagAddress && flagPhoneNumber)
+                if (flagFIO && flagPosition && flagSeriesNumber && flagAddress && flagPhoneNumber && flagLogin && flagPassword)
                 {
                     btn_Add_Employee.IsEnabled = true;
                 }
-                else 
+                else
                 {
                     btn_Add_Employee.IsEnabled = false;
-                
+
                 }
             }
 
@@ -50,9 +53,10 @@ namespace ApplicationRepairPhoneEntityFramework
         public bool FlagSeriesNumber
         {
             get { return flagSeriesNumber; }
-            set { 
+            set
+            {
                 flagSeriesNumber = value;
-                if (flagFIO && flagPosition && flagSeriesNumber && flagAddress && flagPhoneNumber)
+                if (flagFIO && flagPosition && flagSeriesNumber && flagAddress && flagPhoneNumber && flagLogin && flagPassword)
                 {
                     btn_Add_Employee.IsEnabled = true;
                 }
@@ -65,12 +69,13 @@ namespace ApplicationRepairPhoneEntityFramework
 
         }
 
-        public bool FlagAddress 
+        public bool FlagAddress
         {
             get { return flagAddress; }
-            set { 
+            set
+            {
                 flagAddress = value;
-                if (flagFIO && flagPosition && flagSeriesNumber && flagAddress && flagPhoneNumber)
+                if (flagFIO && flagPosition && flagSeriesNumber && flagAddress && flagPhoneNumber && flagLogin && flagPassword)
                 {
                     btn_Add_Employee.IsEnabled = true;
                 }
@@ -80,15 +85,16 @@ namespace ApplicationRepairPhoneEntityFramework
 
                 }
             }
-        
-        } 
 
-        public bool FlagPhoneNumber 
+        }
+
+        public bool FlagPhoneNumber
         {
             get { return flagPhoneNumber; }
-            set { 
+            set
+            {
                 flagPhoneNumber = value;
-                if (flagFIO && flagPosition && flagSeriesNumber && flagAddress && flagPhoneNumber)
+                if (flagFIO && flagPosition && flagSeriesNumber && flagAddress && flagPhoneNumber && flagLogin && flagPassword)
                 {
                     btn_Add_Employee.IsEnabled = true;
                 }
@@ -98,8 +104,47 @@ namespace ApplicationRepairPhoneEntityFramework
 
                 }
             }
-        
+
         }
+
+        public bool FlagLogin
+        {
+            get { return flagLogin; }
+            set
+            {
+                flagLogin = value;
+                if (flagFIO && flagPosition && flagSeriesNumber && flagAddress && flagPhoneNumber && flagLogin && flagPassword)
+                {
+                    btn_Add_Employee.IsEnabled = true;
+                }
+                else
+                {
+                    btn_Add_Employee.IsEnabled = false;
+
+                }
+            }
+
+        }
+
+        public bool FlagPassword
+        {
+            get { return flagPassword; }
+            set
+            {
+                flagPassword = value;
+                if (flagFIO && flagPosition && flagSeriesNumber && flagAddress && flagPhoneNumber && flagLogin && flagPassword)
+                {
+                    btn_Add_Employee.IsEnabled = true;
+                }
+                else
+                {
+                    btn_Add_Employee.IsEnabled = false;
+
+                }
+            }
+
+        }
+
 
 
         public string ID_Employee { get; set; }
@@ -112,11 +157,11 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
         public string password_Employee;
-        public string Password_Employee 
+        public string Password_Employee
         {
             get { return password_Employee; }
             set { password_Employee = value; }
-        
+
         }
 
         int position;
@@ -126,6 +171,7 @@ namespace ApplicationRepairPhoneEntityFramework
             set { position = value; }
 
         }
+        string PositionName { get; set; }
         string seriesNumber;
         public string SeriesNumber
         {
@@ -134,17 +180,17 @@ namespace ApplicationRepairPhoneEntityFramework
         }
 
         string address;
-        public string Address 
-        { 
-            get { return address; } 
-            set { address = value; } 
+        public string Address
+        {
+            get { return address; }
+            set { address = value; }
         }
         string numberPhone;
-        public string NumberPhone 
+        public string NumberPhone
         {
             get { return numberPhone; }
             set { numberPhone = value; }
-        
+
         }
         public DateTime? EmploymentDate { get; set; }
         public AddEmployee()
@@ -153,31 +199,43 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
             GetPositions();
-            async void GetPositions() 
+            async void GetPositions()
             {
-                arrayPositions = await DataOperations.GetAllPositions();
+                arrayPositions = await DataOperations.GetActivePositions();
 
                 cmbx_Position_Employee.ItemsSource = arrayPositions;
-            
-            
+
+
             }
         }
 
         private async void btn_Add_Employee_Click(object sender, RoutedEventArgs e)
         {
-            ID_Employee = txbx_Login_Employee.Text.Trim();
-            Password_Employee = txbx_Passwor_Employee.Text.Trim();
-            Fio = txbx_FIO_Employee.Text.Trim();
-            
-            Position = Int32.Parse(cmbx_Position_Employee.SelectedValue.ToString()!);
-            SeriesNumber = txbx_Series_Number.Text.Trim();
-            Address = txbx_Address.Text.Trim();
-            NumberPhone = txbx_Phone_Number.Text.Trim();
-            EmploymentDate = DateTime.Now;
-            if (await DataOperations.InsertEmployee(ID_Employee, Password_Employee, Fio, Position, SeriesNumber, Address, NumberPhone, EmploymentDate))
-                this.DialogResult = true;
-            else
-                this.DialogResult = false;
+            try
+            {
+                ID_Employee = txbx_Login_Employee.Text.Trim();
+                Password_Employee = txbx_Passwor_Employee.Text.Trim();
+                Fio = txbx_FIO_Employee.Text.Trim();
+
+                Position = Int32.Parse(cmbx_Position_Employee.SelectedValue.ToString()!);
+                PositionName = cmbx_Position_Employee.Text;
+                SeriesNumber = txbx_Series_Number.Text.Trim();
+                Address = txbx_Address.Text.Trim();
+                NumberPhone = txbx_Phone_Number.Text.Trim();
+                EmploymentDate = DateTime.Now;
+                if (await DataOperations.InsertEmployee(ID_Employee, Password_Employee, Fio, Position, SeriesNumber, Address, NumberPhone, EmploymentDate))
+                {
+                    await SendEmail.SendEmailAsync(ID_Employee, "Пиьсмо от Сервсисного центра", SendEmail.AddEmployeeMail(Fio, PositionName, ID_Employee, Password_Employee, SeriesNumber, Address, NumberPhone));
+                    this.DialogResult = true;
+                }
+                else
+                    this.DialogResult = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
         }
 
         private void txbx_FIO_Employee_SelectionChanged(object sender, RoutedEventArgs e)
@@ -189,7 +247,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 lb_FIO.Background = Brushes.Red;
 
             }
-            else 
+            else
             {
                 FlagFIO = true;
                 lb_FIO.Content = "Данные корректны";
@@ -211,7 +269,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 lb_SeriesNumber.Content = "Некорректная СИ пасспорта";
                 lb_SeriesNumber.Background = Brushes.Red;
             }
-            else 
+            else
             {
                 FlagSeriesNumber = true;
                 lb_SeriesNumber.Content = "Данные корректны";
@@ -251,6 +309,40 @@ namespace ApplicationRepairPhoneEntityFramework
                 FlagPhoneNumber = true;
                 lb_PhoneNumber.Content = "Данные корректны";
                 lb_PhoneNumber.Background = Brushes.Green;
+
+            }
+        }
+
+        private void txbx_Login_Employee_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if (txbx_Login_Employee.Text == String.Empty || !Regex.IsMatch(txbx_Login_Employee.Text.Trim(), @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,})+)$"))
+            {
+                FlagLogin = false;
+                lb_Login.Content = "Некорректный электронный адрес";
+                lb_Login.Background = Brushes.Red;
+            }
+            else
+            {
+                FlagLogin = true;
+                lb_Login.Content = "Данные корректны";
+                lb_Login.Background = Brushes.Green;
+
+            }
+        }
+
+        private void txbx_Passwor_Employee_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if (txbx_Passwor_Employee.Text == String.Empty || !Regex.IsMatch(txbx_Passwor_Employee.Text.Trim(), @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$"))
+            {
+                FlagPassword = false;
+                lb_Password.Content = "Некорректный пароль";
+                lb_Password.Background = Brushes.Red;
+            }
+            else
+            {
+                FlagPassword = true;
+                lb_Password.Content = "Данные корректны";
+                lb_Password.Background = Brushes.Green;
 
             }
         }

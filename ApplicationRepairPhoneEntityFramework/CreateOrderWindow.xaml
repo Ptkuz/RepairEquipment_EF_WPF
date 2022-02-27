@@ -34,6 +34,7 @@
                         <DataGridTextColumn Binding="{Binding FIO}" IsReadOnly="True" Header="ФИО Клиента" Width="130"/>
                         <DataGridTextColumn Binding="{Binding Series_Number_Passport}" IsReadOnly="True" Header="Серия номер пасспорта" Width="150"/>
                         <DataGridTextColumn Binding="{Binding Phone_Number}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding Email}" IsReadOnly="True" Header="Email" Width="140"/>
                         <DataGridTextColumn Binding="{Binding DateAdded}" IsReadOnly="True" Header="Дата добавления" Width="140"/>
                     </DataGrid.Columns>
                 </DataGrid>

@@ -27,6 +27,7 @@
                         <DataGridTextColumn Binding="{Binding ClientName}" IsReadOnly="True" Header="ФИО клиента" Width="140"/>
                         <DataGridTextColumn Binding="{Binding ClientSeriesNumber}" IsReadOnly="True" Header="Серия и номер паспорта" Width="150"/>
                         <DataGridTextColumn Binding="{Binding ClientPhoneNumber}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding ClientEmail}" IsReadOnly="True" Header="Email" Width="140"/>
                         <DataGridTextColumn Binding="{Binding DeviceName}" IsReadOnly="True" Header="Назавние оборудования" Width="150"/>
                         <DataGridTextColumn Binding="{Binding SeriesNumber}" IsReadOnly="True" Header="Серийный номер" Width="140"/>
                         <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True" Header="Описание" Width="140"/>

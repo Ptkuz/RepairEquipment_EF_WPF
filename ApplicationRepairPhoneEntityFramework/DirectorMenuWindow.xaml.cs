@@ -20,40 +20,45 @@ namespace ApplicationRepairPhoneEntityFramework
     public partial class DirectorMenuWindow : Window
     {
         string login;
-        public DirectorMenuWindow(string login)
+        string fio;
+        string position;
+        public DirectorMenuWindow(string login, string fio, string position)
         {
             InitializeComponent();
             this.login = login;
+            this.fio = fio;
+            lb_fio.Content = fio;
+            lb_position.Content = position;
         }
 
         private void btn_clients_Click(object sender, RoutedEventArgs e)
         {
             DirectorViewClientsWindow directorViewClientsWindow = new DirectorViewClientsWindow();
-            directorViewClientsWindow.Show();
+            directorViewClientsWindow.ShowDialog();
         }
 
         private void btn_devices_Click(object sender, RoutedEventArgs e)
         {
             ViewDevicesWindow viewDevicesWindow = new ViewDevicesWindow();
-            viewDevicesWindow.Show();
+            viewDevicesWindow.ShowDialog();
         }
 
         private void btn_employees_Click(object sender, RoutedEventArgs e)
         {
             ViewEmployeeWindow viewEmployeeWindow = new ViewEmployeeWindow();
-            viewEmployeeWindow.Show();
+            viewEmployeeWindow.ShowDialog();
         }
 
         private void btn_details_Click(object sender, RoutedEventArgs e)
         {
             ViewDetailsWindow viewDetailsWindow = new ViewDetailsWindow();
-            viewDetailsWindow.Show();
+            viewDetailsWindow.ShowDialog();
         }
 
         private void btn_orders_Click(object sender, RoutedEventArgs e)
         {
             ViewAllOrdersWindow viewAllOrdersWindow = new ViewAllOrdersWindow();
-            viewAllOrdersWindow.Show();
+            viewAllOrdersWindow.ShowDialog();
         }
 
         private void btn_AddOrders_Click(object sender, RoutedEventArgs e)
@@ -78,6 +83,11 @@ namespace ApplicationRepairPhoneEntityFramework
             }
             else
                 MessageBox.Show("Заказ не закрыт", "Приложение СЕРВИСНЫЙ ЦЕНТР: Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //this.DialogResult = true;
         }
     }
 }

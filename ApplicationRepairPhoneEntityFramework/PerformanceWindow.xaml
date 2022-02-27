@@ -98,6 +98,7 @@
                         <DataGridTextColumn Binding="{Binding DateOrder}" IsReadOnly="True" Header="Дата заказа" Width="100"/>
                         <DataGridTextColumn Binding="{Binding ID_Order}" IsReadOnly="True" Header="ID заказа" Width="130"/>
                         <DataGridTextColumn Binding="{Binding ClientName}" IsReadOnly="True" Header="ФИО клиента" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding Email}" IsReadOnly="True" Header="Email" Width="140"/>
                         <DataGridTextColumn Binding="{Binding DeviceName}" IsReadOnly="True" Header="Назавние оборудования" Width="150"/>
                         <DataGridTextColumn Binding="{Binding SeriesNumber}" IsReadOnly="True" Header="Серийный номер" Width="140"/>
                         <DataGridTextColumn Binding="{Binding EmployeeName}" Header="ФИО исполнителя" Width="160"/>

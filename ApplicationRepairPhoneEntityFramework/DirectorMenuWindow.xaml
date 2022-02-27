@@ -5,9 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="DirectorMenuWindow" Height="450" Width="800">
+        Title="DirectorMenuWindow" Height="450" Width="800" Closing="Window_Closing">
     <Grid>
         <StackPanel>
+            <Grid>
+                <Label Content="Здравствуйте, " Width="90" Margin="0,0,700,0"/>
+                <Label x:Name="lb_fio"  Width="500" Margin="0,0,100,0"/>
+                <Label x:Name="lb_position"  Width="120" HorizontalAlignment="Right"/>
+
+            </Grid>
             <Grid>
                 <Button x:Name="btn_clients" Content="Клиенты" Height="60" Click="btn_clients_Click"/>
                 </Grid>
