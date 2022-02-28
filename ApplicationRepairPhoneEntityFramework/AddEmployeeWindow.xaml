@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="AddEmployee" Height="450" Width="800">
+        Title="Добавить нового сотрудника" Height="450" Width="800">
     <Grid>
         <StackPanel>
             <Grid>

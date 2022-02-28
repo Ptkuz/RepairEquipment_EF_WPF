@@ -98,11 +98,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 MessageBox.Show("Новый клиент успешно добавлен", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
-            else
-            {
-                MessageBox.Show("Новый клиент не был добавлен", "Приложение СЕРВИСНЫЙ ЦЕНТР: Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
 
-            }
         }
 
         private async void txbx_search_client_SelectionChanged(object sender, RoutedEventArgs e)

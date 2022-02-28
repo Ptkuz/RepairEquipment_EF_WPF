@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Excel = Microsoft.Office.Interop.Excel;
+using Syncfusion.UI.Xaml.Grid.Converter;
+using Syncfusion.XlsIO;
+using Microsoft.Office.Interop.Excel;
 
 namespace ApplicationRepairPhoneEntityFramework
 {
     /// <summary>
     /// Логика взаимодействия для ViewAllOrdersWindow.xaml
     /// </summary>
-    public partial class ViewAllOrdersWindow : Window
+    public partial class ViewAllOrdersWindow : System.Windows.Window
     {
         ArrayList allOrders = new ArrayList();
         ArrayList allPerformance = new ArrayList();
@@ -54,7 +59,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 btn_change_status.IsEnabled = true;
 
             }
-            else 
+            else
             {
                 btn_change_status.IsEnabled = false;
 
@@ -123,13 +128,13 @@ namespace ApplicationRepairPhoneEntityFramework
                 {
                     throw new Exception("Новый статус заказа не может быть ниже нынешнего");
                 }
-                else if ((Status == "Заказ отменен")) 
+                else if ((Status == "Заказ отменен"))
                 {
 
                     throw new Exception("Нельзя менять статус отмененного заказа");
                 }
 
-                else if ((Status == "Заказ закрыт" || Status == "Заказ выполняется" ||  Status == "Заказ выполнен") && cmbx_status.Text =="Заказ отменен")
+                else if ((Status == "Заказ закрыт" || Status == "Заказ выполняется" || Status == "Заказ выполнен") && cmbx_status.Text == "Заказ отменен")
                 {
 
                     throw new Exception("Нельзя отменить заказ на данном этапе выполнения");
@@ -158,15 +163,46 @@ namespace ApplicationRepairPhoneEntityFramework
                 Email = (DataGridOrders.SelectedCells[6].Column.GetCellContent(item) as TextBlock)!.Text.Trim();
                 Fio = (DataGridOrders.SelectedCells[3].Column.GetCellContent(item) as TextBlock)!.Text.Trim();
                 DataGridOrders.ItemsSource = await DataOperations.GetAllOrdersViewAllOrdersWindow();
-               
+
                 MessageBox.Show("Статус заказа изменен", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
-                await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(Fio, ID_Order.ToString(), cmbx_status.Text));
+                if (Email != String.Empty)
+                    if (await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(Fio, ID_Order.ToString(), cmbx_status.Text)))
+                        MessageBox.Show("Письмо клиенту успешно отправлено!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+                    else
+                        MessageBox.Show("При отправке письма произошла ошибка. Проверьте интернет подключение!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Excel.Application excel = new Excel.Application();
+            excel.Visible = true; 
+            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
+
+            for (int j = 0; j < DataGridPerformance.Columns.Count; j++) 
+            {
+                Excel.Range myRange = (Excel.Range)sheet1.Cells[1, j + 1];
+                sheet1.Cells[1, j + 1].Font.Bold = true; 
+                sheet1.Columns[j + 1].ColumnWidth = 15;
+                myRange.Value2 = DataGridPerformance.Columns[j].Header;
+            }
+            for (int i = 0; i < DataGridPerformance.Columns.Count; i++)
+            { //www.yazilimkodlama.com
+                for (int j = 0; j < DataGridPerformance.Items.Count; j++)
+                {
+                    TextBlock b = DataGridPerformance.Columns[i].GetCellContent(DataGridPerformance.Items[j]) as TextBlock;
+                    Excel.Range myRange = (Excel.Range)sheet1.Cells[j + 2, i + 1];
+                    myRange.Value2 = b.Text;
+                }
+            }
+        }
+
+
     }
 }

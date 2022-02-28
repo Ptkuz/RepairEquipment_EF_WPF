@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="ViewDevicesWindow" Height="581" Width="1539">
+        Title="Просмотр оборудования" Height="581" Width="1539">
     <Grid>
         <StackPanel>
             <Grid Margin="0,10,0,0">

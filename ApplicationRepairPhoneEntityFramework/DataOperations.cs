@@ -10,11 +10,10 @@ namespace ApplicationRepairPhoneEntityFramework
 {
     public static class DataOperations
     {
-        public async static Task<string[]> Autorization(string login, string password)
+        public static string[] Autorization(string login, string password)
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                await Task.Delay(0);
                 var user = db.Employees.Join(db.positions,
                     e => e.ID_Position,
                     p => p.ID_Position,
@@ -303,39 +302,6 @@ namespace ApplicationRepairPhoneEntityFramework
 
         }
 
-        //public async static Task<ArrayList> GetAllOrdersViewAllOrdersWindow()
-        //{
-        //    ArrayList allOrders = new ArrayList();
-        //    using (ApplicationContext db = new ApplicationContext())
-        //    {
-        //        await Task.Delay(0);
-        //        var orders = from order in db.Orders
-        //                     join employee in db.Employees on order.ID_Employee equals employee.ID_Employee
-        //                     join client in db.Clients on order.ID_Client equals client.ID_Client
-        //                     join device in db.Devices on order.ID_Device equals device.ID_Device
-        //                     join status in db.order_Statuses on order.ID_Status equals status.ID_Status
-        //                     orderby order.Date_Order
-        //                     select new
-        //                     {
-        //                         DateOrder = order.Date_Order,
-        //                         ID_Order = order.ID_Order,
-        //                         ClientName = client.FIO,
-        //                         DeviceName = device.Name,
-        //                         SeriesNumber = device.Serial_Number,
-        //                         EmployeeName = employee.FIO,
-        //                         Status = status.Name_Status
-
-        //                     };
-
-
-        //        foreach (var order in orders)
-        //            allOrders.Add(order);
-
-        //        return allOrders;
-        //    }
-
-
-        //}
 
         public async static Task<ArrayList> GetAllClients()
         {

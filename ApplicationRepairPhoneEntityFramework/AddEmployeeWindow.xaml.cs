@@ -225,7 +225,10 @@ namespace ApplicationRepairPhoneEntityFramework
                 EmploymentDate = DateTime.Now;
                 if (await DataOperations.InsertEmployee(ID_Employee, Password_Employee, Fio, Position, SeriesNumber, Address, NumberPhone, EmploymentDate))
                 {
-                    await SendEmail.SendEmailAsync(ID_Employee, "Пиьсмо от Сервсисного центра", SendEmail.AddEmployeeMail(Fio, PositionName, ID_Employee, Password_Employee, SeriesNumber, Address, NumberPhone));
+                    if (await SendEmail.SendEmailAsync(ID_Employee, "Пиьсмо от Сервсисного центра", SendEmail.AddEmployeeMail(Fio, PositionName, ID_Employee, Password_Employee, SeriesNumber, Address, NumberPhone)))
+                        MessageBox.Show("Письмо клиенту успешно отправлено!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+                    else
+                        MessageBox.Show("При отправке письма произошла ошибка. Проверьте интернет подключение!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
                     this.DialogResult = true;
                 }
                 else

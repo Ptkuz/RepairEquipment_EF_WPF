@@ -1,18 +1,9 @@
-﻿using System;
+﻿using RepaifPhoneDB;
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Collections;
-using RepaifPhoneDB;
 
 namespace ApplicationRepairPhoneEntityFramework
 {
@@ -31,6 +22,13 @@ namespace ApplicationRepairPhoneEntityFramework
         public int ID_Status { get; set; }
         public string Email { get; set; }
         public string FioClient { get; set; }
+        public string Sereis_Number_Passport { get; private set; }
+        public string PhoneNumberClient { get; private set; }
+        public string Device_Name { get; private set; }
+        public string Serial_Number { get; private set; }
+        public string FioEmployee { get; private set; }
+        public string Position { get; private set; }
+        public string PhoneNumberEmployee { get; private set; }
         public DateTime? DateOrder { get; set; }
 
 
@@ -41,7 +39,7 @@ namespace ApplicationRepairPhoneEntityFramework
             ID_Order = Guid.NewGuid();
             txbx_ID_Order.Text = ID_Order.ToString();
             GetData();
-            async void GetData() 
+            async void GetData()
             {
                 arrayClients = await DataOperations.GetAllClients();
                 arrayDevices = await DataOperations.GetAllDevices();
@@ -50,8 +48,8 @@ namespace ApplicationRepairPhoneEntityFramework
                 dataGridClients.ItemsSource = arrayClients;
                 dataGridDevices.ItemsSource = arrayDevices;
                 dataGridEmployees.ItemsSource = arrayEmployees;
-            
-            
+
+
             }
         }
 
@@ -86,27 +84,58 @@ namespace ApplicationRepairPhoneEntityFramework
                     ID_Employee = (dataGridEmployees.SelectedCells[0].Column.GetCellContent(itemEmployee) as TextBlock)!.Text;
                     Email = (dataGridClients.SelectedCells[4].Column.GetCellContent(itemClient) as TextBlock)!.Text;
                     FioClient = (dataGridClients.SelectedCells[1].Column.GetCellContent(itemClient) as TextBlock)!.Text;
-
+                    Sereis_Number_Passport = (dataGridClients.SelectedCells[2].Column.GetCellContent(itemClient) as TextBlock)!.Text;
+                    PhoneNumberClient = (dataGridClients.SelectedCells[3].Column.GetCellContent(itemClient) as TextBlock)!.Text;
+                    Device_Name = (dataGridDevices.SelectedCells[1].Column.GetCellContent(itemDevice) as TextBlock)!.Text;
+                    Serial_Number = (dataGridDevices.SelectedCells[2].Column.GetCellContent(itemDevice) as TextBlock)!.Text;
+                    FioEmployee = (dataGridEmployees.SelectedCells[1].Column.GetCellContent(itemEmployee) as TextBlock)!.Text;
+                    Position = (dataGridEmployees.SelectedCells[2].Column.GetCellContent(itemEmployee) as TextBlock)!.Text;
+                    PhoneNumberEmployee = (dataGridEmployees.SelectedCells[3].Column.GetCellContent(itemEmployee) as TextBlock)!.Text;
                     Order_Status status = await DataOperations.GetStatusOrder();
                     ID_Status = status.ID_Status;
                     DateOrder = DateTime.Now;
 
                     if (await DataOperations.InsertOrder(ID_Order, ID_Client, ID_Device, ID_Employee, ID_Status, DateOrder))
                     {
-                        await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(FioClient, txbx_ID_Order.Text, "Заказ загерестрирован"));
+
+                        var document = new CreateDocuments(@"Шаблон заказа клиента.docx", @"Документы заказы\Заказ.docx");
+
+                        var items = new Dictionary<string, string>
+                        {
+                            { "ID_Order", ID_Order.ToString()},
+                            { "Date_Order", DateOrder.ToString()},
+                            { "Client_Fio", FioClient},
+                            { "Series_Number_Passport",Sereis_Number_Passport },
+                            { "Phone_Number_Client", PhoneNumberClient},
+                            { "Email", Email},
+                            { "Device_Name", Device_Name},
+                            { "SerialNumber", Serial_Number},
+                            { "Employee_Master", FioEmployee},
+                            { "Position", Position},
+                            { "Phone_Number_Employee", PhoneNumberEmployee}
+                        };
+
+                        document.Process(items);
+
+
+                        if (Email != String.Empty)
+                            if(await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(FioClient, txbx_ID_Order.Text, "Заказ загерестрирован. \n К письму прикреплена электронная копия документа вашего заказа"), true, @"Документы заказы\Заказ.docx"))
+                                MessageBox.Show("Письмо клиенту успешно отправлено!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+                            else
+                                MessageBox.Show("При отправке письма произошла ошибка. Проверьте интернет подключение!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
                         this.DialogResult = true;
                     }
                     else
                         this.DialogResult = false;
-                    
+
 
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
-            
-            
+
+
             }
 
 

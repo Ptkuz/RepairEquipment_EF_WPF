@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="ViewMasterOrderWindow" Height="1227" Width="1974">
+        Title="Просмотр всех заказов мастера" Height="1227" Width="1974">
     <Grid>
         <StackPanel>
             <Grid Margin="0,20,0,0">
@@ -19,7 +19,7 @@
             <Grid Margin="0,20,0,0">
                 <DataGrid x:Name="DataGridOrders" Height="300"  AutoGenerateColumns="False" SelectionChanged="DataGridOrders_SelectionChanged">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding DateOrder}" IsReadOnly="True" Header="Дата заказа" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding DateOrder}" IsReadOnly="True" Header="Дата заказа" Width="100" />
                         <DataGridTextColumn Binding="{Binding ID_Order}" IsReadOnly="True" Header="ID заказа" Width="130"/>
                         <DataGridTextColumn Binding="{Binding Status}" Header="Статус заказа" Width="160"/>
                         <DataGridTextColumn Binding="{Binding ClientName}" IsReadOnly="True" Header="ФИО клиента" Width="140"/>

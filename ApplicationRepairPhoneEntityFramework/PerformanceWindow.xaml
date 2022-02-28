@@ -5,28 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="PerformanceWindow" Height="931" Width="1067">
+        Title="Окно исполнения" Height="1128" Width="1067">
     <Grid>
         <StackPanel>
-            <Grid>
-                <Label Content="ID Исполнения: " Margin="0,0,631,0"/>
-                <TextBox x:Name="txbx_ID_Performance" TextWrapping="Wrap" IsReadOnly="True" Margin="102,0,532,0"/>
+            <Grid Margin="0,10,0,0">
+                <Label Content="ID Исполнения:" Width="150" Margin="0,0, 950,0"/>
+                <TextBox x:Name="txbx_ID_Performance" TextWrapping="Wrap" IsReadOnly="True" Width="500" Margin="0,0,250,0"/>
             </Grid>
-            <Grid>
-                <Label Content="Описание поломки: " Margin="0,0,644,0"/>
+            <Grid Margin="0,10,0,0">
+                <Label Content="Описание поломки:" Width="150" Margin="0,0, 950,0"/>
             </Grid>
-            <Grid>
-                <TextBox x:Name="txbx_Description" TextWrapping="Wrap" Margin="10,0,10,-59" SelectionChanged="txbx_Description_SelectionChanged"/>
+            <Grid Margin="0,10,0,0">
+                <TextBox x:Name="txbx_Description" TextWrapping="Wrap" Width="1050" Height="100" SelectionChanged="txbx_Description_SelectionChanged"/>
             </Grid>
-            <Grid Margin="4,68,667,-68">
-                <Label Content="Стоимость работы: " />
-                <TextBox x:Name="txbx_Price_Work" TextWrapping="Wrap" Margin="125,0,0,0" SelectionChanged="txbx_Price_Work_SelectionChanged" />
+            <Grid Margin="0,10,0,0">
+                <Label Content="Стоимость работы:"  Width="150" Margin="0,0, 950,0"/>
+                <TextBox x:Name="txbx_Price_Work" TextWrapping="Wrap" Width="200" Margin="0,0,550,0" SelectionChanged="txbx_Price_Work_SelectionChanged" />
             </Grid>
-            <Grid Margin="0,91,0,-91">
-                <Label Content="Список деталей: "/>
+            <Grid Margin="0,10,0,0">
+                <Label Content="Список деталей:"  Width="150" Margin="0,0, 950,0"/>
             </Grid>
-            <Grid Margin="0,103,0,-264">
-                <DataGrid x:Name="DataGridDetails"  AutoGenerateColumns="False" SelectionChanged="DataGridDetails_SelectionChanged">
+            <Grid Margin="0,10,0,0">
+                <DataGrid x:Name="DataGridDetails"  Width="1067" Height="300" AutoGenerateColumns="False" SelectionChanged="DataGridDetails_SelectionChanged">
+                    <DataGrid.ItemContainerStyle>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Background" Value="White"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Choise}" Value="True">
+                                    <Setter Property="Background" Value="#FFB6FF51"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.ItemContainerStyle>
                     <DataGrid.Columns>
                         <DataGridCheckBoxColumn x:Name="CheckBoxColumn" Binding="{Binding Choise}" Header="Выбрать" >
                             <DataGridCheckBoxColumn.CellStyle>
@@ -49,7 +59,7 @@
                                             <Setter Property="IsEnabled" Value="False"/>
                                             <Setter Property="IsTabStop" Value="False"></Setter>
                                             <Setter Property="Focusable" Value="False"></Setter>
-                                            <Setter Property="Background" Value="Red">
+                                            <Setter Property="Background" Value="#FFB6FF51">
                                             </Setter>
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -62,37 +72,37 @@
 
             </Grid>
 
-            <Grid Margin="4,275,-4,-275">
-                <Label Content="Стоимость всех деталей: "/>
-                <TextBox x:Name="txbx_PriceAllDetails" TextWrapping="Wrap" IsReadOnly="True" Margin="157,0,737,0" SelectionChanged="txbx_PriceAllDetails_SelectionChanged" />
+            <Grid Margin="0,10,0,0">
+                <Label Content="Стоимость всех деталей:" Width="150" Margin="0,0, 950,0"/>
+                <TextBox x:Name="txbx_PriceAllDetails" TextWrapping="Wrap" Width="200" Margin="0,0,550,0" IsReadOnly="True"  SelectionChanged="txbx_PriceAllDetails_SelectionChanged" />
 
             </Grid>
-            <Grid Margin="5,283,-5,-283">
-                <Label Content="Скидка: " />
-                <TextBox x:Name="txbx_Discount" IsEnabled="False" TextWrapping="Wrap" Margin="155,0,741,0" SelectionChanged="txbx_Discount_SelectionChanged"/>
-                <CheckBox x:Name="chbx_CheckDiscount" Content="Наличие скидки" IsEnabled="False" Margin="331,6,611,0" Checked="chbx_CheckDiscount_Checked" Unchecked="chbx_CheckDiscount_Unchecked"/>
-
-
-            </Grid>
-            <Grid Margin="2,289,-2,-289">
-                <Label Content="Финальная цена: "/>
-                <TextBox x:Name="txbx_FinalPrice" TextWrapping="Wrap" IsReadOnly="True" Margin="159,0,737,0" />
+            <Grid Margin="0,10,0,0">
+                <Label Content="Скидка:" Width="150" Margin="0,0, 950,0" />
+                <TextBox x:Name="txbx_Discount" IsEnabled="False" TextWrapping="Wrap" Width="200" Margin="0,0,550,0" SelectionChanged="txbx_Discount_SelectionChanged"/>
+                <CheckBox x:Name="chbx_CheckDiscount" Content="Наличие скидки" IsEnabled="False" Width="150" Margin="0,0,150,0" Checked="chbx_CheckDiscount_Checked" Unchecked="chbx_CheckDiscount_Unchecked"/>
 
 
             </Grid>
-            <Grid Margin="1,305,-1,-305">
-                <Label Content="Дата исполнения: "/>
-                <DatePicker x:Name="DatePerformanceDP" Margin="157,0,740,0" SelectedDateChanged="DatePerformanceDP_SelectedDateChanged"/>
+            <Grid Margin="0,10,0,0">
+                <Label Content="Финальная цена:" Width="150" Margin="0,0, 950,0"/>
+                <TextBox x:Name="txbx_FinalPrice" TextWrapping="Wrap" IsReadOnly="True"  Width="200" Margin="0,0,550,0" />
 
 
             </Grid>
-            <Grid Margin="0,317,0,-317">
-                <Label Content="ID Заказа:" Margin="0,0,902,0" />
-                <TextBox x:Name="txbx_search" TextWrapping="Wrap" Margin="97,0,660,0" SelectionChanged="txbx_search_SelectionChanged" />
+            <Grid Margin="0,10,0,0">
+                <Label Content="Дата исполнения:" Width="150" Margin="0,0, 950,0"/>
+                <DatePicker x:Name="DatePerformanceDP" Width="200" Margin="0,0,550,0" SelectedDateChanged="DatePerformanceDP_SelectedDateChanged"/>
+
 
             </Grid>
-            <Grid Margin="0,317,3,-317">
-                <DataGrid x:Name="DataGridOrders"  AutoGenerateColumns="False" Margin="0,20,0,-172">
+            <Grid Margin="0,10,0,0">
+                <Label Content="ID Заказа:" Width="150" Margin="0,0, 950,0" />
+                <TextBox x:Name="txbx_search" TextWrapping="Wrap"  Width="500" Margin="0,0,250,0" SelectionChanged="txbx_search_SelectionChanged" />
+
+            </Grid>
+            <Grid Margin="0,10,0,0">
+                <DataGrid x:Name="DataGridOrders"  AutoGenerateColumns="False" Width="1067" Height="300">
                     <DataGrid.Columns>
                         
                         <DataGridTextColumn Binding="{Binding DateOrder}" IsReadOnly="True" Header="Дата заказа" Width="100"/>
@@ -108,8 +118,8 @@
 
 
             </Grid>
-            <Grid Margin="347,499,364,-531">
-                <Button x:Name="Btn_Insert_Detail"  IsEnabled="False" Content="Выполнить" Click="Button_Click" RenderTransformOrigin="0.51,2.699"/>
+            <Grid Margin="0,10,0,0">
+                <Button x:Name="Btn_Insert_Detail" Width="200" IsEnabled="False" Content="Закрыть заказ" Click="Button_Click" RenderTransformOrigin="0.51,2.699"/>
 
             </Grid>
 

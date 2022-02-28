@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
+//using Microsoft.Office.Interop.Word;
 
 namespace ApplicationRepairPhoneEntityFramework
 {
@@ -12,7 +13,7 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
 
-        public static async Task SendEmailAsync(string mailTo, string subject, string body)
+        public static async Task<bool> SendEmailAsync(string mailTo, string subject, string body)
         {
             try
             {
@@ -26,11 +27,45 @@ namespace ApplicationRepairPhoneEntityFramework
                 smtp.Credentials = new NetworkCredential("ServiceCenterEFWPF", "Assassins2012");
                 smtp.EnableSsl = true;
                 await smtp.SendMailAsync(message);
+                return true;
             }
             catch (Exception) 
             {
+                return false;
                 throw new Exception("При отправке электронного письма произошла ошибка!");
             
+            }
+
+
+
+
+
+        }
+
+
+        public static async Task<bool> SendEmailAsync(string mailTo, string subject, string body, bool file, string path)
+        {
+            try
+            {
+
+                MailAddress from = new MailAddress("ServiceCenterEFWPF@yandex.ru", "Сервсиный центр");
+                MailAddress to = new MailAddress(mailTo);
+                MailMessage message = new MailMessage(from, to);
+                if(file)
+                message.Attachments.Add(new Attachment(path));
+                message.Subject = subject;
+                message.Body = body;
+                SmtpClient smtp = new SmtpClient("smtp.yandex.ru", 587);
+                smtp.Credentials = new NetworkCredential("ServiceCenterEFWPF", "Assassins2012");
+                smtp.EnableSsl = true;
+                await smtp.SendMailAsync(message);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw new Exception("При отправке электронного письма произошла ошибка!");
+
             }
 
 

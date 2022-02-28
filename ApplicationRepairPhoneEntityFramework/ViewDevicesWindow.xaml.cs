@@ -131,8 +131,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 MessageBox.Show("Новое оборудование успешно добавлено", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
-            else
-                MessageBox.Show("Новое оборудование не добавлено", "Приложение СЕРВИСНЫЙ ЦЕНТР: Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+
 
         }
 

@@ -10,7 +10,8 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.2",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.2",
-          "RepaifPhoneDB": "1.0.0"
+          "RepaifPhoneDB": "1.0.0",
+          "Syncfusion.DataGridExcelExport.Wpf": "19.4.0.53"
         },
         "runtime": {
           "ApplicationRepairPhoneEntityFramework.dll": {}
@@ -329,6 +330,93 @@
           "Microsoft.NETCore.Platforms": "3.1.0"
         }
       },
+      "Syncfusion.Compression.Base/19.4.0.53": {
+        "runtime": {
+          "lib/net5.0/Syncfusion.Compression.Base.dll": {
+            "assemblyVersion": "19.4500.0.53",
+            "fileVersion": "19.4500.0.53"
+          }
+        }
+      },
+      "Syncfusion.Data.WPF/19.4.0.53": {
+        "runtime": {
+          "lib/net5.0-windows7.0/Syncfusion.Data.WPF.dll": {
+            "assemblyVersion": "19.4500.0.53",
+            "fileVersion": "19.4500.0.53"
+          }
+        }
+      },
+      "Syncfusion.DataGridExcelExport.Wpf/19.4.0.53": {
+        "dependencies": {
+          "Syncfusion.Data.WPF": "19.4.0.53",
+          "Syncfusion.Pdf.Wpf": "19.4.0.53",
+          "Syncfusion.SfGrid.WPF": "19.4.0.53",
+          "Syncfusion.Shared.WPF": "19.4.0.53",
+          "Syncfusion.XlsIO.Wpf": "19.4.0.53"
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/Syncfusion.SfGridConverter.WPF.dll": {
+            "assemblyVersion": "19.4500.0.53",
+            "fileVersion": "19.4500.0.53"
+          }
+        }
+      },
+      "Syncfusion.Licensing/19.4.0.53": {
+        "runtime": {
+          "lib/net5.0/Syncfusion.Licensing.dll": {
+            "assemblyVersion": "19.4.0.53",
+            "fileVersion": "19.4.0.53"
+          }
+        }
+      },
+      "Syncfusion.Pdf.Wpf/19.4.0.53": {
+        "dependencies": {
+          "Syncfusion.Compression.Base": "19.4.0.53",
+          "Syncfusion.Licensing": "19.4.0.53"
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/Syncfusion.Pdf.Base.dll": {
+            "assemblyVersion": "19.4500.0.53",
+            "fileVersion": "19.4500.0.53"
+          }
+        }
+      },
+      "Syncfusion.SfGrid.WPF/19.4.0.53": {
+        "dependencies": {
+          "Syncfusion.Data.WPF": "19.4.0.53",
+          "Syncfusion.Licensing": "19.4.0.53",
+          "Syncfusion.Shared.WPF": "19.4.0.53"
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/Syncfusion.SfGrid.WPF.dll": {
+            "assemblyVersion": "19.4500.0.53",
+            "fileVersion": "19.4500.0.53"
+          }
+        }
+      },
+      "Syncfusion.Shared.WPF/19.4.0.53": {
+        "dependencies": {
+          "Syncfusion.Licensing": "19.4.0.53"
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/Syncfusion.Shared.WPF.dll": {
+            "assemblyVersion": "19.4500.0.53",
+            "fileVersion": "19.4500.0.53"
+          }
+        }
+      },
+      "Syncfusion.XlsIO.Wpf/19.4.0.53": {
+        "dependencies": {
+          "Syncfusion.Compression.Base": "19.4.0.53",
+          "Syncfusion.Licensing": "19.4.0.53"
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/Syncfusion.XlsIO.Base.dll": {
+            "assemblyVersion": "19.4500.0.53",
+            "fileVersion": "19.4500.0.53"
+          }
+        }
+      },
       "System.Collections.Immutable/6.0.0": {
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
@@ -623,6 +711,62 @@
       "sha512": "sha512-mtVirZr++rq+XCDITMUdnETD59XoeMxSpLRIII7JRI6Yj0LEDiO1pPn0ktlnIj12Ix8bfvQqQDMMIF9wC98oCA==",
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
+    },
+    "Syncfusion.Compression.Base/19.4.0.53": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-a88hVQkiZrMqvvdINDXOeUIoAOAXqUMBOf3QpzmZqqNgpyHh3EQLOCAlv5vnPf39UptAiU/3iTBFwKhjjGPBAA==",
+      "path": "syncfusion.compression.base/19.4.0.53",
+      "hashPath": "syncfusion.compression.base.19.4.0.53.nupkg.sha512"
+    },
+    "Syncfusion.Data.WPF/19.4.0.53": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vQlfGjoJL8XDWKDpRTX0FVPPajHnX6jQY4qClWepQ/GiAHn9dngyuJv2EkWdaVP/yW/O+3iU8b7yGBDKRz0ywg==",
+      "path": "syncfusion.data.wpf/19.4.0.53",
+      "hashPath": "syncfusion.data.wpf.19.4.0.53.nupkg.sha512"
+    },
+    "Syncfusion.DataGridExcelExport.Wpf/19.4.0.53": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lXfh4aZ9afUNPE18AU/tZcytykco1+tZ0MXNqO9USLAK/ZxPIKA+VHfFMtPu8WhbB3sMyVocC+YYfjRxvfTy3g==",
+      "path": "syncfusion.datagridexcelexport.wpf/19.4.0.53",
+      "hashPath": "syncfusion.datagridexcelexport.wpf.19.4.0.53.nupkg.sha512"
+    },
+    "Syncfusion.Licensing/19.4.0.53": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-V7eVfg0Ohx5/I9OaH3obiYzoyiuiz2Kb40tYOlcJon58Y0Srgp5BFfvIKnmYsuSoIQ6CZX2YR7j0jzFocb1EKg==",
+      "path": "syncfusion.licensing/19.4.0.53",
+      "hashPath": "syncfusion.licensing.19.4.0.53.nupkg.sha512"
+    },
+    "Syncfusion.Pdf.Wpf/19.4.0.53": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ehTfY/iVy+LKTGuL0HTdX4zqFAIzifzhxP/GLVMagICgYr+/y0Q1JBNmf/syRBE5Z1sTialTwPaNycYCpblwFw==",
+      "path": "syncfusion.pdf.wpf/19.4.0.53",
+      "hashPath": "syncfusion.pdf.wpf.19.4.0.53.nupkg.sha512"
+    },
+    "Syncfusion.SfGrid.WPF/19.4.0.53": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-B7MEoVChwAg52ehhpixGW/ZjKkgVfi82v5o66emD9DD34cBOi8mJi4nUFMtUW0hmzyk4bhTx2eaKbf3tufl4iA==",
+      "path": "syncfusion.sfgrid.wpf/19.4.0.53",
+      "hashPath": "syncfusion.sfgrid.wpf.19.4.0.53.nupkg.sha512"
+    },
+    "Syncfusion.Shared.WPF/19.4.0.53": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9bWh8POqmnQsVcXvZ6bxpmzOLMmHGDsT8arKNBf5aKZ011/lw4A5ZOr/eE6hRxIfK5ezwAUDEG+IAxxSyqZwMQ==",
+      "path": "syncfusion.shared.wpf/19.4.0.53",
+      "hashPath": "syncfusion.shared.wpf.19.4.0.53.nupkg.sha512"
+    },
+    "Syncfusion.XlsIO.Wpf/19.4.0.53": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YV9wv2t6855G70HezOIMbtdWkhVb6Z7/xpo4QHP4eHDzrXQJzYuplXkczHjW0dJZ6I6f8HihaOA4hY7D/0Ejww==",
+      "path": "syncfusion.xlsio.wpf/19.4.0.53",
+      "hashPath": "syncfusion.xlsio.wpf.19.4.0.53.nupkg.sha512"
     },
     "System.Collections.Immutable/6.0.0": {
       "type": "package",

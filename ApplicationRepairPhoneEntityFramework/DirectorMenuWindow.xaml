@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="DirectorMenuWindow" Height="450" Width="800" Closing="Window_Closing">
+        Title="Меню директора" Height="506" Width="800" Closing="Window_Closing">
     <Grid>
         <StackPanel>
             <Grid>
@@ -15,25 +15,123 @@
 
             </Grid>
             <Grid>
-                <Button x:Name="btn_clients" Content="Клиенты" Height="60" Click="btn_clients_Click"/>
-                </Grid>
-            <Grid>
-                <Button x:Name="btn_devices" Content="Оборудование" Height="60" Click="btn_devices_Click"/>
+                <Button x:Name="btn_clients" Content="Клиенты" Height="60" Click="btn_clients_Click" BorderBrush="Black" FontSize="30" FontFamily="Impact">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0004FF"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FFB6FF01" Offset="0.502"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
             </Grid>
             <Grid>
-                <Button x:Name="btn_employees" Content="Сотрудники" Height="60" Click="btn_employees_Click"/>
+                <Button x:Name="btn_devices" Content="Оборудование" Height="60" Click="btn_devices_Click" BorderBrush="Black" FontSize="30" FontFamily="Impact">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0004FF"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FFB6FF01" Offset="0.476"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
             </Grid>
             <Grid>
-                <Button x:Name="btn_details" Content="Детали на складе" Height="60" Click="btn_details_Click"/>
+                <Button x:Name="btn_employees" Content="Сотрудники" Height="60" Click="btn_employees_Click" BorderBrush="Black" FontSize="30" FontFamily="Impact">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0004FF"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FFB6FF01" Offset="0.502"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
             </Grid>
             <Grid>
-                <Button  x:Name="btn_orders" Content="Заказы" Height="60" Click="btn_orders_Click"/>
+                <Button x:Name="btn_details" Content="Детали на складе" Height="60" Click="btn_details_Click" BorderBrush="Black" FontSize="30" FontFamily="Impact">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0004FF"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FFB6FF01" Offset="0.486"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
             </Grid>
             <Grid>
-                <Button  x:Name="btn_AddOrders" Content="Добавить заказ" Height="60" Click="btn_AddOrders_Click"/>
+                <Button  x:Name="btn_orders" Content="Заказы" Height="60" Click="btn_orders_Click" BorderBrush="Black" FontSize="30" FontFamily="Impact">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0004FF"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FFB6FF01" Offset="0.495"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
             </Grid>
             <Grid>
-                <Button  x:Name="btn_AddPerforms" Content="Добавить исполнение" Height="60" Click="btn_AddPerforms_Click"/>
+                <Button  x:Name="btn_AddOrders" Content="Добавить заказ" Height="60" Click="btn_AddOrders_Click" BorderBrush="Black" FontSize="30" FontFamily="Impact">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0004FF"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FFB6FF01" Offset="0.498"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </Grid>
+            <Grid>
+                <Button  x:Name="btn_AddPerforms" Content="Добавить исполнение" Height="60" Click="btn_AddPerforms_Click" BorderBrush="Black" FontSize="30" FontFamily="Impact" FontWeight="Normal" FontStyle="Normal" FontStretch="Normal" Visibility="Visible">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0004FF"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FFB6FF01" Offset="0.492"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
             </Grid>
         </StackPanel>
 

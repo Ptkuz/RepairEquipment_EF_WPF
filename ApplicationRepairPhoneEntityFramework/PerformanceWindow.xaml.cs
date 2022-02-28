@@ -77,7 +77,10 @@ namespace ApplicationRepairPhoneEntityFramework
         public decimal FinalPrice { get; set; }
         public string Email { get; set; }
         public string Fio { get; set; }
-
+        public string Date_Order { get; private set; }
+        public string DeviceName { get; private set; }
+        public string SerialNumber { get; private set; }
+        public string FioEmployee { get; private set; }
 
         DateTime? date_performance;
         public DateTime? DatePerformance
@@ -157,6 +160,10 @@ namespace ApplicationRepairPhoneEntityFramework
                 string ID_Detail = (DataGridOrders.SelectedCells[1].Column.GetCellContent(item) as TextBlock)!.Text;
                 Email = (DataGridOrders.SelectedCells[3].Column.GetCellContent(item) as TextBlock)!.Text.Trim();
                 Fio = (DataGridOrders.SelectedCells[2].Column.GetCellContent(item) as TextBlock)!.Text.Trim();
+                Date_Order = (DataGridOrders.SelectedCells[0].Column.GetCellContent(item) as TextBlock)!.Text.Trim();
+                DeviceName = (DataGridOrders.SelectedCells[4].Column.GetCellContent(item) as TextBlock)!.Text.Trim();
+                SerialNumber = (DataGridOrders.SelectedCells[5].Column.GetCellContent(item) as TextBlock)!.Text.Trim();
+                FioEmployee = (DataGridOrders.SelectedCells[6].Column.GetCellContent(item) as TextBlock)!.Text.Trim();
 
                 if (item == null)
                 {
@@ -167,7 +174,35 @@ namespace ApplicationRepairPhoneEntityFramework
 
                 if (await DataOperations.InsertPerformance(ID_Performance, DescriptionRepair, WorkPrice, DetailsPrice, Discount, FinalPrice, DatePerformance, IdQuantityDetails, ID_Order))
                 {
-                    await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(Fio, ID_Detail, "Заказ закрыт"));
+
+                    var document = new CreateDocuments(@"Шаблон акта работы.docx", @"Акты работ\Акт работы.docx");
+
+                    var items = new Dictionary<string, string>
+                        {
+                            { "ID_Performance", ID_Performance.ToString()},
+                            { "Date_Perf", DatePerformance.ToString()},
+                            { "ID_Order", ID_Order.ToString()},
+                            { "Date_Order",Date_Order },
+                            { "Client_Fio", Fio},
+                            { "Device_Name", DeviceName},
+                            { "SerialNumber", SerialNumber},
+                            { "Employee_Master", FioEmployee},
+                            { "Description", txbx_Description.Text},
+                            { "Work_Price", txbx_Price_Work.Text},
+                            { "Details_Price", txbx_PriceAllDetails.Text},
+                            { "Discount", txbx_Discount.Text},
+                            { "Final_Price", txbx_FinalPrice.Text}
+                        };
+
+                    document.Process(items);
+
+
+
+                    if (Email!=String.Empty)
+                    if(await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(Fio, ID_Detail, "Заказ закрыт. \n К письму прикреплена электронная копия акта выполненных работ"), true, @"Акты работ\Акт работы.docx"))
+                            MessageBox.Show("Письмо клиенту успешно отправлено!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+                    else
+                            MessageBox.Show("При отправке письма произошла ошибка. Проверьте интернет подключение!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
                     this.DialogResult = true;
                 }
                 else

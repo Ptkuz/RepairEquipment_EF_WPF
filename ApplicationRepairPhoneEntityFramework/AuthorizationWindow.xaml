@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="AuthorizationWindow" WindowStartupLocation="CenterScreen" Height="318" ResizeMode="NoResize" Width="338">
+        Title="Авторизация в приложении" WindowStartupLocation="CenterScreen" Height="318" ResizeMode="NoResize" Width="338">
     <Grid>
         <StackPanel>
             <Grid Margin="0,20,0,0">

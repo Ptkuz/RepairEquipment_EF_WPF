@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="CreateOrderWindow" Height="531" Width="1609">
+        Title="Создать новый заказ" Height="531" Width="1635">
     <Grid>
 
         <StackPanel Margin="0,20,0,0">

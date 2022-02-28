@@ -41,8 +41,7 @@ namespace ApplicationRepairPhoneEntityFramework
             {
                 MessageBox.Show("Заказ создан", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else
-                MessageBox.Show("Заказ не создан", "Приложение СЕРВИСНЫЙ ЦЕНТР: Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -53,8 +52,7 @@ namespace ApplicationRepairPhoneEntityFramework
             {
                 MessageBox.Show("Заказ закрыт", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else
-                MessageBox.Show("Заказ не закрыт", "Приложение СЕРВИСНЫЙ ЦЕНТР: Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -63,8 +61,7 @@ namespace ApplicationRepairPhoneEntityFramework
             bool? result = addClientWindow.ShowDialog();
             if (result.HasValue && result.Value)
                 MessageBox.Show("Новый клиент успешно добавлен", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
-            else
-                MessageBox.Show("Клиент не добавлен", "Приложение СЕРВИСНЫЙ ЦЕНТР: Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+
 
         }
 
@@ -74,8 +71,7 @@ namespace ApplicationRepairPhoneEntityFramework
             bool? result = addDeviceWindow.ShowDialog();
             if (result.HasValue && result.Value)
                 MessageBox.Show("Новое оборудование успешно добавлено", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
-            else
-                MessageBox.Show("Оборудование не добавлено", "Приложение СЕРВИСНЫЙ ЦЕНТР: Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)

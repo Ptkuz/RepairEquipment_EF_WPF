@@ -90,8 +90,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 dataGridDetails.ItemsSource = await DataOperations.GetAllDetails();
                 MessageBox.Show("Новая деталь добавлена", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else
-                MessageBox.Show("Новая деталь не добавлена", "Приложение СЕРВИСНЫЙ ЦЕНТР: Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+
         }
 
         private async void txbx_search_detail_SelectionChanged(object sender, RoutedEventArgs e)

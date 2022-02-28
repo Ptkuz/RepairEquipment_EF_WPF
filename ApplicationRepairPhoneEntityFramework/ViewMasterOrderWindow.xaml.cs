@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Collections;
 
 namespace ApplicationRepairPhoneEntityFramework
 {
@@ -47,7 +37,7 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void btn_change_status_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private async void txbx_search_orders_SelectionChanged(object sender, RoutedEventArgs e)
@@ -76,9 +66,13 @@ namespace ApplicationRepairPhoneEntityFramework
             Fio = (DataGridOrders.SelectedCells[3].Column.GetCellContent(item) as TextBlock)!.Text.Trim();
             DataGridOrders.ItemsSource = await DataOperations.GetStatusOrdersViewMasterWindow(1, login);
             DataGridWorkingOrder.ItemsSource = await DataOperations.GetStatusOrdersViewMasterWindow(2, login);
-            
+
             MessageBox.Show("Заказ переведен в статус исполнения", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
-            await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(Fio, ID_Order.ToString(), "Заказ выполняется"));
+            if (Email != String.Empty)
+                if(await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(Fio, ID_Order.ToString(), "Заказ выполняется")))
+                    MessageBox.Show("Письмо клиенту успешно отправлено!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                    MessageBox.Show("При отправке письма произошла ошибка. Проверьте интернет подключение!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
 
         }
 
@@ -90,9 +84,13 @@ namespace ApplicationRepairPhoneEntityFramework
             Fio = (DataGridWorkingOrder.SelectedCells[3].Column.GetCellContent(item) as TextBlock)!.Text.Trim();
             DataGridWorkingOrder.ItemsSource = await DataOperations.GetStatusOrdersViewMasterWindow(2, login);
             DataGridCompleteOrder.ItemsSource = await DataOperations.GetStatusOrdersViewMasterWindow(3, login);
-          
+
             MessageBox.Show("Заказ выполнен", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
-            await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(Fio, ID_Order.ToString(), "Заказ выполнен"));
+            if (Email != String.Empty)
+                if(await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(Fio, ID_Order.ToString(), "Заказ выполнен")))
+                    MessageBox.Show("Письмо клиенту успешно отправлено!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                    MessageBox.Show("При отправке письма произошла ошибка. Проверьте интернет подключение!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void DataGridOrders_SelectionChanged(object sender, SelectionChangedEventArgs e)

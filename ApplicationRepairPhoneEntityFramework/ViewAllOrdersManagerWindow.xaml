@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="ViewAllOrdersManagerWindow" WindowStartupLocation="CenterScreen" Height="1227" Width="1974">
+        Title="Просмотр всех заказов менеджером" WindowStartupLocation="CenterScreen" Height="1227" Width="1974">
     <Grid>
         <StackPanel>
             <Grid Margin="0,20,0,0">

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="ViewAllOrdersWindow" Height="840" Width="1974">
+        Title="Просмотр всех заказов директором" Height="840" Width="1974">
     <Grid>
         <StackPanel>
             <Grid Margin="0,20,0,0">
@@ -19,6 +19,31 @@
             
             <Grid Margin="0,20,0,0">
                 <DataGrid x:Name="DataGridOrders" Height="300"  AutoGenerateColumns="False" SelectionChanged="DataGridOrders_SelectionChanged">
+
+                    <DataGrid.ItemContainerStyle>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Background" Value="White"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Status}" Value="Заказ выполнен">
+                                    <Setter Property="Background" Value="#FF6CFCFF"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}" Value="Заказ выполняется">
+                                    <Setter Property="Background" Value="#FFEBFF74"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}" Value="Заказ зарегестрирован">
+                                    <Setter Property="Background" Value="#FFB880FF"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}" Value="Заказ закрыт">
+                                    <Setter Property="Background" Value="#FF6CFF6C"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}" Value="Заказ отменен">
+                                    <Setter Property="Background" Value="#FFFF6767"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.ItemContainerStyle>
+
+
                     <DataGrid.Columns>
 
                         <DataGridTextColumn Binding="{Binding DateOrder}" IsReadOnly="True" Header="Дата заказа" Width="100"/>
@@ -30,7 +55,13 @@
                         <DataGridTextColumn Binding="{Binding ClientEmail}" IsReadOnly="True" Header="Email" Width="140"/>
                         <DataGridTextColumn Binding="{Binding DeviceName}" IsReadOnly="True" Header="Назавние оборудования" Width="150"/>
                         <DataGridTextColumn Binding="{Binding SeriesNumber}" IsReadOnly="True" Header="Серийный номер" Width="140"/>
-                        <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True" Header="Описание" Width="140"/>
+                        <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True" Header="Описание" Width="140">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
                         <DataGridTextColumn Binding="{Binding Manufactorer}" IsReadOnly="True" Header="Производитель" Width="140"/>
                         <DataGridTextColumn Binding="{Binding Model}" IsReadOnly="True" Header="Модель" Width="140"/>
                         <DataGridTextColumn Binding="{Binding ID_Employee}" IsReadOnly="True" Header="Логин" Width="140"/>
@@ -48,13 +79,19 @@
             </Grid>
 
             <Grid Margin="0,20,0,0">
-                <DataGrid x:Name="DataGridPerformance" Height="300"  AutoGenerateColumns="False" SelectionChanged="DataGridPerformance_SelectionChanged">
+                <DataGrid x:Name="DataGridPerformance" Height="300"  AutoGenerateColumns="False" SelectionChanged="DataGridPerformance_SelectionChanged" Background="White">
                     <DataGrid.Columns>
 
                         <DataGridTextColumn Binding="{Binding ID_Performance}" IsReadOnly="True" Header="ID исполнения" Width="100"/>
                         <DataGridTextColumn Binding="{Binding OrderKey}" IsReadOnly="True" Header="ID Заказа" Width="140"/>
                         <DataGridTextColumn Binding="{Binding Date_Performance}" IsReadOnly="True" Header="Дата исполнения" Width="150"/>
-                        <DataGridTextColumn Binding="{Binding Description_Repair}" IsReadOnly="True" Header="Описание ремонта" Width="400"/>
+                        <DataGridTextColumn Binding="{Binding Description_Repair}" IsReadOnly="True" Header="Описание ремонта" Width="900">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
                         <DataGridTextColumn Binding="{Binding Work_Price}" Header="Цена работы" Width="160"/>
                         <DataGridTextColumn Binding="{Binding Detail_Price}" IsReadOnly="True" Header="Цена деталей" Width="140"/>
                         <DataGridTextColumn Binding="{Binding Discount}" IsReadOnly="True" Header="Скидка" Width="150"/>
@@ -64,6 +101,11 @@
 
                     </DataGrid.Columns>
                 </DataGrid>
+
+            </Grid>
+
+            <Grid>
+                <Button Content="Экспорт в Excel" Width="200" Height="40"  Click="Button_Click"/>
 
             </Grid>
 

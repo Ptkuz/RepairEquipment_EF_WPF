@@ -134,8 +134,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 dataGridEmployees.ItemsSource = await DataOperations.GetAllEmployeesView();
                 MessageBox.Show("Новый сотрудник добавлен. На электронную почту сотрудника отправлено письмо", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else
-                MessageBox.Show("Новый сотрудник не добавлен", "Приложение СЕРВИСНЫЙ ЦЕНТР: Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+
         }
 
         private async void txbx_search_employee_SelectionChanged(object sender, RoutedEventArgs e)
@@ -193,8 +192,11 @@ namespace ApplicationRepairPhoneEntityFramework
                 PositionName = cmbx_position.Text;
                 await DataOperations.UpdateEmployee(ID_Employee, Password, FIO, SeriesNumber, Address, PhoneNumber, Position);
                 dataGridEmployees.ItemsSource = await DataOperations.GetAllEmployeesView();
-                await SendEmail.SendEmailAsync(ID_Employee, "Пиьсмо от Сервсисного центра", SendEmail.UpdateEmployeeMail(FIO, PositionName, ID_Employee, Password, SeriesNumber, Address, PhoneNumber));
-                MessageBox.Show($"Сотрудник {ID_Employee} обновлен. Обновленная информация отправлена на электронную почту сотрудника.", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+                if(await SendEmail.SendEmailAsync(ID_Employee, "Пиьсмо от Сервсисного центра", SendEmail.UpdateEmployeeMail(FIO, PositionName, ID_Employee, Password, SeriesNumber, Address, PhoneNumber)))
+                    MessageBox.Show("Письмо сотруднику успешно отправлено!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                    MessageBox.Show("При отправке письма произошла ошибка. Проверьте интернет подключение!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Сотрудник {ID_Employee} обновлен.", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex) 
             {

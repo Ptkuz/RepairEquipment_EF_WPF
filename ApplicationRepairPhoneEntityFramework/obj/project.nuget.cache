@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "lfcRfucMwbBLr0cuL4M35NxqYYsrJSry0PsDbi8yl4GqYvFAFlA4qdO2XQEdSQJGeI6HGjJRwO/ftBp3VcBPPg==",
+  "dgSpecHash": "1zAImAQuz7ZZAoIW5j5hniu3hpNszflS+SseD+AOWhkxr/PbfjoBu2B69w5oEJ2jmCyF2VWZLrZrfSt5c3oIHg==",
   "success": true,
   "projectFilePath": "C:\\Users\\ptkuz\\source\\repos\\ApplicationRepairPhoneEntityFramework\\ApplicationRepairPhoneEntityFramework\\ApplicationRepairPhoneEntityFramework.csproj",
   "expectedPackageFiles": [
@@ -33,6 +33,14 @@
     "C:\\Users\\ptkuz\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\ptkuz\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\ptkuz\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\ptkuz\\.nuget\\packages\\syncfusion.compression.base\\19.4.0.53\\syncfusion.compression.base.19.4.0.53.nupkg.sha512",
+    "C:\\Users\\ptkuz\\.nuget\\packages\\syncfusion.data.wpf\\19.4.0.53\\syncfusion.data.wpf.19.4.0.53.nupkg.sha512",
+    "C:\\Users\\ptkuz\\.nuget\\packages\\syncfusion.datagridexcelexport.wpf\\19.4.0.53\\syncfusion.datagridexcelexport.wpf.19.4.0.53.nupkg.sha512",
+    "C:\\Users\\ptkuz\\.nuget\\packages\\syncfusion.licensing\\19.4.0.53\\syncfusion.licensing.19.4.0.53.nupkg.sha512",
+    "C:\\Users\\ptkuz\\.nuget\\packages\\syncfusion.pdf.wpf\\19.4.0.53\\syncfusion.pdf.wpf.19.4.0.53.nupkg.sha512",
+    "C:\\Users\\ptkuz\\.nuget\\packages\\syncfusion.sfgrid.wpf\\19.4.0.53\\syncfusion.sfgrid.wpf.19.4.0.53.nupkg.sha512",
+    "C:\\Users\\ptkuz\\.nuget\\packages\\syncfusion.shared.wpf\\19.4.0.53\\syncfusion.shared.wpf.19.4.0.53.nupkg.sha512",
+    "C:\\Users\\ptkuz\\.nuget\\packages\\syncfusion.xlsio.wpf\\19.4.0.53\\syncfusion.xlsio.wpf.19.4.0.53.nupkg.sha512",
     "C:\\Users\\ptkuz\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\ptkuz\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "C:\\Users\\ptkuz\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",

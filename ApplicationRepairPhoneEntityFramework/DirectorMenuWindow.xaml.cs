@@ -69,8 +69,6 @@ namespace ApplicationRepairPhoneEntityFramework
             {
                 MessageBox.Show("Заказ создан", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else
-                MessageBox.Show("Заказ не создан", "Приложение СЕРВИСНЫЙ ЦЕНТР: Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
         private void btn_AddPerforms_Click(object sender, RoutedEventArgs e)
@@ -81,8 +79,7 @@ namespace ApplicationRepairPhoneEntityFramework
             {
                 MessageBox.Show("Заказ закрыт", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else
-                MessageBox.Show("Заказ не закрыт", "Приложение СЕРВИСНЫЙ ЦЕНТР: Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

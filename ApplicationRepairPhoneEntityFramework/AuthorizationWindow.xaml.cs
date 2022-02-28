@@ -75,7 +75,7 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
        
-        private async void btn_login_Click(object sender, RoutedEventArgs e)
+        private  void btn_login_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace ApplicationRepairPhoneEntityFramework
                     using (FileStream fs = new FileStream("login.json", FileMode.OpenOrCreate))
                     {
                         AutorezationClass autorezationClass1 = new AutorezationClass(txbx_login.Text, txbx_pawword.Password);
-                        await JsonSerializer.SerializeAsync<AutorezationClass>(fs, autorezationClass1);
+                         JsonSerializer.Serialize<AutorezationClass>(fs, autorezationClass1);
                     }
 
                 }
@@ -96,7 +96,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 
 
                  
-                string[] dataEmployee = await DataOperations.Autorization(txbx_login.Text, txbx_pawword.Password);
+                string[] dataEmployee = DataOperations.Autorization(txbx_login.Text, txbx_pawword.Password);
                
                 string position = dataEmployee[0];
                 string fio  = dataEmployee[1];
