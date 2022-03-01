@@ -109,7 +109,8 @@ namespace ApplicationRepairPhoneEntityFramework {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ApplicationRepairPhoneEntityFramework;component/authorizationwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ApplicationRepairPhoneEntityFramework;V1.0.0.0;component/authorizationwindow.xam" +
+                    "l", System.UriKind.Relative);
             
             #line 1 "..\..\..\AuthorizationWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

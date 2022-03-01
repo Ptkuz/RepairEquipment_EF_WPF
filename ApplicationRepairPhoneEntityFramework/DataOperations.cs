@@ -10,11 +10,11 @@ namespace ApplicationRepairPhoneEntityFramework
 {
     public static class DataOperations
     {
-        public static string[] Autorization(string login, string password)
+        public static async Task<string[]> Autorization(string login, string password)
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                var user = db.Employees.Join(db.positions,
+                var user = await db.Employees.Join(db.positions,
                     e => e.ID_Position,
                     p => p.ID_Position,
                     (e, p) => new
@@ -26,8 +26,8 @@ namespace ApplicationRepairPhoneEntityFramework
                         FIO = e.FIO
 
 
-                    }).Where(n => n.Login == login && n.Password == password).FirstOrDefault();
-                string[] dataEmployee = new string[2] { user.Position, user.FIO };
+                    }).Where(n => n.Login == login && n.Password == password).FirstOrDefaultAsync();
+                string[] dataEmployee =  new string[2] { user.Position, user.FIO };
 
                 return dataEmployee;
             }

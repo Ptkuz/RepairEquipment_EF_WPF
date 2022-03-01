@@ -133,7 +133,7 @@ namespace ApplicationRepairPhoneEntityFramework {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ApplicationRepairPhoneEntityFramework;component/addclientwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ApplicationRepairPhoneEntityFramework;V1.0.0.0;component/addclientwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AddClientWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

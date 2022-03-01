@@ -23,7 +23,7 @@ namespace ApplicationRepairPhoneEntityFramework
             set
             {
                 flagLogin = value;
-                if (flagLogin && flagPassword)
+                if (flagLogin && flagPassword && flagServer)
                 {
                     btn_login.IsEnabled = true;
                     cxbx_Member.IsEnabled = true;
@@ -41,7 +41,7 @@ namespace ApplicationRepairPhoneEntityFramework
         {
             get { return flagPassword; }
             set { flagPassword = value;
-                if (flagLogin && flagPassword)
+                if (flagLogin && flagPassword && flagServer)
                 {
                     btn_login.IsEnabled = true;
                     cxbx_Member.IsEnabled = true;
@@ -54,6 +54,27 @@ namespace ApplicationRepairPhoneEntityFramework
             }
         }
 
+        bool flagServer = false;
+        public bool FlagServer 
+        {
+            get { return flagServer; }
+            set { flagServer = value;
+                if (flagLogin && flagPassword && flagServer)
+                {
+                    btn_login.IsEnabled = true;
+                    cxbx_Member.IsEnabled = true;
+                }
+                else
+                {
+                    btn_login.IsEnabled = false;
+                    cxbx_Member.IsEnabled = true;
+                }
+
+            }
+        
+        
+        }
+
         public AuthorizationWindow()
         {
             InitializeComponent();
@@ -61,13 +82,14 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
 
-            using (FileStream fs = new FileStream("login.json", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("login.json", FileMode.Open))
             {
                 if (fs.Length != 0)
                 {
                     AutorezationClass autorezationClass = JsonSerializer.Deserialize<AutorezationClass>(fs);
                     txbx_login.Text = autorezationClass?.Login;
                     txbx_pawword.Password = autorezationClass?.Password;
+                    txbx_server.Text = autorezationClass?.Server;
                 }
             }
 
@@ -75,33 +97,39 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
        
-        private  void btn_login_Click(object sender, RoutedEventArgs e)
+        private async  void btn_login_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 if (Member)
                 {
-                    using (FileStream fs = new FileStream("login.json", FileMode.OpenOrCreate))
+                    FileInfo fileInfo = new FileInfo("login.json");
+                    if (fileInfo.Exists) 
+                    { 
+                        fileInfo.Delete();
+                    
+                    }
+                    using (FileStream fs = new FileStream("login.json", FileMode.Create))
                     {
-                        AutorezationClass autorezationClass1 = new AutorezationClass(txbx_login.Text, txbx_pawword.Password);
-                         JsonSerializer.Serialize<AutorezationClass>(fs, autorezationClass1);
+                        AutorezationClass autorezationClass1 = new AutorezationClass(txbx_login.Text, txbx_pawword.Password, txbx_server.Text);
+                        JsonSerializer.Serialize<AutorezationClass>(fs, autorezationClass1);
                     }
 
                 }
 
 
 
-                AutorezationClass autorezationClass = new AutorezationClass(txbx_login.Text, txbx_pawword.Password);
+                AutorezationClass autorezationClass = new AutorezationClass(txbx_login.Text, txbx_pawword.Password, txbx_server.Text);
+                ServerClass.Server = txbx_server.Text;
 
-                
 
-                 
-                string[] dataEmployee = DataOperations.Autorization(txbx_login.Text, txbx_pawword.Password);
-               
+
+                string[] dataEmployee = await DataOperations.Autorization(txbx_login.Text, txbx_pawword.Password);
+
                 string position = dataEmployee[0];
-                string fio  = dataEmployee[1];
+                string fio = dataEmployee[1];
 
-                
+
 
                 switch (position)
                 {
@@ -110,7 +138,7 @@ namespace ApplicationRepairPhoneEntityFramework
                         bool? result = directorMenuWindow.ShowDialog();
                         break;
                     case "Стажер":
-                        MasterMenuWindow masterMenuWindow1 = new MasterMenuWindow(autorezationClass.Login,fio, position);
+                        MasterMenuWindow masterMenuWindow1 = new MasterMenuWindow(autorezationClass.Login, fio, position);
                         masterMenuWindow1.ShowDialog();
                         break;
                     case "Мастер":
@@ -133,7 +161,15 @@ namespace ApplicationRepairPhoneEntityFramework
                 }
 
 
-               
+
+
+            }
+            catch (Microsoft.Data.SqlClient.SqlException ex) 
+            {
+
+                connectionProgressBar.IsIndeterminate = false;
+                connectionLabel.Content = "";
+                MessageBox.Show("Ошибка подключения к серверу!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
             catch
@@ -166,7 +202,10 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_server_SelectionChanged(object sender, RoutedEventArgs e)
         {
-
+            if(txbx_server.Text!=String.Empty)
+                FlagServer = true;
+            else
+                FlagServer = false;
         }
 
         private void txbx_login_SelectionChanged(object sender, RoutedEventArgs e)

@@ -85,7 +85,7 @@ namespace ApplicationRepairPhoneEntityFramework
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
         {
-            optionsBuilder.UseSqlServer(@"Server=GURREX\SQLEXPRESS;Database=RepairPhone;Trusted_Connection=True;TrustServerCertificate=true;");
+            optionsBuilder.UseSqlServer(@"Server="+ ServerClass.Server +";Database=RepairPhone;Trusted_Connection=True;TrustServerCertificate=true;");
         }
 
     }

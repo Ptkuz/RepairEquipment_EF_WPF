@@ -68,6 +68,15 @@ namespace ApplicationRepairPhoneEntityFramework
                 Object newFileName = Path.Combine(FileInfoSave.DirectoryName, FileInfoSave.Name);
 
                 app.ActiveDocument.SaveAs2(newFileName);
+
+
+                
+
+                //if (fileInfo.Exists) 
+                //{
+                //    string DateName =  FileInfoSave.FullName + DateTime.Now;
+                //    File.Copy(FileInfoSave.FullName, DateName.ToString(), true);
+                //}
                 
 
 

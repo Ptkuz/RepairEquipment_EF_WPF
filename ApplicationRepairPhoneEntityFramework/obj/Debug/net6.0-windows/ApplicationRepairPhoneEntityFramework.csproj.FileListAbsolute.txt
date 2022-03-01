@@ -87,7 +87,6 @@ C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRep
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\MasterMenuWindow.baml
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\Interop.Microsoft.Office.Interop.Word.dll
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\ApplicationRepairPhoneEntityFramework.csproj.ResolveComReference.cache
-C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\bin\Debug\net6.0-windows\Шаблон заказа клиента.docx
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\bin\Debug\net6.0-windows\Syncfusion.Compression.Base.dll
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\bin\Debug\net6.0-windows\Syncfusion.Data.WPF.dll
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\bin\Debug\net6.0-windows\Syncfusion.SfGridConverter.WPF.dll
@@ -98,3 +97,4 @@ C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRep
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\bin\Debug\net6.0-windows\Syncfusion.XlsIO.Base.dll
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\Interop.Microsoft.Office.Interop.Excel.dll
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\bin\Debug\net6.0-windows\Шаблон акта работы.docx
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\bin\Debug\net6.0-windows\Шаблон заказа клиента.docx
