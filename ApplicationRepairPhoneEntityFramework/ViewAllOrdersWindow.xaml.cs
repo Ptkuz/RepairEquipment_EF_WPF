@@ -203,6 +203,22 @@ namespace ApplicationRepairPhoneEntityFramework
             }
         }
 
+        private async void datepicker1_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGridPerformance.ItemsSource = await DataOperations.GetPerformancePeriodDateViewAllOrdersWindow(datepicker1.SelectedDate, datepicker2.SelectedDate);
 
+        }
+
+        private async void datepicker2_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGridPerformance.ItemsSource = await DataOperations.GetPerformancePeriodDateViewAllOrdersWindow(datepicker1.SelectedDate, datepicker2.SelectedDate);
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            datepicker1.SelectedDate = null;
+            datepicker2.SelectedDate = null;
+            DataGridPerformance.ItemsSource = await DataOperations.GetAllPerformanceViewAllOrdersWindow();
+        }
     }
 }

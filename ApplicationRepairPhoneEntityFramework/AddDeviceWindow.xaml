@@ -5,41 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="Добавить новое оборудование" Height="450" Width="800">
+        Title="Добавить новое оборудование" Height="292" Width="800" MinHeight="292" MinWidth="800">
     <Grid Margin="0,10,0,0">
         <StackPanel>
             <Grid>
-                <Label Content="ID Оборудования:" Width="180" Margin="0,0,620,0" Height="26" VerticalAlignment="Bottom"/>
-                <TextBox x:Name="txbx_ID_Device" IsReadOnly="True" TextWrapping="Wrap"  Width="400" Margin="0,0,70,0"/>
-                <Label Content="" Width="230" Margin="570,0,0,0"/>
+                <Label Content="ID Оборудования:" Margin="0,0,640,0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_ID_Device" IsReadOnly="True" TextWrapping="Wrap" Margin="165,0,235,0" />
+                <Label Content="" Margin="570,0,0,0" HorizontalAlignment="Right" Width="230"/>
             </Grid>
             <Grid Margin="0,10,0,0">
-                <Label Content="Название оборудования:" Width="180" Margin="0,0,620,0"/>
-                <TextBox x:Name="txbx_Name_Device" TextWrapping="Wrap"  Width="400" Margin="0,0,70,0" SelectionChanged="txbx_Name_Device_SelectionChanged"/>
-                <Label x:Name="lb_Name" Content="" Width="230" Margin="570,0,0,0"/>
+                <Label Content="Название оборудования:" Margin="0,0,640,0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_Name_Device" TextWrapping="Wrap" Margin="165,0,235,0" SelectionChanged="txbx_Name_Device_SelectionChanged"/>
+                <Label x:Name="lb_Name" Content="" Margin="570,0,0,0" HorizontalAlignment="Right" Width="230"/>
             </Grid>
             <Grid Margin="0,10,0,0">
-                <Label Content="Серийный номер:" Width="180" Margin="0,0,620,0"/>
-                <TextBox x:Name="txbx_Serial_Number" TextWrapping="Wrap" Width="400" Margin="0,0,70,0" SelectionChanged="txbx_Serial_Number_SelectionChanged"/>
-                <Label x:Name="lb_SerialNumber" Content="" Width="230" Margin="570,0,0,0"/>
+                <Label Content="Серийный номер:" Margin="0,0,640,0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_Serial_Number" TextWrapping="Wrap" Margin="165,0,235,0" SelectionChanged="txbx_Serial_Number_SelectionChanged"/>
+                <Label x:Name="lb_SerialNumber" Content="" Margin="570,0,0,0" HorizontalAlignment="Right" Width="230"/>
             </Grid>
             <Grid Margin="0,10,0,0">
-                <Label Content="Описание:" Width="180" Margin="0,0,620,0"/>
-                <TextBox x:Name="txbx_Description" TextWrapping="Wrap" Width="400" Margin="0,0,70,0" SelectionChanged="txbx_Description_SelectionChanged"/>
-                <Label x:Name="lb_Description" Content="" Width="230" Margin="570,0,0,0"/>
+                <Label Content="Описание:" Margin="0,0,640,0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_Description" TextWrapping="Wrap" Margin="165,0,235,0" SelectionChanged="txbx_Description_SelectionChanged"/>
+                <Label x:Name="lb_Description" Content="" Margin="570,0,0,0" HorizontalAlignment="Right" Width="230"/>
             </Grid>
             <Grid Margin="0,10,0,0">
-                <Label Content="Производитель:" Width="180" Margin="0,0,620,0"/>
-                <TextBox x:Name="txbx_anufacturer" TextWrapping="Wrap" Width="400" Margin="0,0,70,0" SelectionChanged="txbx_anufacturer_SelectionChanged"/>
-                <Label x:Name="lb_Manufacturer" Content="" Width="230" Margin="570,0,0,0"/>
+                <Label Content="Производитель:" Margin="0,0,640,0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_anufacturer" TextWrapping="Wrap" Margin="165,0,235,0" SelectionChanged="txbx_anufacturer_SelectionChanged"/>
+                <Label x:Name="lb_Manufacturer" Content="" Margin="570,0,0,0" HorizontalAlignment="Right" Width="230"/>
             </Grid>
             <Grid Margin="0,10,0,0">
-                <Label Content="Модель:" Width="180" Margin="0,0,620,0"/>
-                <TextBox x:Name="txbx_Model" TextWrapping="Wrap" Width="400" Margin="0,0,70,0" SelectionChanged="txbx_Model_SelectionChanged"/>
-                <Label x:Name="lb_Model" Content="" Width="230" Margin="570,0,0,0"/>
+                <Label Content="Модель:" Margin="0,0,640,0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_Model" TextWrapping="Wrap" Margin="165,0,235,0" SelectionChanged="txbx_Model_SelectionChanged"/>
+                <Label x:Name="lb_Model" Content="" Margin="570,0,0,0" HorizontalAlignment="Right" Width="230"/>
             </Grid>
             <Grid Margin="0,10,0,0">
-                <Button x:Name="btn_Add_Device" IsEnabled="False" Content="Добавить оборудования для ремонта" Width="400" Margin="0,0,70,0" Click="btn_Add_Device_Click"/>
+                <Button x:Name="btn_Add_Device" IsEnabled="False" Content="Добавить оборудования для ремонта" Margin="165,0,235,0" Click="btn_Add_Device_Click"/>
             </Grid>
         </StackPanel>
     </Grid>

@@ -5,48 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="Добавить нового сотрудника" Height="450" Width="800">
+        Title="Добавить нового сотрудника" Height="340" Width="800" MinHeight="340" MinWidth="800">
     <Grid>
         <StackPanel>
             <Grid>
-                <Label Content="Логин сотрудника:" Width="180" Margin="0,0,620,0"/>
-                <TextBox x:Name="txbx_Login_Employee" TextWrapping="Wrap"  Width="400" Margin="0,0,70,0" SelectionChanged="txbx_Login_Employee_SelectionChanged"/>
-                <Label x:Name="lb_Login"  Content="" Width="230" Margin="570,0,0,0"/>
+                <Label Content="Логин сотрудника:" Margin="0,0,640,0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_Login_Employee" TextWrapping="Wrap"  SelectionChanged="txbx_Login_Employee_SelectionChanged" Margin="165,0,235,0"/>
+                <Label x:Name="lb_Login"  Content="" Margin="570,0,0,0" HorizontalAlignment="Right" Width="230"/>
 
             </Grid>
             <Grid Margin="0,10,0,0">
-                <Label Content="Пароль сотрудника:" Width="180" Margin="0,0,620,0"/>
-                <TextBox x:Name="txbx_Passwor_Employee" TextWrapping="Wrap"  Width="400" Margin="0,0,70,0" SelectionChanged="txbx_Passwor_Employee_SelectionChanged"/>
-                <Label x:Name="lb_Password" Content="" Width="230" Margin="570,0,0,0"/>
+                <Label Content="Пароль сотрудника:" Margin="0,0,640,0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_Passwor_Employee" TextWrapping="Wrap"  Margin="165,0,235,0" SelectionChanged="txbx_Passwor_Employee_SelectionChanged"/>
+                <Label x:Name="lb_Password" Content="" Margin="570,0,0,0" HorizontalAlignment="Right" Width="230"/>
 
             </Grid>
             <Grid Margin="0,10,0,0">
-                <Label Content="ФИО Сотрудника:" Width="180" Margin="0,0,620,0"/>
-                <TextBox x:Name="txbx_FIO_Employee" TextWrapping="Wrap"  Width="400" Margin="0,0,70,0" SelectionChanged="txbx_FIO_Employee_SelectionChanged"/>
-                <Label x:Name="lb_FIO" Content="" Width="230" Margin="570,0,0,0"/>
+                <Label Content="ФИО Сотрудника:" Margin="0,0,640,0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_FIO_Employee" TextWrapping="Wrap"  Margin="165,0,235,0" SelectionChanged="txbx_FIO_Employee_SelectionChanged"/>
+                <Label x:Name="lb_FIO" Content="" Margin="570,0,0,0" HorizontalAlignment="Right" Width="230"/>
             </Grid>
             <Grid Margin="0,10,0,0">
-                <Label Content="Должность:" Width="180" Margin="0,0,620,0"/>
-                <ComboBox x:Name="cmbx_Position_Employee"  Width="400" Margin="0,0,70,0" SelectedValuePath="ID_Position" DisplayMemberPath="Name_Position" SelectionChanged="cmbx_Position_Employee_SelectionChanged"/>
-                <Label x:Name="lb_Position" Content="" Width="230" Margin="570,0,0,0"/>
+                <Label Content="Должность:" Margin="0,0,640,0" HorizontalAlignment="Left"/>
+                <ComboBox x:Name="cmbx_Position_Employee" Margin="165,0,235,0" SelectedValuePath="ID_Position" DisplayMemberPath="Name_Position" SelectionChanged="cmbx_Position_Employee_SelectionChanged"/>
+                <Label x:Name="lb_Position" Content="" Margin="570,0,0,0" HorizontalAlignment="Right" Width="230"/>
             </Grid>
             <Grid Margin="0,10,0,0">
-                <Label Content="Серия и номер пасспорта:" Width="180" Margin="0,0,620,0"/>
-                <TextBox x:Name="txbx_Series_Number" TextWrapping="Wrap" Width="400" Margin="0,0,70,0" SelectionChanged="txbx_Series_Number_SelectionChanged"/>
-                <Label x:Name="lb_SeriesNumber" Content="" Width="230" Margin="570,0,0,0"/>
+                <Label Content="Серия и номер пасспорта:" Margin="0,0,640,0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_Series_Number" TextWrapping="Wrap" Margin="165,0,235,0" SelectionChanged="txbx_Series_Number_SelectionChanged"/>
+                <Label x:Name="lb_SeriesNumber" Content="" Margin="570,0,0,0" HorizontalAlignment="Right" Width="230"/>
             </Grid>
             <Grid Margin="0,10,0,0">
-                <Label Content="Ардес:" Width="180" Margin="0,0,620,0"/>
-                <TextBox x:Name="txbx_Address" TextWrapping="Wrap" Width="400" Margin="0,0,70,0" SelectionChanged="txbx_Address_SelectionChanged"/>
-                <Label x:Name="lb_Address" Content="" Width="230" Margin="570,0,0,0"/>
+                <Label Content="Ардес:" Width="180" Margin="0,0,640,0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_Address" TextWrapping="Wrap" Margin="165,0,235,0" SelectionChanged="txbx_Address_SelectionChanged"/>
+                <Label x:Name="lb_Address" Content="" Margin="570,0,0,0" HorizontalAlignment="Right" Width="230"/>
             </Grid>
             <Grid Margin="0,10,0,0">
-                <Label Content="Номер телефона:" Width="180" Margin="0,0,620,0"/>
-                <TextBox x:Name="txbx_Phone_Number" TextWrapping="Wrap" Width="400" Margin="0,0,70,0" SelectionChanged="txbx_Phone_Number_SelectionChanged"/>
-                <Label x:Name="lb_PhoneNumber" Content="" Width="230" Margin="570,0,0,0"/>
+                <Label Content="Номер телефона:" Width="180" Margin="0,0,640,0" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_Phone_Number" TextWrapping="Wrap" Margin="165,0,235,0" SelectionChanged="txbx_Phone_Number_SelectionChanged"/>
+                <Label x:Name="lb_PhoneNumber" Content="" Margin="570,0,0,0" HorizontalAlignment="Right" Width="230"/>
             </Grid>
             <Grid Margin="0,10,0,0">
-                <Button x:Name="btn_Add_Employee" IsEnabled="False" Content="Добавить сотрудника" Width="400" Margin="0,0,70,0" Click="btn_Add_Employee_Click"/>
+                <Button x:Name="btn_Add_Employee" IsEnabled="False" Content="Добавить сотрудника" Margin="165,0,235,0" Click="btn_Add_Employee_Click"/>
             </Grid>
         </StackPanel>
     </Grid>

@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="Просмотр всех заказов директором" Height="840" Width="1974">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFCEFF00"/>
+                <GradientStop Color="#FFF2FFBD" Offset="1"/>
+                <GradientStop Color="#FFD8FF35" Offset="0.211"/>
+                <GradientStop Color="#FFE1FF68" Offset="0.412"/>
+                <GradientStop Color="#FFEDFFA4" Offset="0.649"/>
+                <GradientStop Color="#FFF6FFD3" Offset="0.831"/>
+                <GradientStop Color="#FFF6FFD3" Offset="0.831"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <StackPanel>
             <Grid Margin="0,20,0,0">
                 <Label Content="Поиск заказа:" Width="100" Margin="10,0,680,0" HorizontalAlignment="Left"/>
@@ -76,6 +87,14 @@
             <Grid Margin="0,20,0,0">
                 <Label Content="Поиск исполнения:" Width="130" Margin="10,0,680,0" HorizontalAlignment="Left"/>
                 <TextBox x:Name="txbx_search_performance" TextWrapping="Wrap"  Width="650" Margin="170,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_search_performance_SelectionChanged"/>
+                <Label Content="Отфильтровать данные от:" Width="160" Margin="0,0,110,0"/>
+                <DatePicker x:Name="datepicker1" Width="200" Margin="250,0,0,0" SelectedDateChanged="datepicker1_SelectedDateChanged"/>
+                <Label Content="до:" Width="50" Margin="520,0,0,0"/>
+                <DatePicker x:Name="datepicker2" Width="200" Margin="750,0,0,0" SelectedDateChanged="datepicker2_SelectedDateChanged"/>
+                <Button Content="Сбросить фильтр" Width="200" Margin="1200,0,0,0" Click="Button_Click_1"/>
+
+
+
             </Grid>
 
             <Grid Margin="0,20,0,0">

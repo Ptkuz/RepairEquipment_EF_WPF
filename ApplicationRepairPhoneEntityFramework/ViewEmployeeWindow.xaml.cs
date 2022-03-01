@@ -232,7 +232,13 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_Password_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_Password.Text == String.Empty || !Regex.IsMatch(txbx_Password.Text.Trim(), @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$"))
+            if (txbx_Password.Text == String.Empty)
+            {
+                FlagPassword = false;
+                txbx_Password.BorderBrush = Brushes.Gray;
+
+            }
+            else if (!Regex.IsMatch(txbx_Password.Text.Trim(), @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$"))
             {
                 FlagPassword = false;
                 txbx_Password.BorderBrush = Brushes.Red;
@@ -248,7 +254,13 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_FIO_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_FIO.Text == String.Empty || !Regex.IsMatch(txbx_FIO.Text.Trim(), @"^[А-ЯA-Z][а-яa-z\-]{0,}\s[А-ЯA-Z][а-яa-z\-]{1,}(\s[А-ЯA-Z][а-яa-z\-]{1,})?$"))
+            if (txbx_FIO.Text == String.Empty) 
+            {
+                FlagFio = false;
+                txbx_FIO.BorderBrush = Brushes.Gray;
+
+            }
+            else if (!Regex.IsMatch(txbx_FIO.Text.Trim(), @"^[А-ЯA-Z][а-яa-z\-]{0,}\s[А-ЯA-Z][а-яa-z\-]{1,}(\s[А-ЯA-Z][а-яa-z\-]{1,})?$"))
             {
                 FlagFio = false;
                 txbx_FIO.BorderBrush = Brushes.Red;
@@ -264,7 +276,13 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_SeriesNumber_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_SeriesNumber.Text == String.Empty || !Regex.IsMatch(txbx_SeriesNumber.Text.Trim(), @"^[0-9]{4}\s[0-9]{6}$"))
+            if (txbx_SeriesNumber.Text == String.Empty) 
+            {
+                FlagSeriesNumber = false;
+                txbx_SeriesNumber.BorderBrush = Brushes.Gray;
+
+            }
+            else if (!Regex.IsMatch(txbx_SeriesNumber.Text.Trim(), @"^[0-9]{4}\s[0-9]{6}$"))
             {
                 FlagSeriesNumber = false;
                 txbx_SeriesNumber.BorderBrush = Brushes.Red;
@@ -283,7 +301,7 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_Password.Text == String.Empty)
             {
                 FlagAddress = false;
-                txbx_address.BorderBrush = Brushes.Red;
+                txbx_address.BorderBrush = Brushes.Gray;
             }
             else
             {
@@ -294,7 +312,13 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_phoneNumber_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_phoneNumber.Text == String.Empty || !Regex.IsMatch(txbx_phoneNumber.Text.Trim(), @"^((\+7|7|8)+([0-9]){10})$"))
+            if (txbx_phoneNumber.Text == String.Empty)
+            {
+                FlagPhoneNumber = false;
+                txbx_phoneNumber.BorderBrush = Brushes.Gray;
+
+            }
+            else if (!Regex.IsMatch(txbx_phoneNumber.Text.Trim(), @"^((\+7|7|8)+([0-9]){10})$"))
             {
                 FlagPhoneNumber = false;
                 txbx_phoneNumber.BorderBrush = Brushes.Red;

@@ -414,6 +414,28 @@ namespace ApplicationRepairPhoneEntityFramework
         }
 
 
+        public async static Task<ArrayList> GetPerformancePeriodDateViewAllOrdersWindow(DateTime? date1, DateTime? date2)
+        {
+            ArrayList allPerformance = new ArrayList();
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                await Task.Delay(0);
+                var performances = from p in db.performances
+                                   orderby p.Date_Performance
+                                   where p.Date_Performance >= date1 && p.Date_Performance <= date2
+                                   select p;
+
+                foreach (var performance in performances)
+                    allPerformance.Add(performance);
+
+
+            }
+
+            return allPerformance;
+        }
+
+
+
         public async static Task<ArrayList> SearchOrders(string seachingOrder)
         {
             ArrayList searchOrders = new ArrayList();

@@ -187,7 +187,13 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_fio_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_fio.Text == String.Empty || !Regex.IsMatch(txbx_fio.Text.Trim(), @"^[А-ЯA-Z][а-яa-z\-]{0,}\s[А-ЯA-Z][а-яa-z\-]{1,}(\s[А-ЯA-Z][а-яa-z\-]{1,})?$"))
+            if (txbx_fio.Text == String.Empty) 
+            {
+                FlagFIO = false;
+                txbx_fio.BorderBrush = Brushes.Gray;
+
+            }
+            else if (!Regex.IsMatch(txbx_fio.Text.Trim(), @"^[А-ЯA-Z][а-яa-z\-]{0,}\s[А-ЯA-Z][а-яa-z\-]{1,}(\s[А-ЯA-Z][а-яa-z\-]{1,})?$"))
             {
                 FlagFIO = false;
                 txbx_fio.BorderBrush = Brushes.Red;
@@ -203,7 +209,12 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_series_number_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_series_number.Text == String.Empty || !Regex.IsMatch(txbx_series_number.Text.Trim(), @"^[0-9]{4}\s[0-9]{6}$"))
+            if (txbx_series_number.Text == String.Empty) 
+            {
+                FlagSeriesNumber = false;
+                txbx_series_number.BorderBrush = Brushes.Gray;
+            }
+            else if (!Regex.IsMatch(txbx_series_number.Text.Trim(), @"^[0-9]{4}\s[0-9]{6}$"))
             {
                 FlagSeriesNumber = false;
                 txbx_series_number.BorderBrush = Brushes.Red;
@@ -218,7 +229,12 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_phone_number_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_phone_number.Text == String.Empty || !Regex.IsMatch(txbx_phone_number.Text.Trim(), @"^((\+7|7|8)+([0-9]){10})$"))
+            if (txbx_phone_number.Text == String.Empty) 
+            {
+                FlagPhoneNumber = false;
+                txbx_phone_number.BorderBrush = Brushes.Gray;
+            }
+            else if (!Regex.IsMatch(txbx_phone_number.Text.Trim(), @"^((\+7|7|8)+([0-9]){10})$"))
             {
                 FlagPhoneNumber = false;
                 txbx_phone_number.BorderBrush = Brushes.Red;
@@ -233,7 +249,12 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_email_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_email.Text != String.Empty && !Regex.IsMatch(txbx_email.Text.Trim(), @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,})+)$"))
+
+            if (txbx_email.Text == String.Empty) 
+            { 
+                txbx_email.BorderBrush = Brushes.Gray;
+            }
+            else if (!Regex.IsMatch(txbx_email.Text.Trim(), @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,})+)$"))
             {
                 FlagEmail = false;
                 txbx_email.BorderBrush = Brushes.Red;

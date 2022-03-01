@@ -225,7 +225,7 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_Name.Text == String.Empty)
             {
                 FkagName = false;
-                txbx_Name.BorderBrush = Brushes.Red;
+                txbx_Name.BorderBrush = Brushes.Gray;
 
             }
             else
@@ -241,7 +241,7 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_serielNumber.Text == String.Empty)
             {
                 FlagSeriesNumber = false;
-                txbx_serielNumber.BorderBrush = Brushes.Red;
+                txbx_serielNumber.BorderBrush = Brushes.Gray;
 
             }
             else
@@ -257,7 +257,7 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_description.Text == String.Empty)
             {
                 FlagDescription = false;
-                txbx_description.BorderBrush = Brushes.Red;
+                txbx_description.BorderBrush = Brushes.Gray;
 
             }
             else
@@ -273,7 +273,7 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_manufacturer.Text == String.Empty)
             {
                 FlagManufacturer = false;
-                txbx_manufacturer.BorderBrush = Brushes.Red;
+                txbx_manufacturer.BorderBrush = Brushes.Gray;
 
             }
             else
@@ -289,7 +289,7 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_model.Text == String.Empty)
             {
                 FlagMoodel = false;
-                txbx_model.BorderBrush = Brushes.Red;
+                txbx_model.BorderBrush = Brushes.Gray;
 
             }
             else

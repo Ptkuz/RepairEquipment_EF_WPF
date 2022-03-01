@@ -7,6 +7,20 @@
         mc:Ignorable="d"
         Title="Просмотр всех заказов менеджером" WindowStartupLocation="CenterScreen" Height="1227" Width="1974">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFCEFF00"/>
+                <GradientStop Color="#FFF6FFD2" Offset="1"/>
+                <GradientStop Color="#FFD8FF35" Offset="0.211"/>
+                <GradientStop Color="#FFD8FF35" Offset="0.211"/>
+                <GradientStop Color="#FFE1FF68" Offset="0.412"/>
+                <GradientStop Color="#FFE1FF68" Offset="0.412"/>
+                <GradientStop Color="#FFE9FF91" Offset="0.575"/>
+                <GradientStop Color="#FFE9FF91" Offset="0.575"/>
+                <GradientStop Color="#FFF6FFD2" Offset="0.827"/>
+                <GradientStop Color="#FFF6FFD2" Offset="0.827"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <StackPanel>
             <Grid Margin="0,20,0,0">
                 <Label Content="Поиск зарегестрированного заказа:" Width="230" Margin="10,0,680,0" HorizontalAlignment="Left"/>

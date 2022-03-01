@@ -5,30 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="Создать новый заказ" Height="531" Width="1635">
+        Title="Создать новый заказ" Height="618" Width="2524" ResizeMode="NoResize">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFCEFF00"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
 
         <StackPanel Margin="0,20,0,0">
             <Grid Margin="0,00,0,20">
-                <Label Content="ID Заказа: " Width="100" Margin="0,0,1500,0"/>
-                <TextBox x:Name="txbx_ID_Order" TextWrapping="Wrap" IsReadOnly="True" Width="400" Margin="0,0,1000,0"/>
-                <Button Content="Добавить новое оборудование"  Width="200" Margin="500,0,0,0" Click="Button_Click_1"/>
-                <Button Content="Добавить нового клиента"  Width="200" Click="Button_Click"/>
-
-
-
-            </Grid>
-
-                    <Grid>
-                <Label Content="Поиск Клиента: " Width="100" Margin="0,0,1500,0"/>
-                <TextBox x:Name="txbx_searchClient" TextWrapping="Wrap" Width="400" Margin="0,0,1000,0" SelectionChanged="txbx_searchClient_SelectionChanged"/>
-                <Label Content="Поиск Оборудования: " Width="140" Margin="0,0,450,0"/>
-                <TextBox x:Name="txbx_searchDevice" TextWrapping="Wrap" Width="350" Margin="70,0,0,0" SelectionChanged="txbx_searchDevice_SelectionChanged"/>
-                <Label Content="Поиск Сотрудника: " Width="120" Margin="600,0,0,0"/>
-                <TextBox x:Name="txbx_searchEmployee" TextWrapping="Wrap" Width="400" Margin="1130,0,0,0" SelectionChanged="txbx_searchEmployee_SelectionChanged"/>
+                <Label Content="ID Заказа:" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_ID_Order" TextWrapping="Wrap" IsReadOnly="True" Margin="69,0,1750,0"/>
+                <Grid>
+                    <Button Content="Добавить новое оборудование"   Click="Button_Click_1" Width="300" />
+                    <Button Content="Добавить нового клиента" Click="Button_Click" Width="300" Margin="700,0,0,0"/>
+                </Grid>
             </Grid>
             <Grid>
-                <DataGrid x:Name="dataGridClients" AutoGenerateColumns="False" Margin="0,30,1090,0" Width="490" Height="300">
+                <Label Content="Поиск Клиента: " Width="100" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txbx_searchClient" TextWrapping="Wrap" Margin="105,0,1722,0" SelectionChanged="txbx_searchClient_SelectionChanged"/>
+                <Label Content="Поиск Оборудования: " Width="140" Margin="807,0,1577,0"/>
+                <TextBox x:Name="txbx_searchDevice" TextWrapping="Wrap" Margin="952,0,914,0" SelectionChanged="txbx_searchDevice_SelectionChanged"/>
+                <Label Content="Поиск Сотрудника: " Width="120" Margin="1629,0,775,0"/>
+                <TextBox x:Name="txbx_searchEmployee" TextWrapping="Wrap" Margin="1754,0,113,0" SelectionChanged="txbx_searchEmployee_SelectionChanged"/>
+            </Grid>
+            <Grid Margin="0,30,0,0">
+                <DataGrid x:Name="dataGridClients" AutoGenerateColumns="False" Width="800" MinWidth="800"   HorizontalAlignment="Left" Margin="0,0,0,-379" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding ID_Client}" IsReadOnly="True" Header="ID Клиента" Width="73"/>
                         <DataGridTextColumn Binding="{Binding FIO}" IsReadOnly="True" Header="ФИО Клиента" Width="130"/>
@@ -38,7 +42,7 @@
                         <DataGridTextColumn Binding="{Binding DateAdded}" IsReadOnly="True" Header="Дата добавления" Width="140"/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <DataGrid x:Name="dataGridDevices" AutoGenerateColumns="False" Margin="0,30,50,0" Width="500" Height="300">
+                <DataGrid x:Name="dataGridDevices" AutoGenerateColumns="False" Width="800" MinWidth="800" Margin="805,0,920,-379">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding ID_Device}" IsReadOnly="True" Header="ID Оборудования" Width="110"/>
                         <DataGridTextColumn Binding="{Binding Name}" IsReadOnly="True" Header="Название полное" Width="130"/>
@@ -49,7 +53,7 @@
                         <DataGridTextColumn Binding="{Binding DateAdded}" IsReadOnly="True" Header="Дата добавления" Width="140"/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <DataGrid x:Name="dataGridEmployees" AutoGenerateColumns="False" Margin="1000,30,0,0" Width="520" Height="300">
+                <DataGrid x:Name="dataGridEmployees" AutoGenerateColumns="False" Width="800" MinWidth="800" Margin="1610,0,114,-379">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding ID_Employee}" IsReadOnly="True" Header="ID Сотрудника" Width="110"/>
                         <DataGridTextColumn Binding="{Binding FIO}" IsReadOnly="True" Header="ФИО Сотрудника" Width="130"/>
@@ -60,7 +64,7 @@
 
             </Grid>
             <Grid>
-                <Button x:Name="btn_Add_Order" Margin="0,30,0,0" Width="200" Height="30" Content="Добавить новый заказ" Click="btn_Add_Order_Click"/>
+                <Button x:Name="btn_Add_Order"  Content="Добавить новый заказ" Click="btn_Add_Order_Click" Margin="894,402,1082,-441"/>
 
 
             </Grid>

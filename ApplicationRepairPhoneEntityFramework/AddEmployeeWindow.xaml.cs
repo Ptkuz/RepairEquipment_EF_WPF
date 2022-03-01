@@ -243,7 +243,13 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_FIO_Employee_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_FIO_Employee.Text == String.Empty || !Regex.IsMatch(txbx_FIO_Employee.Text.Trim(), @"^[А-ЯA-Z][а-яa-z\-]{0,}\s[А-ЯA-Z][а-яa-z\-]{1,}(\s[А-ЯA-Z][а-яa-z\-]{1,})?$"))
+            if (txbx_FIO_Employee.Text == String.Empty) 
+            {
+                FlagFIO = false;
+                lb_FIO.Background = Brushes.White;
+                lb_FIO.Content = "";
+            }
+            else if (!Regex.IsMatch(txbx_FIO_Employee.Text.Trim(), @"^[А-ЯA-Z][а-яa-z\-]{0,}\s[А-ЯA-Z][а-яa-z\-]{1,}(\s[А-ЯA-Z][а-яa-z\-]{1,})?$"))
             {
                 FlagFIO = false;
                 lb_FIO.Content = "Некорректное ФИО";
@@ -266,7 +272,14 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_Series_Number_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_Series_Number.Text == String.Empty || !Regex.IsMatch(txbx_Series_Number.Text.Trim(), @"^[0-9]{4}\s[0-9]{6}$"))
+            if (txbx_Series_Number.Text == String.Empty) 
+            {
+                FlagSeriesNumber = false;
+                
+                lb_SeriesNumber.Background = Brushes.White;
+                lb_SeriesNumber.Content = "";
+            }
+            else if (!Regex.IsMatch(txbx_Series_Number.Text.Trim(), @"^[0-9]{4}\s[0-9]{6}$"))
             {
                 FlagSeriesNumber = false;
                 lb_SeriesNumber.Content = "Некорректная СИ пасспорта";
@@ -287,8 +300,8 @@ namespace ApplicationRepairPhoneEntityFramework
             {
                 txbx_Address.MaxLength = 50;
                 FlagAddress = false;
-                lb_Address.Content = "Некорректный адрес";
-                lb_Address.Background = Brushes.Red;
+                lb_Address.Background = Brushes.White;
+                lb_Address.Content = "";
             }
             else
             {
@@ -301,7 +314,13 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_Phone_Number_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_Phone_Number.Text == String.Empty || !Regex.IsMatch(txbx_Phone_Number.Text.Trim(), @"^((\+7|7|8)+([0-9]){10})$"))
+            if (txbx_Phone_Number.Text == String.Empty) 
+            {
+                FlagPhoneNumber = false;
+                lb_PhoneNumber.Content = "";
+                lb_PhoneNumber.Background = Brushes.White;
+            }
+            else if (!Regex.IsMatch(txbx_Phone_Number.Text.Trim(), @"^((\+7|7|8)+([0-9]){10})$"))
             {
                 FlagPhoneNumber = false;
                 lb_PhoneNumber.Content = "Некорректный номер телефона";
@@ -318,7 +337,13 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_Login_Employee_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_Login_Employee.Text == String.Empty || !Regex.IsMatch(txbx_Login_Employee.Text.Trim(), @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,})+)$"))
+            if (txbx_Login_Employee.Text == String.Empty) 
+            {
+                FlagLogin = false;
+                lb_Login.Content = "";
+                lb_Login.Background = Brushes.White;
+            }
+            else if (!Regex.IsMatch(txbx_Login_Employee.Text.Trim(), @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,})+)$"))
             {
                 FlagLogin = false;
                 lb_Login.Content = "Некорректный электронный адрес";
@@ -335,7 +360,13 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_Passwor_Employee_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_Passwor_Employee.Text == String.Empty || !Regex.IsMatch(txbx_Passwor_Employee.Text.Trim(), @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$"))
+            if (txbx_Passwor_Employee.Text == String.Empty) 
+            {
+                FlagPassword = false;
+                lb_Password.Content = "";
+                lb_Password.Background = Brushes.White;
+            }
+            else if (!Regex.IsMatch(txbx_Passwor_Employee.Text.Trim(), @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$"))
             {
                 FlagPassword = false;
                 lb_Password.Content = "Некорректный пароль";

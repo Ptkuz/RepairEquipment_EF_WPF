@@ -197,7 +197,7 @@ namespace ApplicationRepairPhoneEntityFramework
             else
             {
                 FlagName = false;
-                txbx_Name.BorderBrush = Brushes.Red;
+                txbx_Name.BorderBrush = Brushes.Gray;
             }
         }
 
@@ -206,7 +206,15 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
 
-            if (Regex.IsMatch(txbx_UnitPrice.Text, @"^\d+(\,\d{1,2})?$"))
+            if (txbx_UnitPrice.Text == String.Empty) 
+            {
+                txbx_UnitPrice.BorderBrush = Brushes.Gray;
+                FlagUnitPrice = false;
+                FullPrice = 0;
+                txbx_FullPrice.Text = FullPrice.ToString();
+
+            }
+            else if (Regex.IsMatch(txbx_UnitPrice.Text, @"^\d+(\,\d{1,2})?$"))
             {
                 Decimal.TryParse(txbx_UnitPrice.Text, out decimal price);
                 Int32.TryParse(txbx_quantity.Text, out int quantity);
@@ -230,25 +238,34 @@ namespace ApplicationRepairPhoneEntityFramework
         private void txbx_quantity_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
-                if (Regex.IsMatch(txbx_quantity.Text, @"[0-9]$") && (txbx_quantity.Text != String.Empty))
-                {
-                    Decimal.TryParse(txbx_UnitPrice.Text, out decimal price);
-                    Int32.TryParse(txbx_quantity.Text, out int quantity);
-                    UnitPrice = price;
-                    Quantity = quantity;
-                    FullPrice = UnitPrice * Quantity;
-                    txbx_FullPrice.Text = FullPrice.ToString();
-                    txbx_quantity.BorderBrush = Brushes.Green;
-                    FlagQuantity = true;
+            if (txbx_quantity.Text == String.Empty) 
+            {
 
-                }
-                else
-                {
-                    txbx_quantity.BorderBrush = Brushes.Red;
-                    FlagQuantity = false;
-                    FullPrice = 0;
-                    txbx_FullPrice.Text = FullPrice.ToString();
-                }
+                txbx_quantity.BorderBrush = Brushes.Gray;
+                FlagQuantity = false;
+                FullPrice = 0;
+                txbx_FullPrice.Text = FullPrice.ToString();
+
+            }
+            else if (Regex.IsMatch(txbx_quantity.Text, @"[0-9]$"))
+            {
+                Decimal.TryParse(txbx_UnitPrice.Text, out decimal price);
+                Int32.TryParse(txbx_quantity.Text, out int quantity);
+                UnitPrice = price;
+                Quantity = quantity;
+                FullPrice = UnitPrice * Quantity;
+                txbx_FullPrice.Text = FullPrice.ToString();
+                txbx_quantity.BorderBrush = Brushes.Green;
+                FlagQuantity = true;
+
+            }
+            else
+            {
+                txbx_quantity.BorderBrush = Brushes.Red;
+                FlagQuantity = false;
+                FullPrice = 0;
+                txbx_FullPrice.Text = FullPrice.ToString();
+            }
             
         }
     }

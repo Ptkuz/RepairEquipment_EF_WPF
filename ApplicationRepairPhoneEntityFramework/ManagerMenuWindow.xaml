@@ -5,37 +5,131 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="Меню менеджера" Height="450" Width="800">
+        Title="Меню менеджера" Height="411" Width="800" MinWidth="411" MinHeight="411">
     <Grid>
         <StackPanel>
             <Grid>
-                <Label Content="Здравствуйте, " Width="90" Margin="0,0,700,0"/>
-                <Label x:Name="lb_fio"  Width="500" Margin="0,0,100,0"/>
-                <Label x:Name="lb_position"  Width="120" HorizontalAlignment="Right"/>
+                <Label Content="Здравствуйте," Margin="0,0,668,0" Foreground="White" FontFamily="Arial Black" >
+                    <Label.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FF004AFF" Offset="0.502"/>
+                        </LinearGradientBrush>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="lb_fio" Margin="112,0,108,0" Foreground="White" FontFamily="Arial Black" >
+                    <Label.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FF004AFF" Offset="0.502"/>
+                        </LinearGradientBrush>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="lb_position"  Width="120" HorizontalAlignment="Right" Foreground="White" FontFamily="Arial Black" >
+                    <Label.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FF004AFF" Offset="0.502"/>
+                        </LinearGradientBrush>
+                    </Label.Background>
+                </Label>
 
             </Grid>
             <Grid>
-                <Button Content="Дабавление заказа" Height="70" Click="Button_Click"/>
+                <Button Content="Дабавление заказа" Height="70" Click="Button_Click" BorderBrush="Black" FontSize="30" FontFamily="Impact">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0004FF"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FFFFF501" Offset="0.502"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
 
 
             </Grid>
             <Grid>
-                <Button Content="Дабавление исполнения" Height="70" Click="Button_Click_1"/>
+                <Button Content="Дабавление исполнения" Height="70" Click="Button_Click_1" BorderBrush="Black" FontSize="30" FontFamily="Impact">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0004FF"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FFFFF501" Offset="0.502"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
 
 
             </Grid>
             <Grid>
-                <Button Content="Дабавление клиента" Height="70" Click="Button_Click_2"/>
+                <Button Content="Дабавление клиента" Height="70" Click="Button_Click_2" BorderBrush="Black" FontSize="30" FontFamily="Impact">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0004FF"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FFFFF501" Offset="0.502"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
 
 
             </Grid>
             <Grid>
-                <Button Content="Дабавление оборудования" Height="70" Click="Button_Click_3"/>
+                <Button Content="Дабавление оборудования" Height="70" Click="Button_Click_3" BorderBrush="Black" FontSize="30" FontFamily="Impact">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0004FF"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FFFFF501" Offset="0.502"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
 
 
             </Grid>
             <Grid>
-                <Button Content="Просмотр заказов" Height="70" Click="Button_Click_4"/>
+                <Button Content="Просмотр заказов" Height="70" Click="Button_Click_4" BorderBrush="Black" FontSize="30" FontFamily="Impact">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0004FF"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="Black" Offset="1"/>
+                            <GradientStop Color="#FFFFF501" Offset="0.502"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
 
 
             </Grid>

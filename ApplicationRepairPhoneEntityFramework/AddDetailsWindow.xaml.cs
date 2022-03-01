@@ -95,7 +95,16 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_Unit_Price_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (Regex.IsMatch(txbx_Unit_Price.Text, @"^\d+(\,\d{1,2})?$") && txbx_Unit_Price.Text != String.Empty)
+            if (txbx_Unit_Price.Text == String.Empty) 
+            {
+                FlagPrice = false;
+                lb_UnitPrice.Background = Brushes.White;
+                FullPrice = 0;
+                txbx_FullPrice.Text = FullPrice.ToString();
+                lb_UnitPrice.Content = "";
+
+            }
+            else if (Regex.IsMatch(txbx_Unit_Price.Text, @"^\d+(\,\d{1,2})?$"))
             {
                 Decimal.TryParse(txbx_Unit_Price.Text, out decimal price);
                 Int32.TryParse(txbx_Quantity.Text, out int quantity);
@@ -107,7 +116,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 lb_UnitPrice.Background = Brushes.Green;
                 FlagPrice = true;
             }
-            else 
+            else
             {
                 lb_UnitPrice.Content = "Принимает только числа";
                 lb_UnitPrice.Background = Brushes.Red;
@@ -120,35 +129,50 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_Quantity_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_Unit_Price.Text != String.Empty || txbx_Quantity.Text != null)
-            {
-                if (Regex.IsMatch(txbx_Quantity.Text, @"[0-9]$") && txbx_Unit_Price.Text != String.Empty)
-                {
-                    Decimal.TryParse(txbx_Unit_Price.Text, out decimal price);
-                    Int32.TryParse(txbx_Quantity.Text, out int quantity);
-                    Unit_Price = price;
-                    Quantity = quantity;
-                    FullPrice = Unit_Price * Quantity;
-                    txbx_FullPrice.Text = FullPrice.ToString();
-                    lb_Quantity.Content = "Данные корректны";
-                    lb_Quantity.Background = Brushes.Green;
-                    FlagQuantity = true;
 
-                }
-                else 
-                {
-                    lb_Quantity.Content = "Принимает только целые числа";
-                    lb_Quantity.Background = Brushes.Red;
-                    FlagQuantity= false;
-                    FullPrice = 0;
-                    txbx_FullPrice.Text = FullPrice.ToString();
-                }
+            if (txbx_Unit_Price.Text == String.Empty) 
+            {
+                FlagQuantity = false;
+                lb_Quantity.Background = Brushes.White;
+                FullPrice = 0;
+                txbx_FullPrice.Text = FullPrice.ToString();
+                lb_Quantity.Content = "";
+
             }
+            else if (Regex.IsMatch(txbx_Quantity.Text, @"[0-9]$"))
+            {
+                Decimal.TryParse(txbx_Unit_Price.Text, out decimal price);
+                Int32.TryParse(txbx_Quantity.Text, out int quantity);
+                Unit_Price = price;
+                Quantity = quantity;
+                FullPrice = Unit_Price * Quantity;
+                txbx_FullPrice.Text = FullPrice.ToString();
+                lb_Quantity.Content = "Данные корректны";
+                lb_Quantity.Background = Brushes.Green;
+                FlagQuantity = true;
+
+            }
+            else
+            {
+                lb_Quantity.Content = "Принимает только целые числа";
+                lb_Quantity.Background = Brushes.Red;
+                FlagQuantity = false;
+                FullPrice = 0;
+                txbx_FullPrice.Text = FullPrice.ToString();
+            }
+            
         }
 
         private void txbx_Name_Detail_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_Name_Detail.Text != String.Empty)
+            if (txbx_Name_Detail.Text == String.Empty) 
+            {
+                FlagName = false;
+                lb_Name.Background = Brushes.White;
+                lb_Name.Content = "";
+
+            }
+            else if (txbx_Name_Detail.Text != String.Empty)
             {
 
                 FlagName = true;
@@ -156,11 +180,9 @@ namespace ApplicationRepairPhoneEntityFramework
                 lb_Name.Background = Brushes.Green;
 
             }
-            else 
-            { 
-                FlagName=false;
-                lb_Name.Content = "Данные некорректны";
-                lb_Name.Background = Brushes.Red;
+            else
+            {
+                FlagName = false;
 
             }
         }

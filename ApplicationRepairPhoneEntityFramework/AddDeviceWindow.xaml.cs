@@ -127,7 +127,15 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void txbx_Name_Device_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_Name_Device.Text != String.Empty)
+
+            if (txbx_Name_Device.Text == String.Empty) 
+            {
+                FlagName = false;
+                lb_Name.Background = Brushes.White;
+                lb_Name.Content = "";
+
+            }
+            else if (txbx_Name_Device.Text != String.Empty)
             {
                 FlagName = true;
                 lb_Name.Content = "Данные корректны";
@@ -136,14 +144,20 @@ namespace ApplicationRepairPhoneEntityFramework
             else
             {
                 FlagName = false;
-                lb_Name.Content = "Данные некорректны";
-                lb_Name.Background = Brushes.Red;
             }
         }
 
         private void txbx_Serial_Number_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_Serial_Number.Text != String.Empty)
+            if (txbx_Serial_Number.Text == String.Empty) 
+            {
+                FlagSerialNumber = false;
+                lb_SerialNumber.Background = Brushes.White;
+                lb_SerialNumber.Content = "";
+
+
+            }
+            else if (txbx_Serial_Number.Text != String.Empty)
             {
                 FlagSerialNumber = true;
                 lb_SerialNumber.Content = "Данные корректны";
@@ -152,15 +166,19 @@ namespace ApplicationRepairPhoneEntityFramework
             else
             {
                 FlagSerialNumber = false;
-                lb_SerialNumber.Content = "Данные некорректны";
-                lb_SerialNumber.Background = Brushes.Red;
             }
 
         }
 
         private void txbx_Description_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_Description.Text != String.Empty)
+            if (txbx_Description.Text == String.Empty) 
+            {
+                FlagDescription = false;
+                lb_Description.Background = Brushes.White;
+                lb_Description.Content = "";
+            }
+            else if (txbx_Description.Text != String.Empty)
             {
                 FlagDescription = true;
                 lb_Description.Content = "Данные корректны";
@@ -169,14 +187,20 @@ namespace ApplicationRepairPhoneEntityFramework
             else
             {
                 FlagDescription = false;
-                lb_Description.Content = "Данные некорректны";
-                lb_Description.Background = Brushes.Red;
             }
         }
 
         private void txbx_anufacturer_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_anufacturer.Text != String.Empty)
+            if (txbx_anufacturer.Text == String.Empty) 
+            {
+                FlagManufactorer = false;
+                lb_Manufacturer.Background = Brushes.White;
+                lb_Manufacturer.Content = "";
+
+
+            }
+            else if (txbx_anufacturer.Text != String.Empty)
             {
                 FlagManufactorer = true;
                 lb_Manufacturer.Content = "Данные корректны";
@@ -185,24 +209,28 @@ namespace ApplicationRepairPhoneEntityFramework
             else
             {
                 FlagManufactorer = false;
-                lb_Manufacturer.Content = "Данные некорректны";
-                lb_Manufacturer.Background = Brushes.Red;
+
             }
         }
 
         private void txbx_Model_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (txbx_Model.Text != String.Empty)
+            if (txbx_Model.Text == String.Empty) 
+            {
+                FlagModel = false;
+                lb_Model.Background = Brushes.White;
+                lb_Model.Content = "";
+
+            }
+            else if (txbx_Model.Text != String.Empty)
             {
                 FlagModel = true;
-                lb_Model.Content = "Данные корректны";
+                
                 lb_Model.Background = Brushes.Green;
             }
             else
             {
                 FlagModel = false;
-                lb_Model.Content = "Данные некорректны";
-                lb_Model.Background = Brushes.Red;
             }
         }
     }
