@@ -226,7 +226,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 if (await DataOperations.InsertEmployee(ID_Employee, Password_Employee, Fio, Position, SeriesNumber, Address, NumberPhone, EmploymentDate))
                 {
                     if (await SendEmail.SendEmailAsync(ID_Employee, "Пиьсмо от Сервсисного центра", SendEmail.AddEmployeeMail(Fio, PositionName, ID_Employee, Password_Employee, SeriesNumber, Address, NumberPhone)))
-                        MessageBox.Show("Письмо клиенту успешно отправлено!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Письмо сотруднику успешно отправлено!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
                     else
                         MessageBox.Show("При отправке письма произошла ошибка. Проверьте интернет подключение!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
                     this.DialogResult = true;
@@ -246,12 +246,13 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_FIO_Employee.Text == String.Empty) 
             {
                 FlagFIO = false;
-                lb_FIO.Background = Brushes.White;
+                lb_FIO.Opacity = 0;
                 lb_FIO.Content = "";
             }
             else if (!Regex.IsMatch(txbx_FIO_Employee.Text.Trim(), @"^[А-ЯA-Z][а-яa-z\-]{0,}\s[А-ЯA-Z][а-яa-z\-]{1,}(\s[А-ЯA-Z][а-яa-z\-]{1,})?$"))
             {
                 FlagFIO = false;
+                lb_FIO.Opacity = 1;
                 lb_FIO.Content = "Некорректное ФИО";
                 lb_FIO.Background = Brushes.Red;
 
@@ -259,6 +260,7 @@ namespace ApplicationRepairPhoneEntityFramework
             else
             {
                 FlagFIO = true;
+                lb_FIO.Opacity = 1;
                 lb_FIO.Content = "Данные корректны";
                 lb_FIO.Background = Brushes.Green;
 
@@ -275,19 +277,21 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_Series_Number.Text == String.Empty) 
             {
                 FlagSeriesNumber = false;
-                
-                lb_SeriesNumber.Background = Brushes.White;
+
+                lb_SeriesNumber.Opacity = 0;
                 lb_SeriesNumber.Content = "";
             }
             else if (!Regex.IsMatch(txbx_Series_Number.Text.Trim(), @"^[0-9]{4}\s[0-9]{6}$"))
             {
                 FlagSeriesNumber = false;
+                lb_SeriesNumber.Opacity = 1;
                 lb_SeriesNumber.Content = "Некорректная СИ пасспорта";
                 lb_SeriesNumber.Background = Brushes.Red;
             }
             else
             {
                 FlagSeriesNumber = true;
+                lb_SeriesNumber.Opacity = 1;
                 lb_SeriesNumber.Content = "Данные корректны";
                 lb_SeriesNumber.Background = Brushes.Green;
 
@@ -299,13 +303,15 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_Address.Text == String.Empty)
             {
                 txbx_Address.MaxLength = 50;
+
                 FlagAddress = false;
-                lb_Address.Background = Brushes.White;
+                lb_Address.Opacity = 0;
                 lb_Address.Content = "";
             }
             else
             {
                 FlagAddress = true;
+                lb_Address.Opacity = 1;
                 lb_Address.Content = "Данные корректны";
                 lb_Address.Background = Brushes.Green;
 
@@ -318,17 +324,19 @@ namespace ApplicationRepairPhoneEntityFramework
             {
                 FlagPhoneNumber = false;
                 lb_PhoneNumber.Content = "";
-                lb_PhoneNumber.Background = Brushes.White;
+                lb_PhoneNumber.Opacity = 0;
             }
             else if (!Regex.IsMatch(txbx_Phone_Number.Text.Trim(), @"^((\+7|7|8)+([0-9]){10})$"))
             {
                 FlagPhoneNumber = false;
+                lb_PhoneNumber.Opacity = 1;
                 lb_PhoneNumber.Content = "Некорректный номер телефона";
                 lb_PhoneNumber.Background = Brushes.Red;
             }
             else
             {
                 FlagPhoneNumber = true;
+                lb_PhoneNumber.Opacity = 1;
                 lb_PhoneNumber.Content = "Данные корректны";
                 lb_PhoneNumber.Background = Brushes.Green;
 
@@ -341,17 +349,19 @@ namespace ApplicationRepairPhoneEntityFramework
             {
                 FlagLogin = false;
                 lb_Login.Content = "";
-                lb_Login.Background = Brushes.White;
+                lb_Login.Opacity = 0;
             }
             else if (!Regex.IsMatch(txbx_Login_Employee.Text.Trim(), @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,})+)$"))
             {
                 FlagLogin = false;
+                lb_Login.Opacity = 1;
                 lb_Login.Content = "Некорректный электронный адрес";
                 lb_Login.Background = Brushes.Red;
             }
             else
             {
                 FlagLogin = true;
+                lb_Login.Opacity = 1;
                 lb_Login.Content = "Данные корректны";
                 lb_Login.Background = Brushes.Green;
 
@@ -364,17 +374,19 @@ namespace ApplicationRepairPhoneEntityFramework
             {
                 FlagPassword = false;
                 lb_Password.Content = "";
-                lb_Password.Background = Brushes.White;
+                lb_Password.Opacity = 0;
             }
             else if (!Regex.IsMatch(txbx_Passwor_Employee.Text.Trim(), @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$"))
             {
                 FlagPassword = false;
+                lb_Password.Opacity = 1;
                 lb_Password.Content = "Некорректный пароль";
                 lb_Password.Background = Brushes.Red;
             }
             else
             {
                 FlagPassword = true;
+                lb_Password.Opacity = 1;
                 lb_Password.Content = "Данные корректны";
                 lb_Password.Background = Brushes.Green;
 

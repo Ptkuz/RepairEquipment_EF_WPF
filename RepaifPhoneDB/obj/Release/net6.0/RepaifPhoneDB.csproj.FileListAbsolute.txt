@@ -1,0 +1,14 @@
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\bin\Release\net6.0\RepaifPhoneDB.deps.json
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\bin\Release\net6.0\RepaifPhoneDB.runtimeconfig.json
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\bin\Release\net6.0\RepaifPhoneDB.dll
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\bin\Release\net6.0\ref\RepaifPhoneDB.dll
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\bin\Release\net6.0\RepaifPhoneDB.pdb
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.csproj.AssemblyReference.cache
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.AssemblyInfoInputs.cache
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.AssemblyInfo.cs
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.csproj.CoreCompileInputs.cache
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.dll
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\obj\Release\net6.0\ref\RepaifPhoneDB.dll
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.pdb
+C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.genruntimeconfig.cache

@@ -6,12 +6,72 @@
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
         Title="Просмотр всех заказов мастера" Height="600" Width="800">
+    <Window.Resources>
+        <Style x:Key="BlackAndWhite">
+            <Setter Property="Control.FontFamily" Value="Arial Black" />
+            <Setter Property="Control.Background" >
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FF5AFF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Control.Foreground" Value="White" />
+            <Setter Property="Control.Margin" Value="10" />
+        </Style>
+        <Style x:Key="{x:Type TextBox}" TargetType="{x:Type TextBox}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="MinHeight" Value="20"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border
+                     Name="Border"               
+                     BorderBrush="#888888"
+                     BorderThickness="1,1,0,0"
+                     CornerRadius="2"
+                     Padding="0">
+                            <Border
+                          
+                     BorderBrush="#AAAAAA"
+                     BorderThickness="0,0,1,1"
+                     CornerRadius="2"
+                     Padding="0">
+                                <ScrollViewer x:Name="PART_ContentHost" Margin="0">
+                                    <ScrollViewer.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Offset="0" Color="WhiteSmoke"/>
+                                            <GradientStop Offset="1" Color="LightGray"/>
+                                        </LinearGradientBrush>
+                                    </ScrollViewer.Background>
+                                </ScrollViewer>
+                            </Border>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="#EEEEEE"/>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#EEEEEE"/>
+                                <Setter Property="Foreground" Value="#888888"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FFCEFF00"/>
-                <GradientStop Color="White" Offset="1"/>
+                <GradientStop Color="#FF00D6FF"/>
+                <GradientStop Color="#FF8AFF04" Offset="1"/>
+                <GradientStop Color="#FF2DE3AC" Offset="0.329"/>
+                <GradientStop Color="#FF2DE3AC" Offset="0.329"/>
             </LinearGradientBrush>
         </Grid.Background>
         <ScrollViewer HorizontalScrollBarVisibility="Auto">
@@ -23,7 +83,7 @@
                     </Grid.ColumnDefinitions>
                     <Label Content="Поиск зарегестрированного заказа:" Width="230" Margin="10,0,0,0" HorizontalAlignment="Left"/>
                     <TextBox x:Name="txbx_search_orders" TextWrapping="Wrap"  Width="650" Margin="260,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_search_orders_SelectionChanged"/>
-                    <Button x:Name="btn_change_status" Content="Заказ на выполнении" IsEnabled="False" Width="200" Margin="950,0,0,0" HorizontalAlignment="Left" Click="btn_change_status_Click_1"/>
+                    <Button x:Name="btn_change_status" Style="{StaticResource BlackAndWhite}" Content="Заказ на выполнении" IsEnabled="False" Width="200" Margin="950,0,0,0" HorizontalAlignment="Left" Click="btn_change_status_Click_1"/>
 
 
                 </Grid>
@@ -50,7 +110,7 @@
                 <Grid Margin="0,20,0,0">
                     <Label Content="Поиск выполняемого заказа:" Width="180" Margin="10,0,680,0" HorizontalAlignment="Left"/>
                     <TextBox x:Name="txbx_search_workingOrder" TextWrapping="Wrap"  Width="650" Margin="260,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_search_workingOrder_SelectionChanged"/>
-                    <Button x:Name="btn_change_status_2" Content="Заказ выполнен" IsEnabled="False" Width="200" Margin="950,0,0,0" HorizontalAlignment="Left" Click="btn_change_status_2_Click"/>
+                    <Button x:Name="btn_change_status_2" Style="{StaticResource BlackAndWhite}" Content="Заказ выполнен" IsEnabled="False" Width="200" Margin="950,0,0,0" HorizontalAlignment="Left" Click="btn_change_status_2_Click"/>
                 </Grid>
 
                 <Grid Margin="0,20,0,0">

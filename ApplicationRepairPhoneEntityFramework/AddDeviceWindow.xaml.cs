@@ -131,18 +131,20 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_Name_Device.Text == String.Empty) 
             {
                 FlagName = false;
-                lb_Name.Background = Brushes.White;
+                lb_Name.Opacity = 0;
                 lb_Name.Content = "";
 
             }
             else if (txbx_Name_Device.Text != String.Empty)
             {
                 FlagName = true;
+                lb_Name.Opacity = 1;
                 lb_Name.Content = "Данные корректны";
                 lb_Name.Background = Brushes.Green;
             }
             else
             {
+                lb_Name.Opacity = 0;
                 FlagName = false;
             }
         }
@@ -152,7 +154,7 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_Serial_Number.Text == String.Empty) 
             {
                 FlagSerialNumber = false;
-                lb_SerialNumber.Background = Brushes.White;
+                lb_SerialNumber.Opacity = 0;
                 lb_SerialNumber.Content = "";
 
 
@@ -160,11 +162,13 @@ namespace ApplicationRepairPhoneEntityFramework
             else if (txbx_Serial_Number.Text != String.Empty)
             {
                 FlagSerialNumber = true;
+                lb_SerialNumber.Opacity = 1;
                 lb_SerialNumber.Content = "Данные корректны";
                 lb_SerialNumber.Background = Brushes.Green;
             }
             else
             {
+                lb_SerialNumber.Opacity = 0;
                 FlagSerialNumber = false;
             }
 
@@ -175,17 +179,19 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_Description.Text == String.Empty) 
             {
                 FlagDescription = false;
-                lb_Description.Background = Brushes.White;
+                lb_Description.Opacity = 0;
                 lb_Description.Content = "";
             }
             else if (txbx_Description.Text != String.Empty)
             {
+                lb_Description.Opacity = 1;
                 FlagDescription = true;
                 lb_Description.Content = "Данные корректны";
                 lb_Description.Background = Brushes.Green;
             }
             else
             {
+                lb_Description.Opacity = 0;
                 FlagDescription = false;
             }
         }
@@ -195,7 +201,7 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_anufacturer.Text == String.Empty) 
             {
                 FlagManufactorer = false;
-                lb_Manufacturer.Background = Brushes.White;
+                lb_Manufacturer.Opacity = 0;
                 lb_Manufacturer.Content = "";
 
 
@@ -203,11 +209,13 @@ namespace ApplicationRepairPhoneEntityFramework
             else if (txbx_anufacturer.Text != String.Empty)
             {
                 FlagManufactorer = true;
+                lb_Manufacturer.Opacity = 1;
                 lb_Manufacturer.Content = "Данные корректны";
                 lb_Manufacturer.Background = Brushes.Green;
             }
             else
             {
+                lb_Manufacturer.Opacity = 0;
                 FlagManufactorer = false;
 
             }
@@ -218,18 +226,20 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_Model.Text == String.Empty) 
             {
                 FlagModel = false;
-                lb_Model.Background = Brushes.White;
+                lb_Model.Opacity = 0;
                 lb_Model.Content = "";
 
             }
             else if (txbx_Model.Text != String.Empty)
             {
                 FlagModel = true;
+                lb_Model.Opacity = 1;
                 lb_Model.Content = "Данные корректны";
                 lb_Model.Background = Brushes.Green;
             }
             else
             {
+                lb_Model.Opacity = 0;
                 FlagModel = false;
             }
         }

@@ -98,7 +98,7 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_Unit_Price.Text == String.Empty) 
             {
                 FlagPrice = false;
-                lb_UnitPrice.Background = Brushes.White;
+                lb_UnitPrice.Opacity = 0;
                 FullPrice = 0;
                 txbx_FullPrice.Text = FullPrice.ToString();
                 lb_UnitPrice.Content = "";
@@ -112,12 +112,14 @@ namespace ApplicationRepairPhoneEntityFramework
                 Quantity = quantity;
                 FullPrice = Unit_Price * Quantity;
                 txbx_FullPrice.Text = FullPrice.ToString();
+                lb_UnitPrice.Opacity = 1;
                 lb_UnitPrice.Content = "Данные корректны";
                 lb_UnitPrice.Background = Brushes.Green;
                 FlagPrice = true;
             }
             else
             {
+                lb_UnitPrice.Opacity = 1;
                 lb_UnitPrice.Content = "Принимает только числа";
                 lb_UnitPrice.Background = Brushes.Red;
                 FlagPrice = false;
@@ -133,7 +135,7 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_Unit_Price.Text == String.Empty) 
             {
                 FlagQuantity = false;
-                lb_Quantity.Background = Brushes.White;
+                lb_Quantity.Opacity = 0;
                 FullPrice = 0;
                 txbx_FullPrice.Text = FullPrice.ToString();
                 lb_Quantity.Content = "";
@@ -147,6 +149,7 @@ namespace ApplicationRepairPhoneEntityFramework
                 Quantity = quantity;
                 FullPrice = Unit_Price * Quantity;
                 txbx_FullPrice.Text = FullPrice.ToString();
+                lb_Quantity.Opacity = 1;
                 lb_Quantity.Content = "Данные корректны";
                 lb_Quantity.Background = Brushes.Green;
                 FlagQuantity = true;
@@ -154,6 +157,7 @@ namespace ApplicationRepairPhoneEntityFramework
             }
             else
             {
+                lb_Quantity.Opacity = 1;
                 lb_Quantity.Content = "Принимает только целые числа";
                 lb_Quantity.Background = Brushes.Red;
                 FlagQuantity = false;
@@ -168,20 +172,23 @@ namespace ApplicationRepairPhoneEntityFramework
             if (txbx_Name_Detail.Text == String.Empty) 
             {
                 FlagName = false;
-                lb_Name.Background = Brushes.White;
+                lb_Name.Opacity = 0;
                 lb_Name.Content = "";
 
             }
             else if (txbx_Name_Detail.Text != String.Empty)
             {
+                txbx_Name_Detail.Opacity = 1;
 
                 FlagName = true;
+                lb_Name.Opacity = 1;
                 lb_Name.Content = "Данные корректны";
                 lb_Name.Background = Brushes.Green;
 
             }
             else
             {
+                txbx_Name_Detail.Opacity = 0;
                 FlagName = false;
 
             }

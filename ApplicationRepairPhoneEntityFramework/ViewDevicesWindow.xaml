@@ -5,12 +5,73 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="Просмотр оборудования" Height="581" Width="1539" MinHeight="581" MinWidth="1539">
+        Title="Просмотр оборудования" Height="581" Width="1275">
+    <Window.Resources>
+        <Style x:Key="BlackAndWhite">
+            <Setter Property="Control.FontFamily" Value="Arial Black" />
+            <Setter Property="Control.Background" >
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FF5AFF00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Control.Foreground" Value="White" />
+            <Setter Property="Control.Margin" Value="10" />
+        </Style>
+        <Style x:Key="{x:Type TextBox}" TargetType="{x:Type TextBox}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="MinHeight" Value="20"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border
+                     Name="Border"               
+                     BorderBrush="#888888"
+                     BorderThickness="1,1,0,0"
+                     CornerRadius="2"
+                     Padding="0">
+                            <Border
+                          
+                     BorderBrush="#AAAAAA"
+                     BorderThickness="0,0,1,1"
+                     CornerRadius="2"
+                     Padding="0">
+                                <ScrollViewer x:Name="PART_ContentHost" Margin="0">
+                                    <ScrollViewer.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Offset="0" Color="WhiteSmoke"/>
+                                            <GradientStop Offset="1" Color="LightGray"/>
+                                        </LinearGradientBrush>
+                                    </ScrollViewer.Background>
+                                </ScrollViewer>
+                            </Border>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="#EEEEEE"/>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#EEEEEE"/>
+                                <Setter Property="Foreground" Value="#888888"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FFCEFF00"/>
-                <GradientStop Color="White" Offset="1"/>
+                <GradientStop Color="#FF00D6FF"/>
+                <GradientStop Color="#FF8AFF04" Offset="1"/>
+                <GradientStop Color="#FF2DE3AC" Offset="0.329"/>
+                <GradientStop Color="#FF2DE3AC" Offset="0.329"/>
             </LinearGradientBrush>
         </Grid.Background>
         <StackPanel>
@@ -62,13 +123,13 @@
                     <TextBox x:Name="txbx_model" Margin="1000,0,37,0" SelectionChanged="txbx_model_SelectionChanged"/>
                 </Grid>
                 <Grid Margin="0,20,0,0">
-                    <Button x:Name="btn_Add_Device" Content="Добавить новое оборудование" Click="btn_Add_Device_Click" HorizontalAlignment="Right" Margin="0,0,20,0" Width="200"/>
+                    <Button x:Name="btn_Add_Device" Style="{StaticResource BlackAndWhite}" Content="Добавить новое оборудование" Click="btn_Add_Device_Click" HorizontalAlignment="Right" Margin="0,0,20,0" Width="200"/>
                 </Grid>
                 <Grid Margin="0,10,0,0">
-                    <Button x:Name="btn_Update_Device" IsEnabled="False" Content="Обновить выбранное оборудование" Click="btn_Update_Device_Click" HorizontalAlignment="Right" Margin="0,0,20,0" Width="200"/>
+                    <Button x:Name="btn_Update_Device" Style="{StaticResource BlackAndWhite}" IsEnabled="False" Content="Обновить выбранное оборудование" Click="btn_Update_Device_Click" HorizontalAlignment="Right" Margin="0,0,20,0" Width="200"/>
                 </Grid>
                 <Grid Margin="0,10,0,0">
-                    <Button x:Name="btn_Delete_Device" IsEnabled="False" Content="Удалить выбранное оборудование" Click="btn_Delete_Device_Click" HorizontalAlignment="Right" Margin="0,0,20,0" Width="200"/>
+                    <Button x:Name="btn_Delete_Device" Style="{StaticResource BlackAndWhite}" IsEnabled="False" Content="Удалить выбранное оборудование" Click="btn_Delete_Device_Click" HorizontalAlignment="Right" Margin="0,0,20,0" Width="200"/>
                 
 
     </Grid>

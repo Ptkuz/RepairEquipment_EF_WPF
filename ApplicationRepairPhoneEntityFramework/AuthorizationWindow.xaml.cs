@@ -82,7 +82,7 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
 
-            using (FileStream fs = new FileStream("login.json", FileMode.Open))
+            using (FileStream fs = new FileStream("login.json", FileMode.OpenOrCreate))
             {
                 if (fs.Length != 0)
                 {

@@ -132,7 +132,7 @@ namespace ApplicationRepairPhoneEntityFramework
             if (result.HasValue && result.Value) 
             { 
                 dataGridEmployees.ItemsSource = await DataOperations.GetAllEmployeesView();
-                MessageBox.Show("Новый сотрудник добавлен. На электронную почту сотрудника отправлено письмо", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Новый сотрудник добавлен.", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
         }
