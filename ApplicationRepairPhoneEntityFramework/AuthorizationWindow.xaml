@@ -35,7 +35,7 @@
                 <CheckBox x:Name="cxbx_Member" IsEnabled="False" Height="30" Content="Запомнить логин и пароль" Margin="40,0,0,0" Width="260" Checked="cxbx_Member_Checked" Unloaded="cxbx_Member_Unloaded" Foreground="#FF3C3C3C" />
             </Grid>
             <Grid>
-                <ProgressBar x:Name="connectionProgressBar" Height="20" Width="340" Visibility="Hidden"/>
+                <ProgressBar x:Name="connectionProgressBar" Height="20" Width="340" />
 
             </Grid>
             <Grid>

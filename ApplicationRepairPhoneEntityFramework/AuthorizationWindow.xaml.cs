@@ -99,6 +99,7 @@ namespace ApplicationRepairPhoneEntityFramework
        
         private async  void btn_login_Click(object sender, RoutedEventArgs e)
         {
+          
             try
             {
                 if (Member)
@@ -112,7 +113,7 @@ namespace ApplicationRepairPhoneEntityFramework
                     using (FileStream fs = new FileStream("login.json", FileMode.Create))
                     {
                         AutorezationClass autorezationClass1 = new AutorezationClass(txbx_login.Text, txbx_pawword.Password, txbx_server.Text);
-                        JsonSerializer.Serialize<AutorezationClass>(fs, autorezationClass1);
+                        await JsonSerializer.SerializeAsync<AutorezationClass>(fs, autorezationClass1);
                     }
 
                 }

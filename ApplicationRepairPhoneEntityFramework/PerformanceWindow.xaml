@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="Окно исполнения" Height="1128" Width="1067" MinHeight="1128" MinWidth="1067">
+        Title="Окно исполнения" Height="836" Width="1067" MinHeight="836" MinWidth="1067">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -19,124 +19,124 @@
                 <GradientStop Color="#FFD6FF2A" Offset="0.169"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <ScrollViewer>
-        <StackPanel>
-            <Grid Margin="0,10,0,0">
-                <Label Content="ID Исполнения:" Width="150" Margin="0,0, 950,0"/>
-                <TextBox x:Name="txbx_ID_Performance" TextWrapping="Wrap" IsReadOnly="True" Width="500" Margin="0,0,250,0"/>
-            </Grid>
-            <Grid Margin="0,10,0,0">
-                <Label Content="Описание поломки:" Width="150" Margin="0,0, 950,0"/>
-            </Grid>
-            <Grid Margin="0,10,0,0">
-                <TextBox x:Name="txbx_Description" TextWrapping="Wrap" Width="1050" Height="100" SelectionChanged="txbx_Description_SelectionChanged"/>
-            </Grid>
-            <Grid Margin="0,10,0,0">
-                <Label Content="Стоимость работы:"  Width="150" Margin="0,0, 950,0"/>
-                <TextBox x:Name="txbx_Price_Work" TextWrapping="Wrap" Width="200" Margin="0,0,550,0" SelectionChanged="txbx_Price_Work_SelectionChanged" />
-            </Grid>
-            <Grid Margin="0,10,0,0">
-                <Label Content="Список деталей:"  Width="150" Margin="0,0, 950,0"/>
-            </Grid>
-            <Grid Margin="0,10,0,0">
-                <DataGrid x:Name="DataGridDetails"  Width="1067" Height="300" AutoGenerateColumns="False" SelectionChanged="DataGridDetails_SelectionChanged">
-                    <DataGrid.ItemContainerStyle>
-                        <Style TargetType="DataGridRow">
-                            <Setter Property="Background" Value="White"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Choise}" Value="True">
-                                    <Setter Property="Background" Value="#FFB6FF51"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGrid.ItemContainerStyle>
-                    <DataGrid.Columns>
-                        <DataGridCheckBoxColumn x:Name="CheckBoxColumn" Binding="{Binding Choise}" Header="Выбрать" >
-                            <DataGridCheckBoxColumn.CellStyle>
-                                <Style>
-                                    <EventSetter Event="CheckBox.Checked" Handler="OnChecked"/>
-                                    <EventSetter Event="CheckBox.Unchecked" Handler="UnChecked"/>
-                                </Style>
-                            </DataGridCheckBoxColumn.CellStyle>
-                        </DataGridCheckBoxColumn>
-                        <DataGridTextColumn Binding="{Binding ID_Detail}" IsReadOnly="True" Header="ID Детали" Width="100"/>
-                        <DataGridTextColumn Binding="{Binding Name_Detail}" IsReadOnly="True" Header="Название детали" Width="130"/>
-                        <DataGridTextColumn Binding="{Binding Unit_Price}" IsReadOnly="True" Header="Стоимость за еденицу" Width="140"/>
-                        <DataGridTextColumn Binding="{Binding QuantityStock}" IsReadOnly="True" Header="Количество на складе" Width="140"/>
-                        <DataGridTextColumn Binding="{Binding FullPrice}" IsReadOnly="True" Header="Полная стоимость" Width="140"/>
-                        <DataGridTextColumn Binding="{Binding NeededQuantity}" x:Name="NeededQuanColumn" Header="Необходимо для ремонта" Width="160">
-                            <DataGridTextColumn.CellStyle>
-                                <Style TargetType="DataGridCell">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Choise}" Value="True">
-                                            <Setter Property="IsEnabled" Value="False"/>
-                                            <Setter Property="IsTabStop" Value="False"></Setter>
-                                            <Setter Property="Focusable" Value="False"></Setter>
-                                            <Setter Property="Background" Value="#FFB6FF51">
-                                            </Setter>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </DataGridTextColumn.CellStyle>
-                        </DataGridTextColumn>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+            <StackPanel>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="ID Исполнения:" Width="150" Margin="0,0, 950,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_ID_Performance" TextWrapping="Wrap" IsReadOnly="True" Width="500" Margin="116,0,0,0" HorizontalAlignment="Left"/>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Описание поломки:" Width="150" Margin="0,0, 950,0" HorizontalAlignment="Left"/>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <TextBox x:Name="txbx_Description" TextWrapping="Wrap" Height="100" SelectionChanged="txbx_Description_SelectionChanged" Margin="16,0,54,0" />
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Стоимость работы:"  Width="150" Margin="0,0, 950,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_Price_Work" TextWrapping="Wrap" Width="200" Margin="169,0,0,0" SelectionChanged="txbx_Price_Work_SelectionChanged" HorizontalAlignment="Left" />
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Список деталей:"  Width="150" Margin="0,0, 950,0" HorizontalAlignment="Left"/>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <DataGrid x:Name="DataGridDetails" Height="300" AutoGenerateColumns="False" SelectionChanged="DataGridDetails_SelectionChanged" Margin="16,0,54,0">
+                        <DataGrid.ItemContainerStyle>
+                            <Style TargetType="DataGridRow">
+                                <Setter Property="Background" Value="White"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Choise}" Value="True">
+                                        <Setter Property="Background" Value="#FFB6FF51"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.ItemContainerStyle>
+                        <DataGrid.Columns>
+                            <DataGridCheckBoxColumn x:Name="CheckBoxColumn" Binding="{Binding Choise}" Header="Выбрать" >
+                                <DataGridCheckBoxColumn.CellStyle>
+                                    <Style>
+                                        <EventSetter Event="CheckBox.Checked" Handler="OnChecked"/>
+                                        <EventSetter Event="CheckBox.Unchecked" Handler="UnChecked"/>
+                                    </Style>
+                                </DataGridCheckBoxColumn.CellStyle>
+                            </DataGridCheckBoxColumn>
+                            <DataGridTextColumn Binding="{Binding ID_Detail}" IsReadOnly="True" Header="ID Детали" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding Name_Detail}" IsReadOnly="True" Header="Название детали" Width="130"/>
+                            <DataGridTextColumn Binding="{Binding Unit_Price}" IsReadOnly="True" Header="Стоимость за еденицу" Width="140"/>
+                            <DataGridTextColumn Binding="{Binding QuantityStock}" IsReadOnly="True" Header="Количество на складе" Width="140"/>
+                            <DataGridTextColumn Binding="{Binding FullPrice}" IsReadOnly="True" Header="Полная стоимость" Width="140"/>
+                            <DataGridTextColumn Binding="{Binding NeededQuantity}" x:Name="NeededQuanColumn" Header="Необходимо для ремонта" Width="160">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Choise}" Value="True">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Setter Property="IsTabStop" Value="False"></Setter>
+                                                <Setter Property="Focusable" Value="False"></Setter>
+                                                <Setter Property="Background" Value="#FFB6FF51">
+                                                </Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
 
-                    </DataGrid.Columns>
-                </DataGrid>
+                        </DataGrid.Columns>
+                    </DataGrid>
 
-            </Grid>
+                </Grid>
 
-            <Grid Margin="0,10,0,0">
-                <Label Content="Стоимость всех деталей:" Width="150" Margin="0,0, 950,0"/>
-                <TextBox x:Name="txbx_PriceAllDetails" TextWrapping="Wrap" Width="200" Margin="0,0,550,0" IsReadOnly="True"  SelectionChanged="txbx_PriceAllDetails_SelectionChanged" />
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Стоимость всех деталей:" Width="150" Margin="0,0, 950,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_PriceAllDetails" TextWrapping="Wrap" Width="200" Margin="169,0,0,0"  IsReadOnly="True"  SelectionChanged="txbx_PriceAllDetails_SelectionChanged" HorizontalAlignment="Left" />
 
-            </Grid>
-            <Grid Margin="0,10,0,0">
-                <Label Content="Скидка:" Width="150" Margin="0,0, 950,0" />
-                <TextBox x:Name="txbx_Discount" IsEnabled="False" TextWrapping="Wrap" Width="200" Margin="0,0,550,0" SelectionChanged="txbx_Discount_SelectionChanged"/>
-                <CheckBox x:Name="chbx_CheckDiscount" Content="Наличие скидки" IsEnabled="False" Width="150" Margin="0,0,150,0" Checked="chbx_CheckDiscount_Checked" Unchecked="chbx_CheckDiscount_Unchecked"/>
-
-
-            </Grid>
-            <Grid Margin="0,10,0,0">
-                <Label Content="Финальная цена:" Width="150" Margin="0,0, 950,0"/>
-                <TextBox x:Name="txbx_FinalPrice" TextWrapping="Wrap" IsReadOnly="True"  Width="200" Margin="0,0,550,0" />
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Скидка:" Width="150" Margin="0,0, 950,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_Discount" IsEnabled="False" TextWrapping="Wrap" Width="200" Margin="169,0,0,0"  SelectionChanged="txbx_Discount_SelectionChanged" HorizontalAlignment="Left"/>
+                    <CheckBox x:Name="chbx_CheckDiscount" Content="Наличие скидки" IsEnabled="False" Width="150" Margin="399,0,0,0"  Checked="chbx_CheckDiscount_Checked" Unchecked="chbx_CheckDiscount_Unchecked" HorizontalAlignment="Left"/>
 
 
-            </Grid>
-            <Grid Margin="0,10,0,0">
-                <Label Content="Дата исполнения:" Width="150" Margin="0,0, 950,0"/>
-                <DatePicker x:Name="DatePerformanceDP" Width="200" Margin="0,0,550,0" SelectedDateChanged="DatePerformanceDP_SelectedDateChanged"/>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Финальная цена:" Width="150" Margin="0,0, 950,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_FinalPrice" TextWrapping="Wrap" IsReadOnly="True"  Width="200" HorizontalAlignment="Left" Margin="169,0,0,0" />
 
 
-            </Grid>
-            <Grid Margin="0,10,0,0">
-                <Label Content="ID Заказа:" Width="150" Margin="0,0, 950,0" />
-                <TextBox x:Name="txbx_search" TextWrapping="Wrap"  Width="500" Margin="0,0,250,0" SelectionChanged="txbx_search_SelectionChanged" />
-
-            </Grid>
-            <Grid Margin="0,10,0,0">
-                <DataGrid x:Name="DataGridOrders"  AutoGenerateColumns="False" Width="1067" Height="300">
-                    <DataGrid.Columns>
-                        
-                        <DataGridTextColumn Binding="{Binding DateOrder}" IsReadOnly="True" Header="Дата заказа" Width="100"/>
-                        <DataGridTextColumn Binding="{Binding ID_Order}" IsReadOnly="True" Header="ID заказа" Width="130"/>
-                        <DataGridTextColumn Binding="{Binding ClientName}" IsReadOnly="True" Header="ФИО клиента" Width="140"/>
-                        <DataGridTextColumn Binding="{Binding Email}" IsReadOnly="True" Header="Email" Width="140"/>
-                        <DataGridTextColumn Binding="{Binding DeviceName}" IsReadOnly="True" Header="Назавние оборудования" Width="150"/>
-                        <DataGridTextColumn Binding="{Binding SeriesNumber}" IsReadOnly="True" Header="Серийный номер" Width="140"/>
-                        <DataGridTextColumn Binding="{Binding EmployeeName}" Header="ФИО исполнителя" Width="160"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Дата исполнения:" Width="150" Margin="0,0, 950,0" HorizontalAlignment="Left"/>
+                    <DatePicker x:Name="DatePerformanceDP" Width="200" Margin="169,0,0,0"  SelectedDateChanged="DatePerformanceDP_SelectedDateChanged" HorizontalAlignment="Left"/>
 
 
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="ID Заказа:" Width="150" Margin="0,0, 950,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_search" TextWrapping="Wrap"  Width="500" Margin="169,0,0,0"  SelectionChanged="txbx_search_SelectionChanged" HorizontalAlignment="Left"/>
 
-            </Grid>
-            <Grid Margin="0,10,0,0">
-                <Button x:Name="Btn_Insert_Detail" Width="200" IsEnabled="False" Content="Закрыть заказ" Click="Button_Click" RenderTransformOrigin="0.51,2.699"/>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <DataGrid x:Name="DataGridOrders"  AutoGenerateColumns="False" Height="300" Margin="16,0,50,0">
+                        <DataGrid.Columns>
 
-            </Grid>
+                            <DataGridTextColumn Binding="{Binding DateOrder}" IsReadOnly="True" Header="Дата заказа" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding ID_Order}" IsReadOnly="True" Header="ID заказа" Width="130"/>
+                            <DataGridTextColumn Binding="{Binding ClientName}" IsReadOnly="True" Header="ФИО клиента" Width="140"/>
+                            <DataGridTextColumn Binding="{Binding Email}" IsReadOnly="True" Header="Email" Width="140"/>
+                            <DataGridTextColumn Binding="{Binding DeviceName}" IsReadOnly="True" Header="Назавние оборудования" Width="150"/>
+                            <DataGridTextColumn Binding="{Binding SeriesNumber}" IsReadOnly="True" Header="Серийный номер" Width="140"/>
+                            <DataGridTextColumn Binding="{Binding EmployeeName}" Header="ФИО исполнителя" Width="160"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
 
-        </StackPanel>
+
+
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Button x:Name="Btn_Insert_Detail" Width="200" IsEnabled="False" Content="Закрыть заказ" Click="Button_Click" RenderTransformOrigin="0.51,2.699"/>
+
+                </Grid>
+
+            </StackPanel>
         </ScrollViewer>
     </Grid>
 </Window>

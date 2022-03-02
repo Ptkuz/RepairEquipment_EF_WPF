@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="Просмотр деталей" Height="581" Width="1414">
+        Title="Просмотр деталей" Height="581" Width="1414" MinHeight="581" MinWidth="1414">
 
 
     <Grid>
@@ -38,30 +38,34 @@
             <StackPanel>
                 <Grid Margin="0,10,0,0">
                     <Label Content="ID Детали:" Width="120" Margin="830,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="txbx_Id_Detail" IsReadOnly="True" Margin="1000,0,0,0" SelectionChanged="txbx_Id_Detail_SelectionChanged"/>
+                    <TextBox x:Name="txbx_Id_Detail" IsReadOnly="True" Margin="1000,0,10,0" SelectionChanged="txbx_Id_Detail_SelectionChanged"/>
                 </Grid>
 
                 <Grid Margin="0,10,0,0">
                     <Label Content="Название детали:" Width="110" Margin="830,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="txbx_Name" Margin="1000,0,0,0" SelectionChanged="txbx_Name_SelectionChanged"/>
+                    <TextBox x:Name="txbx_Name" Margin="1000,0,10,0" SelectionChanged="txbx_Name_SelectionChanged"/>
                 </Grid>
                 <Grid Margin="0,10,0,0">
                     <Label Content="Цена за еденицу:" Width="150" Margin="830,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="txbx_UnitPrice" Margin="1000,0,0,0" SelectionChanged="txbx_UnitPrice_SelectionChanged"/>
+                    <TextBox x:Name="txbx_UnitPrice" Margin="1000,0,10,0" SelectionChanged="txbx_UnitPrice_SelectionChanged"/>
                 </Grid>
                 <Grid Margin="0,10,0,0">
                     <Label Content="Количество:" Width="110" Margin="830,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="txbx_quantity" Margin="1000,0,0,0" SelectionChanged="txbx_quantity_SelectionChanged"/>
+                    <TextBox x:Name="txbx_quantity" Margin="1000,0,10,0" SelectionChanged="txbx_quantity_SelectionChanged"/>
                 </Grid>
                 <Grid Margin="0,10,0,0">
                     <Label Content="Полная стоимость:" Width="120" Margin="830,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="txbx_FullPrice" IsReadOnly="True" Margin="1000,0,0,0"/>
+                    <TextBox x:Name="txbx_FullPrice" IsReadOnly="True" Margin="1000,0,10,0"/>
                 </Grid>
 
-                <Grid Margin="0,40,0,0">
-                    <Button x:Name="btn_Add_Detail" Content="Добавить новую деталь" Width="210" Margin="809,-5,395,5" Click="btn_Add_Detail_Click"/>
-                    <Button x:Name="btn_Update_Detail" IsEnabled="False" Content="Обновить выбранную деталь" Width="210" Margin="809,20,395,-20" Click="btn_Update_Detail_Click"/>
-                    <Button x:Name="btn_Delete_Detail" IsEnabled="False" Content="Удалить выбранную деталь" Width="210" Margin="809,45,395,-45" Click="btn_Delete_Detail_Click"/>
+                <Grid Margin="0,20,0,0">
+                    <Button x:Name="btn_Add_Detail" Content="Добавить новую деталь"  Click="btn_Add_Detail_Click" HorizontalAlignment="Right" Margin="0,0,20,0" Width="200"/>
+                    </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Button x:Name="btn_Update_Detail" IsEnabled="False" Content="Обновить выбранную деталь"  Click="btn_Update_Detail_Click" HorizontalAlignment="Right" Margin="0,0,20,0" Width="200"/>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Button x:Name="btn_Delete_Detail" IsEnabled="False" Content="Удалить выбранную деталь"  Click="btn_Delete_Detail_Click" HorizontalAlignment="Right" Margin="0,0,20,0" Width="200"/>
 
 
                 </Grid>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="Меню менеджера" Height="411" Width="800" MinWidth="411" MinHeight="411">
+        Title="Меню менеджера" Height="411" Width="800" MinWidth="800" MinHeight="411">
     <Grid>
         <StackPanel>
             <Grid>

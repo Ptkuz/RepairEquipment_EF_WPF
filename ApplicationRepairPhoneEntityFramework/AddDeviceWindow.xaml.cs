@@ -225,7 +225,7 @@ namespace ApplicationRepairPhoneEntityFramework
             else if (txbx_Model.Text != String.Empty)
             {
                 FlagModel = true;
-                
+                lb_Model.Content = "Данные корректны";
                 lb_Model.Background = Brushes.Green;
             }
             else

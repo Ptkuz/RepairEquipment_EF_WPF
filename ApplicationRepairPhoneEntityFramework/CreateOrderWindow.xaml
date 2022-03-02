@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="Создать новый заказ" Height="1750" Width="890">
+        Title="Создать новый заказ" Height="1750" Width="890" MinHeight="1750" MinWidth="890">
     <Grid>
         
         <ScrollViewer>

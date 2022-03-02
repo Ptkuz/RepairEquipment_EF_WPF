@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="Просмотр всех заказов менеджером" WindowStartupLocation="CenterScreen" Height="623" Width="1668"  MinWidth="1200">
+        Title="Просмотр всех заказов менеджером" WindowStartupLocation="CenterScreen" Height="623" Width="1668"  MinWidth="1200" MinHeight="623">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
