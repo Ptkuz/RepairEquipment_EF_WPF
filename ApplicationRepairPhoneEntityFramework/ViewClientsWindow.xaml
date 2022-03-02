@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="Просмотр клиентов" Height="581" Width="1539">
+        Title="Просмотр клиентов" Height="581" Width="1276">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -13,6 +13,7 @@
                 <GradientStop Color="White" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
+
         <StackPanel>
             <Grid Margin="0,10,0,0">
                 <Label Content="Поиск клиента:" Width="95" Margin="10,0,680,0" HorizontalAlignment="Left"/>
@@ -31,36 +32,42 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
-            
+
         </StackPanel>
         <StackPanel>
             <StackPanel>
                 <Grid Margin="0,10,0,0">
                     <Label Content="ID Клиента:" Width="95" Margin="830,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="txbx_Id_Client" IsReadOnly="True" Width="500" Margin="1000,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_Id_Client_SelectionChanged"/>
-                    </Grid>
+                    <TextBox x:Name="txbx_Id_Client" IsReadOnly="True" Margin="1000,0,0,0"  SelectionChanged="txbx_Id_Client_SelectionChanged"/>
+                </Grid>
 
                 <Grid Margin="0,10,0,0">
                     <Label Content="ФИО Клиента:" Width="110" Margin="830,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="txbx_fio" Width="500" Margin="1000,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_fio_SelectionChanged"/>
+                    <TextBox x:Name="txbx_fio"  Margin="1000,0,0,0" SelectionChanged="txbx_fio_SelectionChanged"/>
                 </Grid>
                 <Grid Margin="0,10,0,0">
                     <Label Content="Серия и номер паспорта:" Width="150" Margin="830,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="txbx_series_number" Width="500" Margin="1000,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_series_number_SelectionChanged"/>
+                    <TextBox x:Name="txbx_series_number"  Margin="1000,0,0,0" SelectionChanged="txbx_series_number_SelectionChanged" />
                 </Grid>
                 <Grid Margin="0,10,0,0">
                     <Label Content="Номер телефона:" Width="110" Margin="830,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="txbx_phone_number" Width="500" Margin="1000,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_phone_number_SelectionChanged"/>
+                    <TextBox x:Name="txbx_phone_number"  Margin="1000,0,0,0" SelectionChanged="txbx_phone_number_SelectionChanged" />
                 </Grid>
                 <Grid Margin="0,10,0,0">
                     <Label Content="Email:" Width="110" Margin="830,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="txbx_email" Width="500" Margin="1000,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_email_SelectionChanged"/>
+                    <TextBox x:Name="txbx_email"  Margin="1000,0,0,0" SelectionChanged="txbx_email_SelectionChanged" />
                 </Grid>
                 <Grid Margin="0,40,0,0">
-                    <Button x:Name="btn_Add_Client" Content="Добавить нового клиента" Width="200" Margin="300,0,0,0" Click="btn_Add_Client_Click"/>
-                    <Button x:Name="btn_Update_Client" IsEnabled="False" Content="Обновить выбранного клиента" Width="200" Margin="750,0,0,0" Click="btn_Update_Client_Click"/>
-                    <Button x:Name="btn_Delete_Client" IsEnabled="False" Content="Удалить выбранного клиента" Width="200" Margin="1200,0,0,0" Click="btn_Delete_Client_Click"/>
-                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1031*"/>
+                        <ColumnDefinition Width="62*"/>
+                        <ColumnDefinition Width="24*"/>
+                        <ColumnDefinition Width="159*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btn_Add_Client" Content="Добавить нового клиента" Width="200" Margin="810,-15,21,15" Click="btn_Add_Client_Click"/>
+                    <Button x:Name="btn_Update_Client" IsEnabled="False" Content="Обновить выбранного клиента" Width="200" Margin="810,10,21,-10" Click="btn_Update_Client_Click"/>
+                    <Button x:Name="btn_Delete_Client" IsEnabled="False" Content="Удалить выбранного клиента" Width="200" Margin="810,35,21,-35" Click="btn_Delete_Client_Click"/>
+
 
                 </Grid>
             </StackPanel>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="Просмотр всех заказов менеджером" WindowStartupLocation="CenterScreen" Height="1227" Width="1974" MinHeight="1227" MinWidth="1974">
+        Title="Просмотр всех заказов менеджером" WindowStartupLocation="CenterScreen" Height="623" Width="1668"  MinWidth="1200">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -21,12 +21,12 @@
                 <GradientStop Color="#FFF6FFD2" Offset="0.827"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <ScrollViewer>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto">
             <StackPanel>
                 <Grid Margin="0,20,0,0">
                     <Label Content="Поиск зарегестрированного заказа:" Width="230" Margin="10,0,680,0" HorizontalAlignment="Left"/>
                     <TextBox x:Name="txbx_search_orders" TextWrapping="Wrap"  Width="650" Margin="290,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_search_orders_SelectionChanged"/>
-                    <Button x:Name="btn_change_status" Content="Отменить заказ" IsEnabled="False" Width="200" Margin="120,0,0,0" Click="btn_change_status_Click"/>
+                    <Button x:Name="btn_change_status" Content="Отменить заказ" IsEnabled="False" Width="200" Margin="1000,0,0,0" HorizontalAlignment="Left" Click="btn_change_status_Click"/>
 
 
                 </Grid>
