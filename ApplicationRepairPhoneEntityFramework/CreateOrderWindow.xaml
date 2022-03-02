@@ -5,70 +5,81 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="Создать новый заказ" Height="618" Width="2524" ResizeMode="NoResize">
+        Title="Создать новый заказ" Height="1750" Width="890">
     <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FFCEFF00"/>
-                <GradientStop Color="White" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+        <ScrollViewer>
+            <StackPanel>
 
-        <StackPanel Margin="0,20,0,0">
-            <Grid Margin="0,00,0,20">
-                <Label Content="ID Заказа:" HorizontalAlignment="Left"/>
-                <TextBox x:Name="txbx_ID_Order" TextWrapping="Wrap" IsReadOnly="True" Margin="69,0,1750,0"/>
-                <Grid>
-                    <Button Content="Добавить новое оборудование"   Click="Button_Click_1" Width="300" />
-                    <Button Content="Добавить нового клиента" Click="Button_Click" Width="300" Margin="700,0,0,0"/>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="ID Заказа:" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_ID_Order" TextWrapping="Wrap" IsReadOnly="True" Margin="110,0,72,0"/>
                 </Grid>
-            </Grid>
-            <Grid>
-                <Label Content="Поиск Клиента: " Width="100" HorizontalAlignment="Left"/>
-                <TextBox x:Name="txbx_searchClient" TextWrapping="Wrap" Margin="105,0,1722,0" SelectionChanged="txbx_searchClient_SelectionChanged"/>
-                <Label Content="Поиск Оборудования: " Width="140" Margin="807,0,1577,0"/>
-                <TextBox x:Name="txbx_searchDevice" TextWrapping="Wrap" Margin="952,0,914,0" SelectionChanged="txbx_searchDevice_SelectionChanged"/>
-                <Label Content="Поиск Сотрудника: " Width="120" Margin="1629,0,775,0"/>
-                <TextBox x:Name="txbx_searchEmployee" TextWrapping="Wrap" Margin="1754,0,113,0" SelectionChanged="txbx_searchEmployee_SelectionChanged"/>
-            </Grid>
-            <Grid Margin="0,30,0,0">
-                <DataGrid x:Name="dataGridClients" AutoGenerateColumns="False" Width="800" MinWidth="800"   HorizontalAlignment="Left" Margin="0,0,0,-379" >
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding ID_Client}" IsReadOnly="True" Header="ID Клиента" Width="73"/>
-                        <DataGridTextColumn Binding="{Binding FIO}" IsReadOnly="True" Header="ФИО Клиента" Width="130"/>
-                        <DataGridTextColumn Binding="{Binding Series_Number_Passport}" IsReadOnly="True" Header="Серия номер пасспорта" Width="150"/>
-                        <DataGridTextColumn Binding="{Binding Phone_Number}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
-                        <DataGridTextColumn Binding="{Binding Email}" IsReadOnly="True" Header="Email" Width="140"/>
-                        <DataGridTextColumn Binding="{Binding DateAdded}" IsReadOnly="True" Header="Дата добавления" Width="140"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <DataGrid x:Name="dataGridDevices" AutoGenerateColumns="False" Width="800" MinWidth="800" Margin="805,0,920,-379">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding ID_Device}" IsReadOnly="True" Header="ID Оборудования" Width="110"/>
-                        <DataGridTextColumn Binding="{Binding Name}" IsReadOnly="True" Header="Название полное" Width="130"/>
-                        <DataGridTextColumn Binding="{Binding Serial_Number}" IsReadOnly="True" Header="Серийный номер" Width="140"/>
-                        <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True" Header="Описание" Width="140"/>
-                        <DataGridTextColumn Binding="{Binding Manufacturer}" IsReadOnly="True" Header="Производитель" Width="140"/>
-                        <DataGridTextColumn Binding="{Binding Model}" IsReadOnly="True" Header="Модель" Width="140"/>
-                        <DataGridTextColumn Binding="{Binding DateAdded}" IsReadOnly="True" Header="Дата добавления" Width="140"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <DataGrid x:Name="dataGridEmployees" AutoGenerateColumns="False" Width="800" MinWidth="800" Margin="1610,0,114,-379">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding ID_Employee}" IsReadOnly="True" Header="ID Сотрудника" Width="110"/>
-                        <DataGridTextColumn Binding="{Binding FIO}" IsReadOnly="True" Header="ФИО Сотрудника" Width="130"/>
-                        <DataGridTextColumn Binding="{Binding Position}" IsReadOnly="True" Header="Должность" Width="140"/>
-                        <DataGridTextColumn Binding="{Binding Phone_Number}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-
-            </Grid>
-            <Grid>
-                <Button x:Name="btn_Add_Order"  Content="Добавить новый заказ" Click="btn_Add_Order_Click" Margin="894,402,1082,-441"/>
+                <Grid Margin="0,10,0,0">
+                    <Button Content="Добавить новое оборудование"   Click="Button_Click_1" Width="300" />
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Button Content="Добавить нового клиента" Click="Button_Click" Width="300"  />
+                </Grid>
 
 
-            </Grid>
-        </StackPanel>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Поиск Клиента: " Width="127" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_searchClient" TextWrapping="Wrap" Margin="127,0,73,0" SelectionChanged="txbx_searchClient_SelectionChanged"/>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <DataGrid x:Name="dataGridClients" AutoGenerateColumns="False" Margin="10,0,72,0"  Height="300" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding ID_Client}" IsReadOnly="True" Header="ID Клиента" Width="73"/>
+                            <DataGridTextColumn Binding="{Binding FIO}" IsReadOnly="True" Header="ФИО Клиента" Width="130"/>
+                            <DataGridTextColumn Binding="{Binding Series_Number_Passport}" IsReadOnly="True" Header="Серия номер пасспорта" Width="150"/>
+                            <DataGridTextColumn Binding="{Binding Phone_Number}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
+                            <DataGridTextColumn Binding="{Binding Email}" IsReadOnly="True" Header="Email" Width="140"/>
+                            <DataGridTextColumn Binding="{Binding DateAdded}" IsReadOnly="True" Header="Дата добавления" Width="140"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Поиск Оборудования: " Width="141" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_searchDevice" TextWrapping="Wrap" Margin="146,0,73,0" SelectionChanged="txbx_searchDevice_SelectionChanged"/>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <DataGrid x:Name="dataGridDevices" AutoGenerateColumns="False" Margin="10,0,72,0"  Height="300"   >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding ID_Device}" IsReadOnly="True" Header="ID Оборудования" Width="110"/>
+                            <DataGridTextColumn Binding="{Binding Name}" IsReadOnly="True" Header="Название полное" Width="130"/>
+                            <DataGridTextColumn Binding="{Binding Serial_Number}" IsReadOnly="True" Header="Серийный номер" Width="140"/>
+                            <DataGridTextColumn Binding="{Binding Description}" IsReadOnly="True" Header="Описание" Width="140"/>
+                            <DataGridTextColumn Binding="{Binding Manufacturer}" IsReadOnly="True" Header="Производитель" Width="140"/>
+                            <DataGridTextColumn Binding="{Binding Model}" IsReadOnly="True" Header="Модель" Width="140"/>
+                            <DataGridTextColumn Binding="{Binding DateAdded}" IsReadOnly="True" Header="Дата добавления" Width="140"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Label Content="Поиск Сотрудника: " Width="100" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txbx_searchEmployee" TextWrapping="Wrap" Margin="128,0,75,0" SelectionChanged="txbx_searchEmployee_SelectionChanged"/>
+                </Grid>
+
+                <Grid Margin="0,10,0,0">
+
+
+                    <DataGrid x:Name="dataGridEmployees" AutoGenerateColumns="False"  Margin="10,0,72,0"  Height="300">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding ID_Employee}" IsReadOnly="True" Header="ID Сотрудника" Width="110"/>
+                            <DataGridTextColumn Binding="{Binding FIO}" IsReadOnly="True" Header="ФИО Сотрудника" Width="130"/>
+                            <DataGridTextColumn Binding="{Binding Position}" IsReadOnly="True" Header="Должность" Width="140"/>
+                            <DataGridTextColumn Binding="{Binding Phone_Number}" IsReadOnly="True" Header="Номер телефона" Width="140"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Button x:Name="btn_Add_Order"  Content="Добавить новый заказ" Click="btn_Add_Order_Click" Width="300"/>
+
+
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
 
     </Grid>
 </Window>

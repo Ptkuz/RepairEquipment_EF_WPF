@@ -117,8 +117,7 @@ namespace ApplicationRepairPhoneEntityFramework {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ApplicationRepairPhoneEntityFramework;V1.0.0.0;component/viewallorderswindow.xam" +
-                    "l", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ApplicationRepairPhoneEntityFramework;component/viewallorderswindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\ViewAllOrdersWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

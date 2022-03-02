@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="Окно исполнения" Height="1128" Width="1067">
+        Title="Окно исполнения" Height="1128" Width="1067" MinHeight="1128" MinWidth="1067">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -19,6 +19,7 @@
                 <GradientStop Color="#FFD6FF2A" Offset="0.169"/>
             </LinearGradientBrush>
         </Grid.Background>
+        <ScrollViewer>
         <StackPanel>
             <Grid Margin="0,10,0,0">
                 <Label Content="ID Исполнения:" Width="150" Margin="0,0, 950,0"/>
@@ -136,5 +137,6 @@
             </Grid>
 
         </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

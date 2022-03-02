@@ -149,8 +149,7 @@ namespace ApplicationRepairPhoneEntityFramework {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ApplicationRepairPhoneEntityFramework;V1.0.0.0;component/viewemployeewindow.xaml" +
-                    "", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ApplicationRepairPhoneEntityFramework;component/viewemployeewindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\ViewEmployeeWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

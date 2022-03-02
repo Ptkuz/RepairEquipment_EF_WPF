@@ -7,12 +7,14 @@
         mc:Ignorable="d"
         Title="Просмотр всех заказов мастера" Height="1227" Width="1974">
     <Grid>
-        <Grid.Background>
+        
+            <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FFCEFF00"/>
                 <GradientStop Color="White" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
+        <ScrollViewer>
         <StackPanel>
             <Grid Margin="0,20,0,0">
                 <Label Content="Поиск зарегестрированного заказа:" Width="230" Margin="10,0,680,0" HorizontalAlignment="Left"/>
@@ -95,5 +97,6 @@
             </Grid>
 
         </StackPanel>
+            </ScrollViewer>
     </Grid>
 </Window>
