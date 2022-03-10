@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="Просмотр всех заказов менеджером" WindowStartupLocation="CenterScreen" Height="623" Width="1668" >
+        Title="Просмотр заказов менеджером" WindowStartupLocation="CenterScreen" Height="623" Width="1668" >
     <Window.Resources>
         <Style x:Key="BlackAndWhite">
         <Setter Property="Control.FontFamily" Value="Arial Black" />
@@ -20,50 +20,7 @@
         <Setter Property="Control.Foreground" Value="White" />
         <Setter Property="Control.Margin" Value="10" />
     </Style>
-        <Style x:Key="{x:Type TextBox}" TargetType="{x:Type TextBox}">
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-            <Setter Property="MinWidth" Value="120"/>
-            <Setter Property="MinHeight" Value="20"/>
-            <Setter Property="AllowDrop" Value="true"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
-                        <Border
-                     Name="Border"               
-                     BorderBrush="#888888"
-                     BorderThickness="1,1,0,0"
-                     CornerRadius="2"
-                     Padding="0">
-                            <Border
-                          
-                     BorderBrush="#AAAAAA"
-                     BorderThickness="0,0,1,1"
-                     CornerRadius="2"
-                     Padding="0">
-                                <ScrollViewer x:Name="PART_ContentHost" Margin="0">
-                                    <ScrollViewer.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                            <GradientStop Offset="0" Color="WhiteSmoke"/>
-                                            <GradientStop Offset="1" Color="LightGray"/>
-                                        </LinearGradientBrush>
-                                    </ScrollViewer.Background>
-                                </ScrollViewer>
-                            </Border>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="Border" Property="Background" Value="#EEEEEE"/>
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#EEEEEE"/>
-                                <Setter Property="Foreground" Value="#888888"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        
     </Window.Resources>
 
     <Grid>
@@ -78,7 +35,7 @@
         <ScrollViewer HorizontalScrollBarVisibility="Auto">
             <StackPanel>
                 <Grid Margin="0,20,0,0">
-                    <Label Content="Поиск зарегестрированного заказа:" Width="230" Margin="10,0,680,0" HorizontalAlignment="Left"/>
+                    <Label Content="Поиск зарегистрированного заказа:" Width="230" Margin="10,0,680,0" HorizontalAlignment="Left"/>
                     <TextBox x:Name="txbx_search_orders" TextWrapping="Wrap"  Width="650" Margin="290,0,0,0" HorizontalAlignment="Left" SelectionChanged="txbx_search_orders_SelectionChanged"/>
                     <Button x:Name="btn_change_status" Style="{StaticResource BlackAndWhite}" Content="Отменить заказ" IsEnabled="False" Width="200" Margin="1000,0,0,0" HorizontalAlignment="Left" Click="btn_change_status_Click"/>
 

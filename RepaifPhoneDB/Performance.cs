@@ -36,7 +36,5 @@ namespace RepaifPhoneDB
         public Guid OrderKey { get; set; }
         public Order? Order { get; set; }
 
-        //public PerformanceStockDetails PerformanceStockDetails { get; set; } = new();
-        //public List<StockDetails> StockDetails { get; set; } = new();   
     }
 }

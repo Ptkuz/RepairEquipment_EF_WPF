@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationRepairPhoneEntityFramework"
         mc:Ignorable="d"
-        Title="Создать новый заказ" Height="1750" Width="890">
+        Title="Добавить заказ" Height="1750" Width="890">
     <Window.Resources>
         <Style x:Key="BlackAndWhite">
         <Setter Property="Control.FontFamily" Value="Arial Black" />
@@ -21,50 +21,7 @@
         <Setter Property="Control.Margin" Value="10" />
     </Style>
 
-        <Style x:Key="{x:Type TextBox}" TargetType="{x:Type TextBox}">
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-            <Setter Property="MinWidth" Value="120"/>
-            <Setter Property="MinHeight" Value="20"/>
-            <Setter Property="AllowDrop" Value="true"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
-                        <Border
-                     Name="Border"               
-                     BorderBrush="#888888"
-                     BorderThickness="1,1,0,0"
-                     CornerRadius="2"
-                     Padding="0">
-                            <Border
-                          
-                     BorderBrush="#AAAAAA"
-                     BorderThickness="0,0,1,1"
-                     CornerRadius="2"
-                     Padding="0">
-                                <ScrollViewer x:Name="PART_ContentHost" Margin="0">
-                                    <ScrollViewer.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                            <GradientStop Offset="0" Color="WhiteSmoke"/>
-                                            <GradientStop Offset="1" Color="LightGray"/>
-                                        </LinearGradientBrush>
-                                    </ScrollViewer.Background>
-                                </ScrollViewer>
-                            </Border>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="Border" Property="Background" Value="#EEEEEE"/>
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#EEEEEE"/>
-                                <Setter Property="Foreground" Value="#888888"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        
     </Window.Resources>
 
     <Grid>

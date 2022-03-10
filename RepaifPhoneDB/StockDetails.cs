@@ -38,9 +38,5 @@ namespace RepaifPhoneDB
 
 
 
-        //public List<Performance> Performances { get; set; } = new();
-
-        //public PerformanceStockDetails PerformanceStockDetails { get; set; } = new();
-
     }
 }

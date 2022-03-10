@@ -119,7 +119,8 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
                         if (Email != String.Empty)
-                            if(await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(FioClient, txbx_ID_Order.Text, "Заказ загерестрирован. \n К письму прикреплена электронная копия документа вашего заказа"), true, @"Документы заказы\Заказ.docx"))
+                            if(await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(FioClient, txbx_ID_Order.Text, 
+                                "Заказ загерестрирован. \n К письму прикреплена электронная копия документа вашего заказа"), true, @"Документы заказы\Заказ.docx"))
                                 MessageBox.Show("Письмо клиенту успешно отправлено!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
                             else
                                 MessageBox.Show("При отправке письма произошла ошибка. Проверьте интернет подключение!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
