@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\
+C:\Users\evtku\Source\Repos\RepairEquipment_EF_WPF\ApplicationRepairPhoneEntityFramework\obj\Debug\net6.0-windows\
 ApplicationRepairPhoneEntityFramework
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\ApplicationRepairPhoneEntityFramework\App.xaml
+C:\Users\evtku\Source\Repos\RepairEquipment_EF_WPF\ApplicationRepairPhoneEntityFramework\App.xaml
 17-1690769071
 
 401027825313
-225-1282866038
+225-1823803254
 AddClientWindow.xaml;AddDetailsWindow.xaml;AddDeviceWindow.xaml;AddEmployeeWindow.xaml;AuthorizationWindow.xaml;CreateOrderWindow.xaml;DirectorMenuWindow.xaml;ManagerMenuWindow.xaml;MasterMenuWindow.xaml;PerformanceWindow.xaml;ViewAllOrdersManagerWindow.xaml;ViewAllOrdersWindow.xaml;ViewClientsWindow.xaml;ViewDetailsWindow.xaml;ViewDevicesWindow.xaml;ViewEmployeeWindow.xaml;ViewMasterOrderWindow.xaml;
 
-False
+True
 

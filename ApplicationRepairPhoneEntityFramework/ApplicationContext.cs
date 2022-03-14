@@ -73,7 +73,9 @@ namespace ApplicationRepairPhoneEntityFramework
                new Position { ID_Position = 6, Name_Position = "Уволен" }
             });
 
-            builder.Entity<Employee>().HasData(new Employee { ID_Employee = "Gurrex", Password = "GurrexPassword", FIO = "Тимоходцев Павел Евгеньевич", ID_Position = 5, Series_Number_Password = "3219 008001", Address = "Москва", Phone_Number = "89512289628", EmploymentDate = DateTime.Now });
+            builder.Entity<Employee>().HasData(new Employee { ID_Employee = "Gurrex", Password = "GurrexPassword", 
+                FIO = "Тимоходцев Павел Евгеньевич", ID_Position = 5, Series_Number_Password = "0000 000000", Address = "Москва", 
+                Phone_Number = "89512289628", EmploymentDate = DateTime.Now });
 
 
         }

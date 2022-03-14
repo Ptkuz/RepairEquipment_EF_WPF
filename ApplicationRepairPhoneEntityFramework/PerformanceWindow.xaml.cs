@@ -170,7 +170,7 @@ namespace ApplicationRepairPhoneEntityFramework
                     throw new NullReferenceException();
                 }
                 ID_Order = Guid.Parse(ID_Detail);
-               
+
 
                 if (await DataOperations.InsertPerformance(ID_Performance, DescriptionRepair, WorkPrice, DetailsPrice, Discount, FinalPrice, DatePerformance, IdQuantityDetails, ID_Order))
                 {
@@ -198,10 +198,10 @@ namespace ApplicationRepairPhoneEntityFramework
 
 
 
-                    if (Email!=String.Empty)
-                    if(await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(Fio, ID_Detail, "Заказ закрыт. \n К письму прикреплена электронная копия акта выполненных работ"), true, @"Акты работ\Акт работы.docx"))
+                    if (Email != String.Empty)
+                        if (await SendEmail.SendEmailAsync(Email, "Пиьсмо от Сервсисного центра", SendEmail.ChangeStatusOrder(Fio, ID_Detail, "Заказ закрыт. \n К письму прикреплена электронная копия акта выполненных работ"), true, @"Акты работ\Акт работы.docx"))
                             MessageBox.Show("Письмо клиенту успешно отправлено!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Information);
-                    else
+                        else
                             MessageBox.Show("При отправке письма произошла ошибка. Проверьте интернет подключение!", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
                     this.DialogResult = true;
                 }
@@ -218,6 +218,11 @@ namespace ApplicationRepairPhoneEntityFramework
             catch (Microsoft.EntityFrameworkCore.DbUpdateException)
             {
                 MessageBox.Show("В данный заказ уже добавлено исполнение", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+            catch (System.ArgumentOutOfRangeException ex) 
+            {
+                MessageBox.Show("Вы не выбрали заказ для закрытия", "Приложение СЕРВИСНЫЙ ЦЕНТР", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
 

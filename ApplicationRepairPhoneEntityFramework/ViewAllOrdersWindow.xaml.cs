@@ -30,7 +30,8 @@ namespace ApplicationRepairPhoneEntityFramework
         public ViewAllOrdersWindow()
         {
             InitializeComponent();
-
+            
+            btn_Excel.IsEnabled = false;
             GetOrders();
             async void GetOrders()
             {
@@ -90,7 +91,8 @@ namespace ApplicationRepairPhoneEntityFramework
 
         private void DataGridPerformance_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (DataGridPerformance != null)
+                btn_Excel.IsEnabled = true;
             object itemPerf = DataGridPerformance.SelectedItem;
             if (itemPerf != null)
                 ID_Order = (DataGridPerformance.SelectedCells[1].Column.GetCellContent(itemPerf) as TextBlock)!.Text;
@@ -220,5 +222,7 @@ namespace ApplicationRepairPhoneEntityFramework
             datepicker2.SelectedDate = null;
             DataGridPerformance.ItemsSource = await DataOperations.GetAllPerformanceViewAllOrdersWindow();
         }
+
+        
     }
 }

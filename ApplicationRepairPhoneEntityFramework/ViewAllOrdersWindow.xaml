@@ -32,7 +32,7 @@
                 <GradientStop Color="#FF2DE3AC" Offset="0.329"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" Margin="0,0,0,-85">
             <StackPanel>
                 <Grid Margin="0,20,0,0">
                     <Label Content="Поиск заказа:" Width="100" Margin="10,0,680,0" HorizontalAlignment="Left"/>
@@ -139,7 +139,7 @@
                 </Grid>
 
                 <Grid>
-                    <Button Content="Экспорт в Excel" Width="200" Height="40" Style="{StaticResource BlackAndWhite}"  Click="Button_Click"/>
+                    <Button x:Name="btn_Excel" Content="Экспорт в Excel" Width="200" Height="40" Style="{StaticResource BlackAndWhite}"  Click="Button_Click"/>
 
                 </Grid>
 

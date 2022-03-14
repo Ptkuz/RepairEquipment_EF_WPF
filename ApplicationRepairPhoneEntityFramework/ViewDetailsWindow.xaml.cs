@@ -113,6 +113,7 @@ namespace ApplicationRepairPhoneEntityFramework
                     string fullPrice = (dataGridDetails.SelectedCells[4].Column.GetCellContent(item) as TextBlock)!.Text;
 
                     decimal d = decimal.Parse(unit_Price, CultureInfo.InvariantCulture);
+                    decimal df = decimal.Parse(fullPrice, CultureInfo.InvariantCulture);
 
 
 
@@ -120,7 +121,7 @@ namespace ApplicationRepairPhoneEntityFramework
                     txbx_Name.Text = nameDetail;
                     txbx_UnitPrice.Text = d.ToString();
                     txbx_quantity.Text = quantity;
-                    txbx_FullPrice.Text = fullPrice;
+                    txbx_FullPrice.Text = df.ToString();
 
                 }
                 else

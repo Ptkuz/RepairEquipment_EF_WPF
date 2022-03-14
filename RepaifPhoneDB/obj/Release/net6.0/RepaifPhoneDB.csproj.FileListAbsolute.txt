@@ -12,3 +12,17 @@ C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\obj\Release\net6.0\ref\RepaifPhoneDB.dll
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.pdb
 C:\Users\ptkuz\source\repos\ApplicationRepairPhoneEntityFramework\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.genruntimeconfig.cache
+C:\Users\evtku\source\repos\RepairEquipment_EF_WPF\RepaifPhoneDB\bin\Release\net6.0\RepaifPhoneDB.deps.json
+C:\Users\evtku\source\repos\RepairEquipment_EF_WPF\RepaifPhoneDB\bin\Release\net6.0\RepaifPhoneDB.runtimeconfig.json
+C:\Users\evtku\Source\Repos\RepairEquipment_EF_WPF\RepaifPhoneDB\bin\Release\net6.0\RepaifPhoneDB.dll
+C:\Users\evtku\source\repos\RepairEquipment_EF_WPF\RepaifPhoneDB\bin\Release\net6.0\ref\RepaifPhoneDB.dll
+C:\Users\evtku\Source\Repos\RepairEquipment_EF_WPF\RepaifPhoneDB\bin\Release\net6.0\RepaifPhoneDB.pdb
+C:\Users\evtku\Source\Repos\RepairEquipment_EF_WPF\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.csproj.AssemblyReference.cache
+C:\Users\evtku\Source\Repos\RepairEquipment_EF_WPF\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\evtku\Source\Repos\RepairEquipment_EF_WPF\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.AssemblyInfoInputs.cache
+C:\Users\evtku\Source\Repos\RepairEquipment_EF_WPF\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.AssemblyInfo.cs
+C:\Users\evtku\Source\Repos\RepairEquipment_EF_WPF\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.csproj.CoreCompileInputs.cache
+C:\Users\evtku\Source\Repos\RepairEquipment_EF_WPF\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.dll
+C:\Users\evtku\Source\Repos\RepairEquipment_EF_WPF\RepaifPhoneDB\obj\Release\net6.0\ref\RepaifPhoneDB.dll
+C:\Users\evtku\Source\Repos\RepairEquipment_EF_WPF\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.pdb
+C:\Users\evtku\source\repos\RepairEquipment_EF_WPF\RepaifPhoneDB\obj\Release\net6.0\RepaifPhoneDB.genruntimeconfig.cache
